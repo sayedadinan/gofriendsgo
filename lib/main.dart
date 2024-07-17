@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/login_screen/login_screen.dart';
+import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      title: 'GoFriendsGo',
+      title: 'GoFriendsGo',     
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const LoginScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }

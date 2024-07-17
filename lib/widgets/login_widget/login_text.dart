@@ -23,7 +23,7 @@ class LoginText extends StatelessWidget {
         children: <TextSpan>[
           TextSpan(
             text: 'Sign Up',
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),

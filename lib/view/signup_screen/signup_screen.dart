@@ -24,35 +24,35 @@ class SignUpScreen extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomSizedBoxHeight(0.1),
-                  const AppdecorText(
+                  CustomSizedBoxHeight(0.1),
+                  AppdecorText(
                     text: 'Sign Up',
                     size: 0.08,
                     color: Colors.black,
                     weight: FontWeight.bold,
                   ),
-                  const CustomSizedBoxHeight(0.05),
-                  const LabeledInputField(
+                  CustomSizedBoxHeight(0.05),
+                  LabeledInputField(
                     hintText: 'Enter your Name',
                     labelText: 'Name',
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
-                  const CustomSizedBoxHeight(0.02),
-                  const LabeledInputField(
+                  CustomSizedBoxHeight(0.02),
+                  LabeledInputField(
                     hintText: 'Enter your Email Address',
                     labelText: 'Email Address',
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
-                  const CustomSizedBoxHeight(0.02),
-                  const LabeledInputField(
+                  CustomSizedBoxHeight(0.02),
+                  LabeledInputField(
                     hintText: '12FDFVD',
                     labelText: 'Referral Code',
                     prefixIcon: Icon(Icons.tag),
                   ),
-                  const CustomSizedBoxHeight(0.02),
+                  CustomSizedBoxHeight(0.02),
                   StaticDropdownField()
                 ],
               ),

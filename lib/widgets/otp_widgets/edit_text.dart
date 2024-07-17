@@ -5,8 +5,8 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 
 class CustomEditText extends StatelessWidget {
   const CustomEditText({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
