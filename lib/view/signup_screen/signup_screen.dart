@@ -6,6 +6,7 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/home_screen/home_screen.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/widgets/signup_widget/custom_field.dart';
 import 'package:gofriendsgo/widgets/signup_widget/drop_down.dart';
@@ -24,35 +25,35 @@ class SignUpScreen extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomSizedBoxHeight(0.1),
-                  const AppdecorText(
+                  CustomSizedBoxHeight(0.1),
+                  AppdecorText(
                     text: 'Sign Up',
                     size: 0.08,
                     color: Colors.black,
                     weight: FontWeight.bold,
                   ),
-                  const CustomSizedBoxHeight(0.05),
-                  const LabeledInputField(
+                  CustomSizedBoxHeight(0.05),
+                  LabeledInputField(
                     hintText: 'Enter your Name',
                     labelText: 'Name',
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
-                  const CustomSizedBoxHeight(0.02),
-                  const LabeledInputField(
+                  CustomSizedBoxHeight(0.02),
+                  LabeledInputField(
                     hintText: 'Enter your Email Address',
                     labelText: 'Email Address',
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
-                  const CustomSizedBoxHeight(0.02),
-                  const LabeledInputField(
+                  CustomSizedBoxHeight(0.02),
+                  LabeledInputField(
                     hintText: '12FDFVD',
                     labelText: 'Referral Code',
                     prefixIcon: Icon(Icons.tag),
                   ),
-                  const CustomSizedBoxHeight(0.02),
+                  CustomSizedBoxHeight(0.02),
                   StaticDropdownField()
                 ],
               ),
@@ -72,7 +73,9 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   const CustomSizedBoxHeight(0.03),
                   CustomButton(
-                      function: () {},
+                      function: () {
+                        PageNavigations().push(HomeScreen());
+                      },
                       text: 'Get OTP',
                       fontSize: 0.04,
                       buttonTextColor: AppColors.whiteColor,

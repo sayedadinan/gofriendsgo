@@ -1,6 +1,9 @@
 class AppImages {
   static const String splashBlurImage = "assets/images/splash_blur_image.jpg";
   static const String splashImage = "assets/images/splash_image.jpg";
+  static const String onboardingFirst = "assets/images/on_boarding_1.png";
+  static const String adImage = 'assets/images/ad_image.png';
+  static const String busIcon = 'assets/images/bus.png';
 }
 
 class CustomFonts {
