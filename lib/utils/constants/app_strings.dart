@@ -7,4 +7,14 @@ class TextStrings {
   static const String successText = 'OTP Verified Successfully';
   static const String successLongText =
       '  Congratulations ! You have  \nsuccessfully verified your OTP.';
+static const String fixedDeparturesHeading =
+      'Fixed Departures';
+      static const String filters =
+      'Filters';
+      static const String perPerson =
+      'per person';
+
+      static const String getDetailsButtonText =
+      'Get Details';
+
 }

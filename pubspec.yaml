@@ -65,6 +65,9 @@ flutter:
     - assets/images/on_boarding_2.png
     - assets/images/on_boarding_3.png
     - assets/images/on_boarding_4.png
+    - assets/images/hotel.png
+    - assets/images/flight_takeoff.png
+    - assets/images/date.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -91,6 +94,9 @@ flutter:
   #         weight: 700
     - family: Inter
       fonts:
-        - asset: assets\fonts\Inter-Regular.ttf  
+        - asset: assets\fonts\Inter-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets\fonts\Roboto-Regular.ttf  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -4,8 +4,10 @@ class AppColors {
   static const Color transparentColor = Colors.transparent;
   static const Color blackColor = Colors.black;
   static const Color whiteColor = Colors.white;
-
-  static const Color onBoardingSubtitleColor =Color.fromRGBO(0, 0, 0, 0.4);
+  static const Color fixedDeparturesAmberColor =
+      Color.fromRGBO(236, 167, 44, 1);
+  static const Color backgroundColor = Color.fromRGBO(201, 212, 223, 1);
+  static const Color onBoardingSubtitleColor = Color.fromRGBO(0, 0, 0, 0.4);
   static const List<Color> gradientColors = [
     Color(0xFF3120D8),
     Color(0xFF9C0AB6)

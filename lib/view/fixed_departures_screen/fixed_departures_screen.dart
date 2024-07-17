@@ -1,0 +1,86 @@
+import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/fixed_departures.dart';
+import 'package:gofriendsgo/utils/color_theme/colors.dart';
+import 'package:gofriendsgo/utils/constants/mediaquery.dart';
+import 'package:gofriendsgo/utils/constants/screen_padding.dart';
+import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/widgets/fixed_details/app_bar.dart';
+import 'package:gofriendsgo/widgets/fixed_details/departure.dart';
+import 'package:gofriendsgo/widgets/fixed_details/flight_departure.dart';
+import 'package:gofriendsgo/widgets/fixed_details/get_details_button.dart';
+import 'package:gofriendsgo/widgets/fixed_details/hotel_ratings.dart';
+import 'package:gofriendsgo/widgets/fixed_details/is_booked_container.dart';
+import 'package:gofriendsgo/widgets/fixed_details/package_amount.dart';
+import 'package:gofriendsgo/widgets/fixed_details/package_details.dart';
+import 'package:gofriendsgo/widgets/fixed_details/scheduled_days.dart';
+
+class FixedDeparturesScreen extends StatelessWidget {
+  const FixedDeparturesScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      appBar: PreferredSize(
+          preferredSize:
+              Size(double.infinity, mediaqueryheight(0.165, context)),
+          child: const FixedDepartureAppBar()),
+      body: Padding(
+          padding: commonScreenPadding(context),
+          child: ListView.builder(
+            itemCount: fixedDeparturesList.length,
+            itemBuilder: (context, index) {
+              final package = fixedDeparturesList[index];
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: mediaqueryheight(0.015, context)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(color: Color.fromRGBO(49, 103, 152, .42),offset: Offset(0, 2),blurRadius: 3,)
+                    ],
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColors.whiteColor),
+                  padding: EdgeInsets.all(
+                    mediaquerywidth(0.04, context),
+                  ),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        package.isDepartureFixed
+                            ? const FixedDepartureWithAirfareContainer()
+                            : const SizedBox(),
+                        const CustomSizedBoxHeight(0.015),
+                        FixedDeparturesPackageHeading(package: package),
+                        const CustomSizedBoxHeight(0.02),
+                        HotelRatings(package: package),
+                        const CustomSizedBoxHeight(0.01),
+                        ScheduledDays(package: package),
+                        const CustomSizedBoxHeight(0.012),
+                        FlightDeparture(package: package),
+                        const CustomSizedBoxHeight(0.01),
+                        const Divider(),
+                        const CustomSizedBoxHeight(0.01),
+                        ...packageDetails(package, context),
+                        const CustomSizedBoxHeight(0.014),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const GetDetailsButton(),
+                            TotalPackageAmount(package: package),
+                            const SizedBox()
+                          ],
+                        ),
+                      ]),
+                ),
+              );
+            },
+          )),
+    );
+  }
+
+}
+
+
+
+
