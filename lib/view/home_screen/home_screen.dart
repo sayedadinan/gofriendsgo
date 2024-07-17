@@ -1,11 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/home_grid_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
+import 'package:gofriendsgo/utils/constants/app_button.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
+import 'package:gofriendsgo/widgets/home_screen_widgets/grid_for_home.dart';
+import 'package:gofriendsgo/widgets/home_screen_widgets/home_appbar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore: must_be_immutable
@@ -15,39 +18,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 197, 220, 239),
-        appBar: PreferredSize(
+      backgroundColor: const Color.fromARGB(255, 197, 220, 239),
+      appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.07, context)),
-          child: Container(
-            height: mediaqueryheight(0.18, context),
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.centerRight,
-              end: Alignment.centerLeft,
-              colors: AppColors.gradientColors,
-            )),
-            child: const Column(
-              children: [
-                CustomSizedBoxHeight(0.04),
-                Row(
-                  children: [
-                    CustomSizedBoxWidth(0.03),
-                    Icon(Icons.menu, color: AppColors.whiteColor),
-                    CustomSizedBoxWidth(0.05),
-                    CustomText(
-                        text: 'Home',
-                        fontFamily: CustomFonts.poppins,
-                        size: 0.05,
-                        color: AppColors.whiteColor),
-                    CustomSizedBoxWidth(0.6),
-                    Icon(Icons.notification_add, color: AppColors.whiteColor),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        body: Column(
+          child: const HomeAppbar()),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             SizedBox(
               height: mediaqueryheight(0.12, context),
@@ -69,62 +45,111 @@ class HomeScreen extends StatelessWidget {
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return Container(
-                    decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage(
-                              AppImages.adImage,
-                            ),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(12)),
-                  );
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              image: AssetImage(AppImages.adImage),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(12)));
                 },
               ),
             ),
             const CustomSizedBoxHeight(0.01),
             Transform.scale(
-              scale: 0.5,
-              child: SmoothPageIndicator(
-                controller: adController,
-                count: 4,
-              ),
-            ),
-            Container(
-              color: const Color.fromRGBO(236, 228, 255, 1),
-              // width: mediaquerywidth(0.34, context),
-              height: mediaqueryheight(0.2, context),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
+                scale: 0.5,
+                child: SmoothPageIndicator(controller: adController, count: 4)),
+            const GridForHomeScreen(),
+            SizedBox(
+              height: mediaqueryheight(0.29, context),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
                 itemBuilder: (context, index) {
+                  final item = homeGridItems[index];
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
+                    child: Container(
+                      width: mediaquerywidth(0.40, context),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: AppColors.whiteColor),
                       child: Column(
                         children: [
                           const CustomSizedBoxHeight(0.02),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10)),
-                            width: mediaquerywidth(0.14, context),
-                            height: mediaqueryheight(0.06, context),
-                            child: Center(
-                              child: Image.asset(AppImages.onboardingFirst),
-                            ),
+                          Image.asset(AppImages.tripImage),
+                          CustomText(
+                            text: item.titleText,
+                            fontFamily: CustomFonts.inter,
+                            size: 0.03,
+                            color: AppColors.blackColor,
+                            weight: FontWeight.w700,
                           ),
-                          const CustomText(
-                              text: 'Hotel Booking',
+                          const CustomSizedBoxHeight(0.01),
+                          CustomText(
+                              textAlign: TextAlign.center,
+                              text: item.subText,
                               fontFamily: CustomFonts.inter,
                               size: 0.02,
-                              color: Colors.black)
+                              color: AppColors.blackColor),
+                          const CustomSizedBoxHeight(0.01),
+                          SizedBox(
+                            width: mediaquerywidth(0.23, context),
+                            height: mediaqueryheight(0.04, context),
+                            child: CustomButton(
+                                function: () {},
+                                text: 'Get Details',
+                                fontSize: 0.04,
+                                buttonTextColor: AppColors.whiteColor,
+                                borderColor: AppColors.transparentColor,
+                                fontFamily: CustomFonts.poppins),
+                          ),
+                          const CustomSizedBoxHeight(0.01),
                         ],
                       ),
                     ),
                   );
                 },
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                height: mediaqueryheight(0.08, context),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(AppImages.homeOffer),
+                        fit: BoxFit.cover)),
+              ),
+            ),
+            const CustomSizedBoxHeight(0.03),
           ],
-        ));
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            buildBottomNavigationItem(icon: Icons.home_filled, label: 'Home'),
+            buildBottomNavigationItem(
+                icon: Icons.bookmark_add, label: 'Bookings'),
+            buildBottomNavigationItem(icon: Icons.forum, label: 'Chats'),
+            buildBottomNavigationItem(
+                icon: Icons.account_circle_outlined, label: 'Profile'),
+          ],
+        ),
+        color: Colors.white,
+      ),
+    );
   }
+}
+
+Widget buildBottomNavigationItem(
+    {required IconData icon, required String label}) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Icon(icon, color: Colors.black),
+      Text(label, style: const TextStyle(color: Colors.black)),
+    ],
+  );
 }

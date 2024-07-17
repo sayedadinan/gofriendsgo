@@ -46,9 +46,8 @@ class LoginScreen extends StatelessWidget {
                     size: 0.04,
                     color: Colors.black),
                 Inputfield(
-                  hinttext: 'abc@gmail.com',
-                  prefixIcon: Icon(Icons.email_outlined),
-                ),
+                    hinttext: 'abc@gmail.com',
+                    prefixIcon: Icon(Icons.email_outlined))
               ],
             ),
             Column(
@@ -68,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                     borderColor: Colors.transparent),
                 const CustomSizedBoxHeight(0.04),
               ],
-            )
+            ),
           ],
         ),
       ),

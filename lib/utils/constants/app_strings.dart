@@ -7,4 +7,10 @@ class TextStrings {
   static const String successText = 'OTP Verified Successfully';
   static const String successLongText =
       '  Congratulations ! You have  \nsuccessfully verified your OTP.';
+  static const String homeGridFirstSubText =
+      'Have Fixed Departures With Costing.Package department\n receives a message to share \npackage details upon clicking ';
+  static const String homeGridSecondSubText =
+      'Have Passport Documents List With Costing. Passport department receives a message to share package details upon clicking ';
+  static const String homeGridThirdSubText =
+      'Have Passport Documents List With Costing. Passport department receives a message to share package details upon clicking ';
 }
