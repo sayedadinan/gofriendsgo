@@ -8,6 +8,7 @@ import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/otp_verify_screen/otp_screen.dart';
+import 'package:gofriendsgo/view/signup_screen/signup_screen.dart';
 import 'package:gofriendsgo/widgets/login_widget/login_text.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -52,7 +53,9 @@ class LoginScreen extends StatelessWidget {
             ),
             Column(
               children: [
-                LoginText(onTapSignUp: () {}),
+                LoginText(onTapSignUp: () {
+                  PageNavigations().push(const SignUpScreen());
+                }),
                 const CustomSizedBoxHeight(0.02),
                 CustomButton(
                     fontFamily: CustomFonts.poppins,
