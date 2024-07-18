@@ -16,5 +16,9 @@ static const String fixedDeparturesHeading =
 
       static const String getDetailsButtonText =
       'Get Details';
+      static const String visaRequirement =
+      'VISA REQUIREMENT'; 
+       static const String visaChecklist =
+      'Visa Checklist'; 
 
 }

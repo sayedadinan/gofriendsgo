@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
+import 'package:gofriendsgo/view/visa_checklist_screen/visa_checklist_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const FixedDeparturesScreen(),
+      home: const VisaChecklistScreen(),
     );
   }
 }

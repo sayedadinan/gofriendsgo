@@ -4,15 +4,15 @@ import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
-import 'package:gofriendsgo/widgets/fixed_details/app_bar.dart';
-import 'package:gofriendsgo/widgets/fixed_details/departure.dart';
-import 'package:gofriendsgo/widgets/fixed_details/flight_departure.dart';
-import 'package:gofriendsgo/widgets/fixed_details/get_details_button.dart';
-import 'package:gofriendsgo/widgets/fixed_details/hotel_ratings.dart';
-import 'package:gofriendsgo/widgets/fixed_details/is_booked_container.dart';
-import 'package:gofriendsgo/widgets/fixed_details/package_amount.dart';
-import 'package:gofriendsgo/widgets/fixed_details/package_details.dart';
-import 'package:gofriendsgo/widgets/fixed_details/scheduled_days.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/app_bar.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/departure.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/flight_departure.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/get_details_button.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/hotel_ratings.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/is_booked_container.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/package_amount.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/package_details.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/scheduled_days.dart';
 
 class FixedDeparturesScreen extends StatelessWidget {
   const FixedDeparturesScreen({super.key});

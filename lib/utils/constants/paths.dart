@@ -4,6 +4,7 @@ class AppImages {
   static const String hotel = "assets/images/hotel.png";
   static const String flightTakeOff = "assets/images/flight_takeoff.png";
   static const String date = "assets/images/date.png";
+
 }
 
 class CustomFonts {
@@ -11,4 +12,5 @@ class CustomFonts {
   static const String poppins = "Poppins";
   static const String inter = "Inter";
   static const String roboto = "Roboto";
+    static const String lato = "Lato";
 }
