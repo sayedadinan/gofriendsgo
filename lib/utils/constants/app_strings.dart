@@ -20,8 +20,6 @@ class TextStrings {
   static const String perPerson = 'per person';
 
   static const String getDetailsButtonText = 'Get Details';
-      static const String visaRequirement =
-      'VISA REQUIREMENT'; 
-       static const String visaChecklist =
-      'Visa Checklist'; 
+  static const String visaRequirement = 'VISA REQUIREMENT';
+  static const String visaChecklist = 'Visa Checklist';
 }

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
-import 'package:gofriendsgo/widgets/visa_checklist/appbar.dart';
-import 'package:gofriendsgo/widgets/visa_checklist/button_and_amount.dart';
-import 'package:gofriendsgo/widgets/visa_checklist/heading_and_subheading.dart';
-import 'package:gofriendsgo/widgets/visa_checklist/package_details.dart';
+import 'package:gofriendsgo/widgets/visa_checklist_details/appbar.dart';
+import 'package:gofriendsgo/widgets/visa_checklist_details/button_and_amount.dart';
+import 'package:gofriendsgo/widgets/visa_checklist_details/heading_and_subheading.dart';
+import 'package:gofriendsgo/widgets/visa_checklist_details/package_details.dart';
 
-class VisaChecklistScreen extends StatelessWidget {
-  const VisaChecklistScreen({super.key});
+class VisaChecklistDetailsScreen extends StatelessWidget {
+  const VisaChecklistDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

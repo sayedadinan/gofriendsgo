@@ -107,14 +107,14 @@ void showAttachmentOptions(BuildContext context) {
             width: 340,
             height: 250,
             child: GridView.count(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               crossAxisCount: 3,
               // mainAxisSpacing: 8.0,
               // crossAxisSpacing: 8.0,
               children: [
                 _buildGridOption(context, Icons.contact_page, 'Document',
-                    Color.fromARGB(255, 61, 18, 181)),
+                    const Color.fromARGB(255, 61, 18, 181)),
                 _buildGridOption(context, Icons.person, 'Contact', Colors.blue),
                 _buildGridOption(
                     context, Icons.camera_enhance, 'Camera', Colors.green),

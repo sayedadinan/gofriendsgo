@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';

@@ -17,12 +17,13 @@ class GetDetailsAndAmount extends StatelessWidget {
       children: [
         const CustomSizedBoxWidth(0.04),
         CustomButton(
-          fontWeight: FontWeight.w500,
+      
           function: () {},
           text: TextStrings.getDetailsButtonText,
           fontSize: 0.04,
           buttonTextColor: AppColors.whiteColor,
           borderColor: AppColors.transparentColor,
+          
           fontFamily: CustomFonts.roboto,
         ),
         const CustomSizedBoxWidth(0.04),
