@@ -8,6 +8,7 @@ import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
+import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/grid_for_home.dart';
@@ -76,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         if (index ==0) {
                            PageNavigations().push(const FixedDeparturesScreen());
                         }else if(index ==1){
-                            PageNavigations().push(const FixedDeparturesScreen());
+                            PageNavigations().push(const PassportChecklistScreen());
                         }else{
                             PageNavigations().push(const VisaChecklistScreen());
                         }

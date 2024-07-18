@@ -22,4 +22,6 @@ class TextStrings {
   static const String getDetailsButtonText = 'Get Details';
   static const String visaRequirement = 'VISA REQUIREMENT';
   static const String visaChecklist = 'Visa Checklist';
+   static const String passportRequirement = 'PASSPORT REQUIREMENT';
+    static const String passportChecklist = 'Passport Checklist';
 }

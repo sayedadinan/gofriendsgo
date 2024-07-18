@@ -3,7 +3,7 @@ import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_bar.dart';
 import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
-import 'package:gofriendsgo/view/visa_checklist_widgets/list_items.dart';
+import 'package:gofriendsgo/widgets/visa_checklist_widgets/list_items.dart';
 
 class VisaChecklistScreen extends StatelessWidget {
   const VisaChecklistScreen({super.key});
