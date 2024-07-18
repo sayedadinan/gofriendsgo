@@ -17,15 +17,14 @@ class CustomButton extends StatelessWidget {
     Color(0xFF9C0AB6)
   ];
 
-  const CustomButton({
-    super.key,
-    required this.function,
-    required this.text,
-    required this.fontSize,
-    required this.buttonTextColor,
-    required this.borderColor,
-  required this.fontFamily
-  });
+  const CustomButton(
+      {super.key,
+      required this.function,
+      required this.text,
+      required this.fontSize,
+      required this.buttonTextColor,
+      required this.borderColor,
+      required this.fontFamily});
 
   @override
   Widget build(BuildContext context) {
@@ -73,15 +72,14 @@ class OnBoardingButton extends StatelessWidget {
 
   // Define the gradient colors as constants
 
-  const OnBoardingButton({
-    super.key,
-    required this.function,
-    required this.text,
-    required this.fontSize,
-    required this.buttonTextColor,
-    required this.borderColor,
-    required this.fontFamily
-  });
+  const OnBoardingButton(
+      {super.key,
+      required this.function,
+      required this.text,
+      required this.fontSize,
+      required this.buttonTextColor,
+      required this.borderColor,
+      required this.fontFamily});
 
   @override
   Widget build(BuildContext context) {

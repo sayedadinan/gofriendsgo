@@ -3,6 +3,8 @@ import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/chat_screen/chat_screen.dart';
 
 class GridForHomeScreen extends StatefulWidget {
   const GridForHomeScreen({super.key});
@@ -41,30 +43,35 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
             itemBuilder: (context, index) {
               if (index < 7 || (_isExpanded && index < 14)) {
                 // For the first 7 items or more items if expanded
-                return Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
+                return GestureDetector(
+                  onTap: () {
+                    PageNavigations().push(const ChatScreen());
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        width: mediaquerywidth(0.14, context),
+                        height: mediaqueryheight(0.06, context),
+                        child: Center(
+                          child: Image.asset(AppImages.onboardingFirst),
+                        ),
                       ),
-                      width: mediaquerywidth(0.14, context),
-                      height: mediaqueryheight(0.06, context),
-                      child: Center(
-                        child: Image.asset(AppImages.onboardingFirst),
+                      SizedBox(
+                        width: mediaquerywidth(0.16, context),
+                        child: const CustomText(
+                          textAlign: TextAlign.center,
+                          text: 'Holiday package',
+                          fontFamily: CustomFonts.poppins,
+                          size: 0.03,
+                          color: AppColors.blackColor,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: mediaquerywidth(0.16, context),
-                      child: const CustomText(
-                        textAlign: TextAlign.center,
-                        text: 'Holiday package',
-                        fontFamily: CustomFonts.poppins,
-                        size: 0.03,
-                        color: AppColors.blackColor,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               } else {
                 return GestureDetector(
