@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 
 class StoryItem extends StatelessWidget {
+  const StoryItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

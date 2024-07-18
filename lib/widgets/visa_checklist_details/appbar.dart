@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
+import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
@@ -9,6 +10,7 @@ import 'package:gofriendsgo/utils/navigations/navigations.dart';
 
 class VisaCheckListAppbar extends StatelessWidget {
   const VisaCheckListAppbar({
+    
     super.key,
   });
 
@@ -40,7 +42,7 @@ class VisaCheckListAppbar extends StatelessWidget {
               const CustomSizedBoxWidth(0.02),
               const CustomText(
                   weight: FontWeight.bold,
-                  text: "",
+                  text: TextStrings.visaChecklist,
                   fontFamily: CustomFonts.roboto,
                   size: 0.055,
                   color: AppColors.whiteColor)
