@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const FixedDeparturesScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }
