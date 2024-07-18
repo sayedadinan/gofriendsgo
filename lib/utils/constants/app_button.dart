@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
@@ -10,14 +12,14 @@ class CustomButton extends StatelessWidget {
   final Color buttonTextColor;
   final Color borderColor;
   final String fontFamily;
+  FontWeight? fontWeight = FontWeight.normal;
 
-  // Define the gradient colors as constants
   static const List<Color> gradientColors = [
     Color(0xFF3120D8),
     Color(0xFF9C0AB6)
   ];
 
-  const CustomButton(
+  CustomButton(
       {super.key,
       required this.function,
       required this.text,
@@ -51,6 +53,7 @@ class CustomButton extends StatelessWidget {
               child: CustomText(
                 fontFamily: fontFamily,
                 text: text,
+                weight: fontWeight,
                 size: fontSize,
                 color: buttonTextColor,
               ),
