@@ -65,6 +65,10 @@ flutter:
     - assets/images/on_boarding_2.png
     - assets/images/on_boarding_3.png
     - assets/images/on_boarding_4.png
+    - assets/images/ad_image.png
+    - assets/images/bus.png
+    - assets/images/gridImage.png
+    - assets/images/offer_image.png
     - assets/images/hotel.png
     - assets/images/flight_takeoff.png
     - assets/images/date.png

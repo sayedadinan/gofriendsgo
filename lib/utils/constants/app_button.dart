@@ -12,21 +12,20 @@ class CustomButton extends StatelessWidget {
   final Color buttonTextColor;
   final Color borderColor;
   final String fontFamily;
-   FontWeight? fontWeight = FontWeight.normal;
+  FontWeight? fontWeight = FontWeight.normal;
 
   static const List<Color> gradientColors = [
     Color(0xFF3120D8),
     Color(0xFF9C0AB6)
   ];
 
-   CustomButton(
+  CustomButton(
       {super.key,
       required this.function,
       required this.text,
       required this.fontSize,
       required this.buttonTextColor,
       required this.borderColor,
-      this.fontWeight,
       required this.fontFamily});
 
   @override

@@ -6,6 +6,7 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/home_screen/home_screen.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/widgets/signup_widget/custom_field.dart';
 import 'package:gofriendsgo/widgets/signup_widget/drop_down.dart';
@@ -72,7 +73,9 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   const CustomSizedBoxHeight(0.03),
                   CustomButton(
-                      function: () {},
+                      function: () {
+                        PageNavigations().push(HomeScreen());
+                      },
                       text: 'Get OTP',
                       fontSize: 0.04,
                       buttonTextColor: AppColors.whiteColor,

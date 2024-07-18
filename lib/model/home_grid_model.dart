@@ -1,0 +1,27 @@
+import 'package:gofriendsgo/utils/constants/app_strings.dart';
+
+class HomeGrid {
+  final String imagePath;
+  final String titleText;
+  final String subText;
+
+  HomeGrid(
+      {required this.imagePath,
+      required this.titleText,
+      required this.subText});
+}
+
+List<HomeGrid> homeGridItems = [
+  HomeGrid(
+      imagePath: 'assets/images/gridImage.png',
+      titleText: 'Fixed Departure',
+      subText: TextStrings.homeGridFirstSubText),
+  HomeGrid(
+      imagePath: 'assets/images/gridImage.png',
+      titleText: 'passport checklist',
+      subText: TextStrings.homeGridSecondSubText),
+  HomeGrid(
+      imagePath: 'assets/images/gridImage.png',
+      titleText: 'visa checklist',
+      subText: TextStrings.homeGridThirdSubText),
+];
