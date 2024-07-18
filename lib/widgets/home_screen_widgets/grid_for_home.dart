@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/home_service_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
@@ -43,6 +44,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
               mainAxisSpacing: 4,
             ),
             itemBuilder: (context, index) {
+              final gridItems = packageGrid[index];
               if (index < 7 || (_isExpanded && index < 14)) {
                 // For the first 7 items or more items if expanded
                 return GestureDetector(
@@ -59,14 +61,14 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                         width: mediaquerywidth(0.14, context),
                         height: mediaqueryheight(0.06, context),
                         child: Center(
-                          child: Image.asset(AppImages.onboardingFirst),
+                          child: Image.asset(gridItems.serviceImage),
                         ),
                       ),
                       SizedBox(
                         width: mediaquerywidth(0.16, context),
-                        child: const CustomText(
+                        child: CustomText(
                           textAlign: TextAlign.center,
-                          text: 'Holiday package',
+                          text: gridItems.serviceName,
                           fontFamily: CustomFonts.poppins,
                           size: 0.03,
                           color: AppColors.blackColor,

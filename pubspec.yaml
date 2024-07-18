@@ -72,8 +72,14 @@ flutter:
     - assets/images/hotel.png
     - assets/images/flight_takeoff.png
     - assets/images/date.png
+    - assets/images/Beach.png
+    - assets/images/Bike.png
+    - assets/images/Car.png
+    - assets/images/flight.png
+    - assets/images/Train.png
+    - assets/images/Hotel icon.png
 
-
+        
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
