@@ -17,7 +17,8 @@ class PassportChecklistScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
-        child: const CommonGradientAppBar(heading: TextStrings.passportChecklist),
+        child:
+            const CommonGradientAppBar(heading: TextStrings.passportChecklist),
       ),
       body: Padding(
         padding: EdgeInsets.only(
@@ -64,6 +65,3 @@ class PassportChecklistScreen extends StatelessWidget {
     );
   }
 }
-
-
-

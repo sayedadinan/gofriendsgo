@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
+import 'package:gofriendsgo/view/notifications_screen/notifications_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const BookingDetailsScreen(),
+      home: const NotificationScreen(),
     );
   }
 }
