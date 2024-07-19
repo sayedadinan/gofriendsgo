@@ -7,6 +7,7 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
@@ -138,12 +139,15 @@ class HomeScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Container(
-                height: mediaqueryheight(0.08, context),
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(AppImages.homeOffer),
-                        fit: BoxFit.cover)),
+              child: GestureDetector(
+                onTap: () => PageNavigations().push(const CabRatesScreen()),
+                child: Container(
+                  height: mediaqueryheight(0.08, context),
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(AppImages.homeOffer),
+                          fit: BoxFit.cover)),
+                ),
               ),
             ),
             const CustomSizedBoxHeight(0.03),
