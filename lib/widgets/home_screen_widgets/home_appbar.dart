@@ -7,6 +7,7 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/chat_list.dart/chat_list.dart';
+import 'package:gofriendsgo/view/profile_screen/profile_editing_screen.dart';
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({
@@ -41,7 +42,12 @@ class HomeAppbar extends StatelessWidget {
                   size: 0.05,
                   color: AppColors.whiteColor),
               const CustomSizedBoxWidth(0.6),
-              const Icon(Icons.notification_add, color: AppColors.whiteColor),
+              GestureDetector(
+                  onTap: () {
+                    PageNavigations().push(const ProfileEditingScreen());
+                  },
+                  child: const Icon(Icons.notification_add,
+                      color: AppColors.whiteColor)),
             ],
           ),
         ],

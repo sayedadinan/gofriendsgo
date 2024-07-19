@@ -8,6 +8,7 @@ class Inputfield extends StatelessWidget {
   final String? Function(String?)? validator;
   final Icon? icon;
   final Icon? prefixIcon;
+  final int? maxLengths;
   const Inputfield({
     this.controller,
     super.key,
@@ -17,11 +18,13 @@ class Inputfield extends StatelessWidget {
     this.validator,
     this.icon,
     this.prefixIcon,
+    this.maxLengths,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLengths,
       style: const TextStyle(color: Colors.white),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
