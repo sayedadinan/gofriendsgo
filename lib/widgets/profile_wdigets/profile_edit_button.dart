@@ -5,8 +5,8 @@ import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 
-class profilepageeEditbutton extends StatelessWidget {
-  const profilepageeEditbutton({
+class ProfilepageeEditbutton extends StatelessWidget {
+  const ProfilepageeEditbutton({
     super.key,
   });
 

@@ -33,4 +33,8 @@ class TextStrings {
     static const String phone = 'Phone : ';
     static const String phoneInfo = '+919500980089';
       static const String emailInfo = 'gofriendsgo@gmail.com';
+        static const String meetTheTeam = 'Meet The Team';
+          static const String ourDirectors = 'Our Directors';
+            static const String departmentHeads = 'Department Heads';
+              static const String teamMembers = 'Team Members';
 }

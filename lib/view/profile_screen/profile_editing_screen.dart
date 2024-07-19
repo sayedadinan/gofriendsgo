@@ -37,7 +37,7 @@ class ProfileEditingScreen extends StatelessWidget {
                 color: AppColors.blackColor,
                 weight: FontWeight.w900,
               ),
-              const profilepageeEditbutton(),
+              const ProfilepageeEditbutton(),
               const CustomSizedBoxHeight(0.01),
               const LabeledInputField(
                   hintText: 'puneeth Rajkumar', labelText: 'Name'),
