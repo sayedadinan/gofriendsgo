@@ -24,4 +24,13 @@ class TextStrings {
   static const String visaChecklist = 'Visa Checklist';
    static const String passportRequirement = 'PASSPORT REQUIREMENT';
     static const String passportChecklist = 'Passport Checklist';
+        static const String salesExecutiveAboutDetails = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus ac tellus eu laoreet. Duis molestie venenatis nunc, a condimentum tortor rutrum vel.';
+  static const String salesExecutive = 'Sales Executive';
+    static const String about = 'About';
+  static const String rateExperience = 'Rate experience with sales person';
+  static const String twentyFourSupport = '24 x 7 Support';
+    static const String email = 'Email : ';
+    static const String phone = 'Phone : ';
+    static const String phoneInfo = '+919500980089';
+      static const String emailInfo = 'gofriendsgo@gmail.com';
 }
