@@ -81,6 +81,7 @@ class SignUpScreen extends StatelessWidget {
                       buttonTextColor: AppColors.whiteColor,
                       borderColor: AppColors.transparentColor,
                       fontFamily: CustomFonts.poppins),
+                  const CustomSizedBoxHeight(0.03),
                 ],
               )
             ],
