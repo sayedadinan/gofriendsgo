@@ -22,39 +22,36 @@ class AppBarAndTabItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          decoration: const BoxDecoration(),
-          child: Padding(
-            padding: commonScreenPadding(context),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: mediaqueryheight(0.05, context),
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      iconSize: mediaquerywidth(0.08, context),
-                      onPressed: () {
-                        PageNavigations().pop();
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: AppColors.blackColor,
-                      ),
-                    ),
-                    const CustomSizedBoxWidth(0.02),
-                    const CustomText(
-                      weight: FontWeight.bold,
-                      text: "Notifications",
-                      fontFamily: CustomFonts.roboto,
-                      size: 0.055,
+        Padding(
+          padding: commonScreenPadding(context),
+          child: Column(
+            children: [
+              SizedBox(
+                height: mediaqueryheight(0.05, context),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    iconSize: mediaquerywidth(0.08, context),
+                    onPressed: () {
+                      PageNavigations().pop();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
                       color: AppColors.blackColor,
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  const CustomSizedBoxWidth(0.02),
+                  const CustomText(
+                    weight: FontWeight.bold,
+                    text: "Notifications",
+                    fontFamily: CustomFonts.roboto,
+                    size: 0.055,
+                    color: AppColors.blackColor,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         const CustomSizedBoxHeight(0.02),

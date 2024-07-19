@@ -78,7 +78,13 @@ flutter:
     - assets/images/flight.png
     - assets/images/Train.png
     - assets/images/Hotel icon.png
-
+    - assets/images/gofriendsgo_logo.png
+    - assets/images/about_us_image.png
+    - assets/images/facebook 1.png
+    - assets/images/instagram  1.png
+    - assets/images/linkedin  1.png
+    - assets/images/twitter  1.png
+    - assets/images/whatsapp  1.png
         
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

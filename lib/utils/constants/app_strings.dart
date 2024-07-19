@@ -22,19 +22,33 @@ class TextStrings {
   static const String getDetailsButtonText = 'Get Details';
   static const String visaRequirement = 'VISA REQUIREMENT';
   static const String visaChecklist = 'Visa Checklist';
-   static const String passportRequirement = 'PASSPORT REQUIREMENT';
-    static const String passportChecklist = 'Passport Checklist';
-        static const String salesExecutiveAboutDetails = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus ac tellus eu laoreet. Duis molestie venenatis nunc, a condimentum tortor rutrum vel.';
+  static const String passportRequirement = 'PASSPORT REQUIREMENT';
+  static const String passportChecklist = 'Passport Checklist';
+  static const String salesExecutiveAboutDetails =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus ac tellus eu laoreet. Duis molestie venenatis nunc, a condimentum tortor rutrum vel.';
   static const String salesExecutive = 'Sales Executive';
-    static const String about = 'About';
+  static const String about = 'About';
   static const String rateExperience = 'Rate experience with sales person';
   static const String twentyFourSupport = '24 x 7 Support';
-    static const String email = 'Email : ';
-    static const String phone = 'Phone : ';
-    static const String phoneInfo = '+919500980089';
-      static const String emailInfo = 'gofriendsgo@gmail.com';
-        static const String meetTheTeam = 'Meet The Team';
-          static const String ourDirectors = 'Our Directors';
-            static const String departmentHeads = 'Department Heads';
-              static const String teamMembers = 'Team Members';
+  static const String email = 'Email : ';
+  static const String phone = 'Phone : ';
+    static const String aboutUs = 'About Us';
+      static const String ourStory = 'Our Story';
+        static const String followUs = "Follow us";
+  static const String phoneInfo = '+919500980089';
+  static const String emailInfo = 'gofriendsgo@gmail.com';
+  static const String meetTheTeam = 'Meet The Team';
+  static const String ourDirectors = 'Our Directors';
+  static const String departmentHeads = 'Department Heads';
+  static const String teamMembers = 'Team Members';
+  static const String ourMission =
+      'Our Mission: Redefining Travel with Easy, Unforgettable Adventures';
+  static const String ourMissionSubTitle =
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever sin';
+
+  static const String ourStoryFirstText =
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,';
+
+  static const String ourStorySecondText =
+      'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing';
 }
