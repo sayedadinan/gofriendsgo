@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
+import 'package:gofriendsgo/view_model/user_details.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/constants/sizedbox.dart';
 
-class StaticDropdownField extends StatefulWidget {
-  const StaticDropdownField({super.key});
+// ignore: must_be_immutable
+class StaticDropdownField extends StatelessWidget {
+  StaticDropdownField({super.key});
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _StaticDropdownFieldState createState() => _StaticDropdownFieldState();
-}
-
-class _StaticDropdownFieldState extends State<StaticDropdownField> {
   String? selectedOption;
+
   final List<String> options = [
     'Sales Person',
     'Social Media',
@@ -51,9 +49,8 @@ class _StaticDropdownFieldState extends State<StaticDropdownField> {
           ),
           value: selectedOption,
           onChanged: (String? newValue) {
-            setState(() {
-              selectedOption = newValue;
-            });
+            Provider.of<UserViewModel>(context, listen: false)
+                .sourceController = newValue!;
           },
           items: options.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(

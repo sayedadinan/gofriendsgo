@@ -11,6 +11,7 @@ class LabeledInputField extends StatelessWidget {
   final Color textColor;
   final int? maxlngths;
   final Icon? suffix;
+  final TextEditingController? controller;
   const LabeledInputField({
     super.key,
     required this.labelText,
@@ -21,6 +22,7 @@ class LabeledInputField extends StatelessWidget {
     this.textColor = Colors.black,
     this.maxlngths,
     this.suffix,
+    this.controller,
   });
 
   @override
@@ -35,6 +37,7 @@ class LabeledInputField extends StatelessWidget {
           color: textColor,
         ),
         Inputfield(
+          controller: controller,
           icon: suffix,
           hinttext: hintText,
           prefixIcon: prefixIcon,

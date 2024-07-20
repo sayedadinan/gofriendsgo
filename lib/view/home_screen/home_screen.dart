@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gofriendsgo/model/home_grid_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
@@ -7,11 +9,15 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
 import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
+import 'package:gofriendsgo/view/chat_list.dart/chat_list.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
+import 'package:gofriendsgo/view/profile_screen/profile_editing_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
+import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/grid_for_home.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/home_appbar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -23,6 +29,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawerWidget(),
       backgroundColor: const Color.fromARGB(255, 197, 220, 239),
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.07, context)),
@@ -75,14 +82,14 @@ class HomeScreen extends StatelessWidget {
                     final item = homeGridItems[index];
                     return GestureDetector(
                       onTap: () {
-                        if (index ==0) {
-                           PageNavigations().push(const FixedDeparturesScreen());
-                        }else if(index ==1){
-                            PageNavigations().push(const PassportChecklistScreen());
-                        }else{
-                            PageNavigations().push(const VisaChecklistScreen());
+                        if (index == 0) {
+                          PageNavigations().push(const FixedDeparturesScreen());
+                        } else if (index == 1) {
+                          PageNavigations()
+                              .push(const PassportChecklistScreen());
+                        } else {
+                          PageNavigations().push(const VisaChecklistScreen());
                         }
-                       
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -160,11 +167,26 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             buildBottomNavigationItem(icon: Icons.home_filled, label: 'Home'),
-            buildBottomNavigationItem(
-                icon: Icons.bookmark_add, label: 'Bookings'),
-            buildBottomNavigationItem(icon: Icons.forum, label: 'Chats'),
-            buildBottomNavigationItem(
-                icon: Icons.account_circle_outlined, label: 'Profile'),
+            GestureDetector(
+              onTap: () {
+                PageNavigations().push(const BookingDetailsScreen());
+              },
+              child: buildBottomNavigationItem(
+                  icon: Icons.bookmark_add, label: 'Bookings'),
+            ),
+            GestureDetector(
+                onTap: () {
+                  PageNavigations().push(const ChatListScreen());
+                },
+                child: buildBottomNavigationItem(
+                    icon: Icons.forum, label: 'Chats')),
+            GestureDetector(
+              onTap: () {
+                PageNavigations().push(const ProfileEditingScreen());
+              },
+              child: buildBottomNavigationItem(
+                  icon: Icons.account_circle_outlined, label: 'Profile'),
+            ),
           ],
         ),
       ),

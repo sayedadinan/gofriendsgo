@@ -5,7 +5,6 @@ import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/chat_list.dart/chat_list.dart';
 import 'package:gofriendsgo/view/profile_screen/profile_editing_screen.dart';
 
 class HomeAppbar extends StatelessWidget {
@@ -31,7 +30,7 @@ class HomeAppbar extends StatelessWidget {
               const CustomSizedBoxWidth(0.03),
               GestureDetector(
                   onTap: () {
-                    PageNavigations().push(const ChatListScreen());
+                    Scaffold.of(context).openDrawer();
                   },
                   child: const Icon(Icons.menu, color: AppColors.whiteColor)),
               const CustomSizedBoxWidth(0.05),

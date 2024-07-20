@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/meet_the_team_screen/meet_the_team_screen.dart';
+import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
+import 'package:gofriendsgo/view_model/user_details.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => UserViewModel()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const MeetTheTeamScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }

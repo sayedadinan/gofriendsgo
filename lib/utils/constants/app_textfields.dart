@@ -25,7 +25,7 @@ class Inputfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLengths,
-      style: const TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.black),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       validator: validator,
