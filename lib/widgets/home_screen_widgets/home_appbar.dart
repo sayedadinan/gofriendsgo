@@ -5,7 +5,7 @@ import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/profile_screen/profile_editing_screen.dart';
+import 'package:gofriendsgo/view/notifications_screen/notifications_screen.dart';
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({
@@ -42,7 +42,7 @@ class HomeAppbar extends StatelessWidget {
               const CustomSizedBoxWidth(0.6),
               GestureDetector(
                   onTap: () {
-                    PageNavigations().push(const ProfileEditingScreen());
+                    PageNavigations().push(const NotificationScreen());
                   },
                   child: const Icon(Icons.notification_add,
                       color: AppColors.whiteColor)),

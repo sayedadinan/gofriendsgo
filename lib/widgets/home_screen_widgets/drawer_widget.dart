@@ -5,6 +5,7 @@ import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/about_us_screen/about_us_screen.dart';
 import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
 import 'package:gofriendsgo/view/meet_the_team_screen/meet_the_team_screen.dart';
 import 'package:gofriendsgo/view/sales_executive_screen/sales_executive_screen.dart';
@@ -71,12 +72,19 @@ class CustomDrawerWidget extends StatelessWidget {
           ),
           const ListTile(
               leading: Icon(Icons.collections), title: Text('Gallery')),
-          const ListTile(
-              leading: Icon(Icons.star_half_rounded), title: Text('Rate Us')),
+          ListTile(
+            leading: const Icon(Icons.star_half_rounded),
+            title: const Text('Rate Us'),
+            onTap: () {
+              PageNavigations().push(const AboutUsScreen());
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.business),
             title: const Text('About Us'),
-            onTap: () {},
+            onTap: () {
+              PageNavigations().push(const AboutUsScreen());
+            },
           ),
           const ListTile(
               leading: Icon(Icons.logout_outlined), title: Text('Logout')),
