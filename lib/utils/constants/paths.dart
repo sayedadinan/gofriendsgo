@@ -9,7 +9,13 @@ class AppImages {
   static const String hotel = "assets/images/hotel.png";
   static const String flightTakeOff = "assets/images/flight_takeoff.png";
   static const String date = "assets/images/date.png";
-
+  static const String goFriendsGoLogo = "assets/images/gofriendsgo_logo.png";
+  static const String aboutUsImage = "assets/images/about_us_image.png";
+  static const String facebook = "assets/images/facebook 1.png";
+  static const String instagram = "assets/images/instagram  1.png";
+  static const String linkedin = "assets/images/linkedin  1.png";
+  static const String twitter = "assets/images/twitter  1.png";
+  static const String whatsapp = "assets/images/whatsapp  1.png";
 }
 
 class CustomFonts {
@@ -17,5 +23,5 @@ class CustomFonts {
   static const String poppins = "Poppins";
   static const String inter = "Inter";
   static const String roboto = "Roboto";
-    static const String lato = "Lato";
+  static const String lato = "Lato";
 }
