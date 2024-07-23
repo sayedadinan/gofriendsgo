@@ -27,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _refferelController = TextEditingController();
-  TextEditingController _sourceController = TextEditingController();
+  final TextEditingController _sourceController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);

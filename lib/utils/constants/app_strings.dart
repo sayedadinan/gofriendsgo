@@ -51,4 +51,14 @@ class TextStrings {
 
   static const String ourStorySecondText =
       'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing';
+ static const String profileProgress = 'Your Profile is 50% Completed';
+  static const String addPhoto = "Add Photo";
+
+static const String myAccount = "My Account";
+static const String home = "Home";
+static const String myBookings = 'My Booking';
+static const String ourTeam = 'Our Team';
+static const String gallery= 'Gallery';
+static const String rateUs = 'Rate Us';
+static const String logout = 'Logout';
 }
