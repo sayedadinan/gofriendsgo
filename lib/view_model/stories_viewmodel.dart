@@ -12,7 +12,7 @@ class StoriesViewModel extends ChangeNotifier {
   StoriesModel? get storiesResponse => _storiesResponse;
   bool get isLoading => _isLoading;
 
-  Future<void> fetchStories() async {
+  fetchStories() async {
     _isLoading = true;
     notifyListeners();
 
@@ -25,6 +25,7 @@ class StoriesViewModel extends ChangeNotifier {
           log(_storiesResponse!.data.stories[0].title);
         }
       }
+      return _storiesResponse;
     } catch (e) {
       // Handle error
       log('Error fetching stories: $e');

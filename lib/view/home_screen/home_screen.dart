@@ -11,10 +11,12 @@ import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
+import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/grid_for_home.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/home_appbar.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore: must_be_immutable
@@ -35,14 +37,25 @@ class HomeScreen extends StatelessWidget {
             Padding(padding: commonScreenPadding(context)),
             SizedBox(
               height: mediaqueryheight(0.12, context),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 25,
-                itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.all(9.0),
-                    child: StoryItem(),
-                  );
+              child: Consumer<StoriesViewModel>(
+                builder: (context, storiesViewModel, child) {
+                  if (storiesViewModel.isLoading) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: storiesViewModel.storiesResponse!.data.stories.length,
+                      itemBuilder: (context, index) {
+                        final story=storiesViewModel.storiesResponse!.data.stories[index];
+                        return  Padding(
+                          padding: EdgeInsets.all(9.0),
+                          child: StoryItem(story: story),
+                        );
+                      },
+                    );
+                  }
                 },
               ),
             ),
