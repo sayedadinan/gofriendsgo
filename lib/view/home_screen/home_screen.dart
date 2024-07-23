@@ -11,6 +11,7 @@ import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
+import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
@@ -46,10 +47,12 @@ class HomeScreen extends StatelessWidget {
                   } else {
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: storiesViewModel.storiesResponse!.data.stories.length,
+                      itemCount:
+                          storiesViewModel.storiesResponse!.data.stories.length,
                       itemBuilder: (context, index) {
-                        final story=storiesViewModel.storiesResponse!.data.stories[index];
-                        return  Padding(
+                        final story = storiesViewModel
+                            .storiesResponse!.data.stories[index];
+                        return Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: StoryItem(story: story),
                         );
@@ -156,13 +159,25 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: GestureDetector(
                 onTap: () => PageNavigations().push(const CabRatesScreen()),
-                child: Container(
-                  height: mediaqueryheight(0.08, context),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(AppImages.homeOffer),
-                          fit: BoxFit.cover)),
-                ),
+                child: Consumer<BannerViewModel>(
+                    builder: (context, bannerViewModel, child) {
+                  if (bannerViewModel.isLoading) {
+                    return const CircularProgressIndicator();
+                  }
+
+                  final banner =
+                      bannerViewModel.bannersResponse!.data.banners[0];
+                  return ClipRRect(
+                    child: SizedBox(
+                      height: mediaqueryheight(0.08, context),
+                      child: Image.network(
+                          "https://gofriendsgo.teqsuit.com/public/storage/${banner.image}",
+                          errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(AppImages.goFriendsGoLogo);
+                      }, fit: BoxFit.cover),
+                    ),
+                  );
+                }),
               ),
             ),
             const CustomSizedBoxHeight(0.03),
