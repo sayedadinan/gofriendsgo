@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               child: Consumer<StoriesViewModel>(
                 builder: (context, storiesViewModel, child) {
                   if (storiesViewModel.isLoading) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final story=storiesViewModel.storiesResponse!.data.stories[index];
                         return  Padding(
-                          padding: EdgeInsets.all(9.0),
+                          padding: const EdgeInsets.all(9.0),
                           child: StoryItem(story: story),
                         );
                       },
