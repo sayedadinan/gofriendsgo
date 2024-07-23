@@ -17,6 +17,7 @@ class CustomDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: mediaquerywidth(0.8, context),
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -66,7 +67,6 @@ class CustomDrawerWidget extends StatelessWidget {
             ))
           ]),
           const DrawerListItems()
-       
         ],
       ),
     );

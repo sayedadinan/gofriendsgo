@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
+import 'package:gofriendsgo/view/bottom_navigation_bar/bottom_navigation.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const OnBoardingScreen(),
+      home: const BottomNavigationScreen(),
     );
   }
 }
