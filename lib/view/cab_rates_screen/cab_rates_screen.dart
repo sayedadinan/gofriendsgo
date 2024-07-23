@@ -18,7 +18,7 @@ class CabRatesScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
-          child: const CommonGradientAppBar(heading: "Cab Rates")),
+          child: const CommonGradientAppBar(heading: "Cab Rates",fromBottomNav: false,)),
       body: ListView.builder(
         itemCount: cabRatesModelList.length,
         itemBuilder: (context, index) {

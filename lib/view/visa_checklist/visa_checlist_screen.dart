@@ -14,7 +14,10 @@ class VisaChecklistScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
-          child: const CommonGradientAppBar(heading: TextStrings.visaChecklist)),
+          child: const CommonGradientAppBar(
+            heading: TextStrings.visaChecklist,
+            fromBottomNav: false,
+          )),
       body: Padding(
         padding: EdgeInsets.all(mediaquerywidth(0.065, context)),
         child: const PackagesListView(),

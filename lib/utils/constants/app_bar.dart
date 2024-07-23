@@ -9,10 +9,12 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 
 class CommonGradientAppBar extends StatelessWidget {
+  final bool fromBottomNav;
   final String heading;
 
   const CommonGradientAppBar({
-   required this.heading,
+    required this.fromBottomNav,
+    required this.heading,
     super.key,
   });
 
@@ -32,17 +34,22 @@ class CommonGradientAppBar extends StatelessWidget {
           ),
           Row(
             children: [
-              IconButton(
-                  iconSize: mediaquerywidth(0.08, context),
-                  onPressed: () {
-                    PageNavigations().pop();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: AppColors.whiteColor,
-                  )),
-              const CustomSizedBoxWidth(0.02),
-               CustomText(
+              if (fromBottomNav)
+                Container(
+                  height: mediaqueryheight(0.05, context),
+                ),
+              if (!fromBottomNav)
+                IconButton(
+                    iconSize: mediaquerywidth(0.08, context),
+                    onPressed: () {
+                      PageNavigations().pop();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: AppColors.whiteColor,
+                    )),
+              if (!fromBottomNav) const CustomSizedBoxWidth(0.02),
+              CustomText(
                   weight: FontWeight.bold,
                   text: heading,
                   fontFamily: CustomFonts.roboto,

@@ -9,7 +9,8 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/widgets/booking_details_widgets/booking_details_searchbar.dart';
 
 class ChatListScreen extends StatelessWidget {
-  const ChatListScreen({super.key});
+  final bool fromBottomNav;
+  const ChatListScreen({super.key, required this.fromBottomNav});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ChatListScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
-          child: const CommonGradientAppBar(heading: 'Chats')),
+          child:  CommonGradientAppBar(heading: 'Chats',fromBottomNav: fromBottomNav,)),
       body: SingleChildScrollView(
         child: Column(
           children: [

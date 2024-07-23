@@ -24,28 +24,40 @@ class HomeAppbar extends StatelessWidget {
       )),
       child: Column(
         children: [
+          const CustomSizedBoxHeight(0.01),
           const CustomSizedBoxHeight(0.05),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CustomSizedBoxWidth(0.03),
-              GestureDetector(
-                  onTap: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: const Icon(Icons.menu, color: AppColors.whiteColor)),
-              const CustomSizedBoxWidth(0.05),
-              const CustomText(
-                  text: 'Home',
-                  fontFamily: CustomFonts.poppins,
-                  size: 0.05,
-                  color: AppColors.whiteColor),
-              const CustomSizedBoxWidth(0.6),
-              GestureDetector(
-                  onTap: () {
-                    PageNavigations().push(const NotificationScreen());
-                  },
-                  child: const Icon(Icons.notification_add,
-                      color: AppColors.whiteColor)),
+              Row(
+                children: [
+                  const CustomSizedBoxWidth(0.09),
+                  GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      child:
+                          const Icon(Icons.menu, color: AppColors.whiteColor)),
+                  const CustomSizedBoxWidth(0.05),
+                  const CustomText(
+                      weight: FontWeight.bold,
+                      text: "Home",
+                      fontFamily: CustomFonts.roboto,
+                      size: 0.055,
+                      color: AppColors.whiteColor),
+                ],
+              ),
+              Row(
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        PageNavigations().push(const NotificationScreen());
+                      },
+                      child: const Icon(Icons.notification_add,
+                          color: AppColors.whiteColor)),
+                  const CustomSizedBoxWidth(0.09),
+                ],
+              ),
             ],
           ),
         ],
