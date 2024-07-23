@@ -34,7 +34,7 @@ class UserService {
   }
 
   Future<http.Response> postEmail(String email) async {
-    final url = Uri.parse('https://gofriendsgo.teqsuit.com/api/login');
+    final url = Uri.parse('$_baseUrl/login');
     final payload = jsonEncode({'email': email});
     try {
       // Send the POST request

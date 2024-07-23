@@ -43,16 +43,6 @@ class UserViewModel extends ChangeNotifier {
     final response = await _userService.postEmail(userEmail);
     _isLoading = false;
     log(response.body);
-    // otpCode = response['otp'];
-    // if (response != null && response['status'] == true) {
-    //   _message = response['message'];
-    //   log('successfully registered');
-    //   log(_message.toString());
-    // } else {
-    //   _message = response?['message'] ?? 'Registration failed';
-    //   log('registration failed');
-    // }
-
     notifyListeners();
   }
 
