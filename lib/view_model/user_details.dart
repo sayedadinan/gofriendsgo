@@ -1,7 +1,11 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/services/sign_up_service.dart';
+import 'package:gofriendsgo/utils/color_theme/colors.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/home_screen/home_screen.dart';
 
 class UserViewModel extends ChangeNotifier {
   String sourceController = '';
@@ -26,8 +30,14 @@ class UserViewModel extends ChangeNotifier {
       _message = response['message'];
       log('successfully registered');
       log(_message.toString());
+      PageNavigations().pushAndRemoveUntill(HomeScreen());
     } else {
       _message = response?['message'] ?? 'Registration failed';
+      Get.snackbar(
+          "Validation error", response?['message'] ?? 'Registration failed',
+          backgroundColor: Colors.red.shade400,
+          colorText: AppColors.whiteColor);
+
       log('registration failed');
     }
 
@@ -64,7 +74,7 @@ class UserViewModel extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       // Handle error
-      print('Error verifying OTP: $e');
+
       // Update any state if needed
       notifyListeners();
     }

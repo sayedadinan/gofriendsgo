@@ -1,6 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/user_model/user_details_model.dart';
+import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
 import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
@@ -11,12 +15,14 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
+import 'package:gofriendsgo/widgets/otp_widgets/count_down.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/edit_text.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/otp_field.dart';
 import 'package:provider/provider.dart';
 
 class OtpVerifyScreen extends StatefulWidget {
-  const OtpVerifyScreen({super.key});
+  final UserDetails? userDetails;
+  const OtpVerifyScreen({super.key, this.userDetails});
 
   @override
   _OtpVerifyScreenState createState() => _OtpVerifyScreenState();
@@ -31,6 +37,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
 
   late List<FocusNode> focusNodes;
   late List<TextEditingController> controllers;
+  final GlobalKey<FormState> otpVerificationFormKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -78,98 +85,136 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
     return Scaffold(
       body: Padding(
         padding: commonScreenPadding(context),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CustomSizedBoxHeight(topPadding),
-                GestureDetector(
-                  onTap: () {
-                    PageNavigations().pop();
-                  },
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 226, 223, 223),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(mediaquerywidth(0.03, context)),
-                      child: const Icon(Icons.arrow_back_ios_new_outlined),
-                    ),
-                  ),
-                ),
-                const CustomSizedBoxHeight(0.04),
-                const CustomText(
-                  fontFamily: CustomFonts.poppins,
-                  text: 'Enter code',
-                  size: 0.08,
-                  color: Colors.black,
-                  weight: FontWeight.w800,
-                ),
-                const CustomSizedBoxHeight(0.02),
-                const CustomText(
-                  fontFamily: CustomFonts.poppins,
-                  text: TextStrings.otpScreenMain,
-                  size: 0.04,
-                  color: Colors.black,
-                ),
-                const CustomSizedBoxHeight(0.04),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    5,
-                    (index) => buildOTPField(
-                      context,
-                      focusNodes,
-                      controllers,
-                      index,
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomSizedBoxHeight(topPadding),
+                  GestureDetector(
+                    onTap: () {
+                      PageNavigations().pop();
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 226, 223, 223),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(mediaquerywidth(0.03, context)),
+                        child: const Icon(Icons.arrow_back_ios_new_outlined),
+                      ),
                     ),
                   ),
-                ),
-                const CustomEditText(),
-              ],
-            ),
-            Column(
-              children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomText(
-                      fontFamily: CustomFonts.poppins,
-                      text: 'Send code again   00:20  ',
-                      size: 0.04,
-                      color: Colors.black,
+                  const CustomSizedBoxHeight(0.04),
+                  const CustomText(
+                    fontFamily: CustomFonts.poppins,
+                    text: 'Enter code',
+                    size: 0.08,
+                    color: Colors.black,
+                    weight: FontWeight.w800,
+                  ),
+                  const CustomSizedBoxHeight(0.02),
+                  const CustomText(
+                    fontFamily: CustomFonts.poppins,
+                    text: TextStrings.otpScreenMain,
+                    size: 0.04,
+                    color: Colors.black,
+                  ),
+                  const CustomSizedBoxHeight(0.04),
+                  Form(
+                    key: otpVerificationFormKey,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        5,
+                        (index) => buildOTPField(
+                          context,
+                          focusNodes,
+                          controllers,
+                          index,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
-                CustomButton(
-                  function: () {
-                    String otpCode = getOtpCode();
-                    int val = int.parse(otpCode);
-                    log(otpCode);
-                    Provider.of<UserViewModel>(context, listen: false)
-                        .verifyOtp(
-                      val,
-                      emailController.text,
-                    );
-                    // Do something with otpCode
-                    // PageNavigations().push(const SuccessScreen());
-                  },
-                  text: 'Get OTP',
-                  fontSize: 0.04,
-                  buttonTextColor: Colors.white,
-                  borderColor: Colors.transparent,
-                  fontFamily: CustomFonts.poppins,
-                ),
-                const CustomSizedBoxHeight(0.04),
-              ],
-            ),
-          ],
+                  ),
+                  const CustomEditText(),
+                ],
+              ),
+              const CustomSizedBoxHeight(0.25),
+              Column(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OtpCountDown(),
+                    ],
+                  ),
+                  CustomButton(
+                    function: () async {
+                      if (otpVerificationFormKey.currentState != null &&
+                          otpVerificationFormKey.currentState!.validate()) {
+                        // entered otp page from login
+                        if (widget.userDetails == null) {
+                          String otpCode = getOtpCode();
+                          int val = int.parse(otpCode);
+                          log(otpCode);
+                          Provider.of<UserViewModel>(context, listen: false)
+                              .verifyOtp(
+                            val,
+                            emailController.text,
+                          );
+                        } else {
+                       // event occurs while we navigate from registeration screen.
+                       // this event should be only happened after otp verification which has not implemented yet.
+                          context
+                              .read<UserViewModel>()
+                              .registerUser(widget.userDetails!);
+                        }
+                      } else {
+                        return;
+                      }
+
+                      // Do something with otpCode
+                      // PageNavigations().push(const SuccessScreen());
+                    },
+                    text: 'Get OTP',
+                    gradientColors: boxColor(),
+                    fontSize: 0.04,
+                    buttonTextColor: textColor(),
+                    borderColor: Colors.transparent,
+                    fontFamily: CustomFonts.poppins,
+                  ),
+                  const CustomSizedBoxHeight(0.04),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Color textColor() {
+    if (otpVerificationFormKey.currentState != null &&
+        otpVerificationFormKey.currentState!.validate()) {
+      return AppColors.whiteColor;
+    } else {
+      return const Color.fromRGBO(163, 163, 163, 1);
+    }
+  }
+
+  List<Color> boxColor() {
+    if (otpVerificationFormKey.currentState != null &&
+        otpVerificationFormKey.currentState!.validate()) {
+      return [const Color(0xFF3120D8), const Color(0xFF9C0AB6)];
+    } else {
+      return [
+        const Color.fromRGBO(230, 230, 231, 1),
+        const Color.fromRGBO(230, 230, 231, 1),
+      ];
+    }
   }
 }

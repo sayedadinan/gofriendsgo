@@ -14,17 +14,19 @@ class CustomButton extends StatelessWidget {
   final String fontFamily;
   FontWeight? fontWeight; 
 
-  static const List<Color> gradientColors = [
-    Color(0xFF3120D8),
-    Color(0xFF9C0AB6)
-  ];
+   final  List<Color> gradientColors;
 
   CustomButton(
       {super.key,
       required this.function,
       required this.text,
+    this. gradientColors =const [
+    Color(0xFF3120D8),
+    Color(0xFF9C0AB6)
+  ],
       required this.fontSize,
       required this.buttonTextColor,
+      
       required this.borderColor,
       required this.fontFamily});
 
@@ -37,7 +39,7 @@ class CustomButton extends StatelessWidget {
         onTap: function,
         child: Container(
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
+            gradient:  LinearGradient(
               colors: gradientColors,
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
