@@ -11,6 +11,7 @@ import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
+import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
@@ -40,17 +41,19 @@ class HomeScreen extends StatelessWidget {
               child: Consumer<StoriesViewModel>(
                 builder: (context, storiesViewModel, child) {
                   if (storiesViewModel.isLoading) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: storiesViewModel.storiesResponse!.data.stories.length,
+                      itemCount:
+                          storiesViewModel.storiesResponse!.data.stories.length,
                       itemBuilder: (context, index) {
-                        final story=storiesViewModel.storiesResponse!.data.stories[index];
-                        return  Padding(
-                          padding: EdgeInsets.all(9.0),
+                        final story = storiesViewModel
+                            .storiesResponse!.data.stories[index];
+                        return Padding(
+                          padding: const EdgeInsets.all(9.0),
                           child: StoryItem(story: story),
                         );
                       },
@@ -60,24 +63,38 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
+              width: mediaquerywidth(0.95, context),
               height: mediaqueryheight(0.23, context),
-              child: PageView.builder(
-                controller: adController,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Container(
-                      decoration: BoxDecoration(
-                          image: const DecorationImage(
-                              image: AssetImage(AppImages.adImage),
-                              fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(12)));
+              child: Consumer<CarosualViewModel>(
+                builder: (context, carosualViewModel, child) {
+                  if (carosualViewModel.isLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return PageView.builder(
+                      controller: adController,
+                      itemCount: carosualViewModel.carouselsModel!.data.length,
+                      itemBuilder: (context, index) {
+                        final carosuals =
+                            carosualViewModel.carouselsModel!.data[index];
+                        return Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://gofriendsgo.teqsuit.com/public/storage/${carosuals.image}"),
+                                    fit: BoxFit.cover),
+                                borderRadius: BorderRadius.circular(12)));
+                      },
+                    );
+                  }
                 },
               ),
             ),
             const CustomSizedBoxHeight(0.01),
             Transform.scale(
                 scale: 0.5,
-                child: SmoothPageIndicator(controller: adController, count: 4)),
+                child: SmoothPageIndicator(controller: adController, count: 3)),
             const GridForHomeScreen(),
             Padding(
               padding: EdgeInsets.only(left: mediaquerywidth(0.04, context)),
