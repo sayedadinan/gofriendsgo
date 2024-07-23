@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gofriendsgo/utils/constants/app_textfields.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 
@@ -12,10 +13,16 @@ class LabeledInputField extends StatelessWidget {
   final int? maxlngths;
   final Icon? suffix;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
+    final List<TextInputFormatter>? textInputFormatter;
+    final TextInputType? keyboardType;
+
   const LabeledInputField({
+    this.keyboardType,
     super.key,
     required this.labelText,
     required this.hintText,
+    this.textInputFormatter,
     this.prefixIcon,
     this.fontFamily = 'Poppins',
     this.fontSize = 0.04,
@@ -23,6 +30,7 @@ class LabeledInputField extends StatelessWidget {
     this.maxlngths,
     this.suffix,
     this.controller,
+    this.validator
   });
 
   @override
@@ -37,6 +45,9 @@ class LabeledInputField extends StatelessWidget {
           color: textColor,
         ),
         Inputfield(
+          keyboardType: keyboardType,
+          textInputFormatter:textInputFormatter,
+          validator: validator,
           controller: controller,
           icon: suffix,
           hinttext: hintText,

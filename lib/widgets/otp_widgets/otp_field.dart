@@ -7,7 +7,15 @@ Widget buildOTPField(BuildContext context, List<FocusNode> focusNodes,
     width: mediaquerywidth(0.14, context),
     height: mediaqueryheight(0.12, context),
     margin: EdgeInsets.symmetric(horizontal: mediaquerywidth(0.02, context)),
-    child: TextField(
+    child: TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "";
+        } else {
+          return null;
+        }
+      },
       focusNode: focusNodes[index],
       controller: controllers[index],
       keyboardType: TextInputType.number,

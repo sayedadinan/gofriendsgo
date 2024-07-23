@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
@@ -9,6 +9,7 @@ import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
+import 'package:gofriendsgo/view/otp_verify_screen/otp_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/signup_widget/custom_field.dart';
 import 'package:gofriendsgo/widgets/signup_widget/drop_down.dart';
@@ -26,7 +27,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _refferelController = TextEditingController();
-  TextEditingController _sourceController = TextEditingController();
+  final TextEditingController _sourceController = TextEditingController();
+  final GlobalKey<FormState> _signUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
@@ -38,40 +40,68 @@ class _SignUpScreenState extends State<SignUpScreen> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomSizedBoxHeight(0.1),
-                  const AppdecorText(
-                    text: 'Sign Up',
-                    size: 0.08,
-                    color: Colors.black,
-                    weight: FontWeight.bold,
-                  ),
-                  const CustomSizedBoxHeight(0.05),
-                  LabeledInputField(
-                    controller: _nameController,
-                    hintText: 'Enter your Name',
-                    labelText: 'Name',
-                    prefixIcon: const Icon(Icons.email_outlined),
-                  ),
-                  const CustomSizedBoxHeight(0.02),
-                  LabeledInputField(
-                    controller: _emailController,
-                    hintText: 'Enter your Email Address',
-                    labelText: 'Email Address',
-                    prefixIcon: const Icon(Icons.email_outlined),
-                  ),
-                  const CustomSizedBoxHeight(0.02),
-                  LabeledInputField(
-                    controller: _refferelController,
-                    hintText: '12FDFVD',
-                    labelText: 'Referral Code',
-                    prefixIcon: const Icon(Icons.tag),
-                  ),
-                  const CustomSizedBoxHeight(0.02),
-                  StaticDropdownField()
-                ],
+              Form(
+                key: _signUpFormKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomSizedBoxHeight(0.1),
+                    const AppdecorText(
+                      text: 'Sign Up',
+                      size: 0.08,
+                      color: Colors.black,
+                      weight: FontWeight.bold,
+                    ),
+                    const CustomSizedBoxHeight(0.05),
+                    LabeledInputField(
+                      keyboardType: TextInputType.name,
+                      textInputFormatter: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z ]'))
+                      ],
+                      validator: (value) {
+                        if (value!.trim().isEmpty) {
+                          return "please enter your name";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: _nameController,
+                      hintText: 'Enter your Name',
+                      labelText: 'Name',
+                      prefixIcon: const Icon(Icons.email_outlined),
+                    ),
+                    const CustomSizedBoxHeight(0.02),
+                    LabeledInputField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      hintText: 'Enter your Email Address',
+                      labelText: 'Email Address',
+                      prefixIcon: const Icon(Icons.email_outlined),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Email is required';
+                        }
+
+                        final emailRegExp = RegExp(
+                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                        );
+                        if (!emailRegExp.hasMatch(value)) {
+                          return 'Please enter a valid email address';
+                        }
+                        return null;
+                      },
+                    ),
+                    const CustomSizedBoxHeight(0.02),
+                    LabeledInputField(
+                      controller: _refferelController,
+                      hintText: '12FDFVD',
+                      labelText: 'Referral Code',
+                      prefixIcon: const Icon(Icons.tag),
+                    ),
+                    const CustomSizedBoxHeight(0.02),
+                    StaticDropdownField()
+                  ],
+                ),
               ),
               const CustomSizedBoxHeight(0.09),
               Column(
@@ -90,15 +120,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const CustomSizedBoxHeight(0.03),
                   CustomButton(
                       function: () async {
-                        _sourceController.text = userViewModel.sourceController;
-                        log(_sourceController.text);
-                        UserDetails userDetails = UserDetails(
-                          name: _nameController.text,
-                          email: _emailController.text,
-                          role: 'user',
-                          source: _sourceController.text,
-                        );
-                        await userViewModel.registerUser(userDetails);
+                        if (_signUpFormKey.currentState!.validate()) {
+                          _sourceController.text =
+                              userViewModel.sourceController;
+                          UserDetails userDetails = UserDetails(
+                            name: _nameController.text,
+                            email: _emailController.text,
+                            role: 'user',
+                            referral: _refferelController.text.isEmpty
+                                ? null
+                                : _refferelController.text,
+                            source: _sourceController.text,
+                          );
+                          PageNavigations().push(OtpVerifyScreen(
+                            userDetails: userDetails,
+                          ));
+                        } else {
+                          return;
+                        }
                       },
                       text: 'Get OTP',
                       fontSize: 0.04,

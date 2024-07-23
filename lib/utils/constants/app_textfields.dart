@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Inputfield extends StatelessWidget {
   final TextEditingController? controller;
@@ -6,10 +7,12 @@ class Inputfield extends StatelessWidget {
   final String hinttext;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
+  final List<TextInputFormatter>? textInputFormatter;
   final Icon? icon;
   final Icon? prefixIcon;
   final int? maxLengths;
   const Inputfield({
+    this.textInputFormatter,
     this.controller,
     super.key,
     this.label,
@@ -24,6 +27,7 @@ class Inputfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: textInputFormatter,
       maxLines: maxLengths,
       style: const TextStyle(color: Colors.black),
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -38,6 +42,12 @@ class Inputfield extends StatelessWidget {
         fillColor: Colors.white,
         filled: true,
         labelText: label,
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red.shade600),
+            borderRadius: BorderRadius.circular(12)),
+        focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red.shade600),
+            borderRadius: BorderRadius.circular(12)),
         hintText: hinttext,
         prefixIcon: prefixIcon,
         suffixIcon: icon,
