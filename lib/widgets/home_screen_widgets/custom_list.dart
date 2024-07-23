@@ -34,7 +34,7 @@ class StoryItem extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         CustomText(
           text: story.title,
           fontFamily: CustomFonts.poppins,

@@ -21,7 +21,7 @@ class ServiceViewModel extends ChangeNotifier {
       log(_services[1].name);
     } catch (e) {
       // Handle error
-      print('Error fetching services: $e');
+     
     } finally {
       _isLoading = false;
       notifyListeners();

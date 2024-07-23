@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                         final story = storiesViewModel
                             .storiesResponse!.data.stories[index];
                         return Padding(
-                          padding: const EdgeInsets.all(9.0),
+                          padding: EdgeInsets.all(9.0),
                           child: StoryItem(story: story),
                         );
                       },
