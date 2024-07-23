@@ -15,8 +15,7 @@ class StoryItem extends StatelessWidget {
       children: [
         Container(
           width: mediaquerywidth(0.14, context),
-          height: mediaquerywidth(0.14,
-              context), // Ensure the height is the same as width for a perfect circle
+          height: mediaquerywidth(0.14, context),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
