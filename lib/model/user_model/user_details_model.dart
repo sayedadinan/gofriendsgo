@@ -9,7 +9,7 @@ class UserDetails {
     required this.name,
     required this.email,
     required this.role,
- this.referral,
+    this.referral,
     required this.source,
   });
 
