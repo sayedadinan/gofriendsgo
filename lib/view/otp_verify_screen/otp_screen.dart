@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
 import 'package:gofriendsgo/utils/constants/app_strings.dart';
@@ -7,36 +9,68 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/success_screen/success_screen.dart';
+import 'package:gofriendsgo/view/login_screen/login_screen.dart';
+import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/edit_text.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/otp_field.dart';
+import 'package:provider/provider.dart';
 
 class OtpVerifyScreen extends StatefulWidget {
   const OtpVerifyScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _OtpVerifyScreenState createState() => _OtpVerifyScreenState();
 }
 
 class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
-  late List<FocusNode> _focusNodes;
-  late List<TextEditingController> _controllers;
+  late TextEditingController controller1;
+  late TextEditingController controller2;
+  late TextEditingController controller3;
+  late TextEditingController controller4;
+  late TextEditingController controller5;
+
+  late List<FocusNode> focusNodes;
+  late List<TextEditingController> controllers;
 
   @override
   void initState() {
     super.initState();
-    _focusNodes = List.generate(5, (_) => FocusNode());
-    _controllers = List.generate(5, (_) => TextEditingController());
+
+    FocusNode focusNode1 = FocusNode();
+    FocusNode focusNode2 = FocusNode();
+    FocusNode focusNode3 = FocusNode();
+    FocusNode focusNode4 = FocusNode();
+    FocusNode focusNode5 = FocusNode();
+
+    controller1 = TextEditingController();
+    controller2 = TextEditingController();
+    controller3 = TextEditingController();
+    controller4 = TextEditingController();
+    controller5 = TextEditingController();
+
+    focusNodes = [focusNode1, focusNode2, focusNode3, focusNode4, focusNode5];
+    controllers = [
+      controller1,
+      controller2,
+      controller3,
+      controller4,
+      controller5
+    ];
   }
 
   @override
   void dispose() {
-    // ignore: avoid_function_literals_in_foreach_calls
-    _focusNodes.forEach((node) => node.dispose());
-    // ignore: avoid_function_literals_in_foreach_calls
-    _controllers.forEach((controller) => controller.dispose());
+    for (final node in focusNodes) {
+      node.dispose();
+    }
+    for (final controller in controllers) {
+      controller.dispose();
+    }
     super.dispose();
+  }
+
+  String getOtpCode() {
+    return controllers.map((controller) => controller.text).join();
   }
 
   @override
@@ -86,9 +120,14 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
-                      5,
-                      (index) => buildOTPField(
-                          context, _focusNodes, _controllers, index)),
+                    5,
+                    (index) => buildOTPField(
+                      context,
+                      focusNodes,
+                      controllers,
+                      index,
+                    ),
+                  ),
                 ),
                 const CustomEditText(),
               ],
@@ -108,7 +147,16 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 ),
                 CustomButton(
                   function: () {
-                    PageNavigations().push(const SuccessScreen());
+                    String otpCode = getOtpCode();
+                    int val = int.parse(otpCode);
+                    log(otpCode);
+                    Provider.of<UserViewModel>(context, listen: false)
+                        .verifyOtp(
+                      val,
+                      emailController.text,
+                    );
+                    // Do something with otpCode
+                    // PageNavigations().push(const SuccessScreen());
                   },
                   text: 'Get OTP',
                   fontSize: 0.04,

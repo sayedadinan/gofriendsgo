@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
@@ -100,7 +99,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           source: _sourceController.text,
                         );
                         await userViewModel.registerUser(userDetails);
-                        // PageNavigations().push(HomeScreen());
                       },
                       text: 'Get OTP',
                       fontSize: 0.04,

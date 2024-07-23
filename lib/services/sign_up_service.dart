@@ -32,4 +32,57 @@ class UserService {
       return null;
     }
   }
+
+  Future<http.Response> postEmail(String email) async {
+    final url = Uri.parse('https://gofriendsgo.teqsuit.com/api/login');
+    final payload = jsonEncode({'email': email});
+    try {
+      // Send the POST request
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: payload,
+      );
+
+      // Check the response status
+      if (response.statusCode == 200) {
+        log('Email sent successfully');
+        final responseData = jsonDecode(response.body);
+        log('Response data: $responseData');
+      } else {
+        log('Failed to send email: ${response.statusCode}');
+        log('Response body: ${response.body}');
+      }
+      return response;
+    } catch (e) {
+      log('Error occurred: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> verifyOtp(int otp, String email) async {
+    log("otp $otp");
+    log(email);
+    final url = 'https://gofriendsgo.teqsuit.com/api/verify/otp/$otp';
+    final response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<dynamic, dynamic>{
+        'otp': otp,
+        'email': email,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      log('OTP sent successfully');
+      final responseData = jsonDecode(response.body);
+      log('Response data: $responseData');
+      // Handle successful response
+    } else {
+      // Handle error response
+      log('Failed to verify OTP: ${response.body}');
+    }
+  }
 }
