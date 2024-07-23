@@ -18,7 +18,7 @@ class SalesExecutiveScreen extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
           child:
-              const CommonGradientAppBar(heading: TextStrings.salesExecutive)),
+              const CommonGradientAppBar(heading: TextStrings.salesExecutive,fromBottomNav: false,)),
       body: Column(
         children: [
           const CustomSizedBoxHeight(0.015),

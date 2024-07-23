@@ -16,7 +16,7 @@ class MeetTheTeamScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
-          child: const CommonGradientAppBar(heading: TextStrings.meetTheTeam)),
+          child: const CommonGradientAppBar(heading: TextStrings.meetTheTeam,fromBottomNav: false,)),
       body: Padding(
         padding: EdgeInsets.only(
             left: mediaquerywidth(0.05, context),

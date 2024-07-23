@@ -41,7 +41,9 @@ class DrawerListItems extends StatelessWidget {
           leading: const Icon(Icons.badge_outlined),
           title: const Text(TextStrings.myBookings),
           onTap: () {
-            PageNavigations().push(const BookingDetailsScreen());
+            PageNavigations().push(const BookingDetailsScreen(
+              fromBottomNav: false,
+            ));
           },
         ),
         ListTile(

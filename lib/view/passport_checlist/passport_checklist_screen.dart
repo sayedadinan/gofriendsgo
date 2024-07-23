@@ -18,7 +18,7 @@ class PassportChecklistScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
         child:
-            const CommonGradientAppBar(heading: TextStrings.passportChecklist),
+            const CommonGradientAppBar(heading: TextStrings.passportChecklist,fromBottomNav: false,),
       ),
       body: Padding(
         padding: EdgeInsets.only(

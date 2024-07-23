@@ -5,7 +5,7 @@ import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/services/sign_up_service.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/home_screen/home_screen.dart';
+import 'package:gofriendsgo/view/bottom_navigation_bar/bottom_navigation.dart';
 
 class UserViewModel extends ChangeNotifier {
   String sourceController = '';
@@ -30,7 +30,7 @@ class UserViewModel extends ChangeNotifier {
       _message = response['message'];
       log('successfully registered');
       log(_message.toString());
-      PageNavigations().pushAndRemoveUntill(HomeScreen());
+      PageNavigations().pushAndRemoveUntill(const BottomNavigationScreen());
     } else {
       _message = response?['message'] ?? 'Registration failed';
       Get.snackbar(

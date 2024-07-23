@@ -8,6 +8,7 @@ import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
 
 class FixedDepartureAppBar extends StatelessWidget {
   const FixedDepartureAppBar({
@@ -33,7 +34,9 @@ class FixedDepartureAppBar extends StatelessWidget {
               children: [
                 IconButton(
                     iconSize: mediaquerywidth(0.08, context),
-                    onPressed: () {},
+                    onPressed: () {
+                      PageNavigations().pop();
+                    },
                     icon: const Icon(
                       Icons.arrow_back,
                       color: AppColors.whiteColor,
@@ -57,9 +60,7 @@ class FixedDepartureAppBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GradientIcon(
-                      Icons.filter_alt,
-                      mediaquerywidth(0.07, context),
+                  GradientIcon(Icons.filter_alt, mediaquerywidth(0.07, context),
                       const LinearGradient(colors: AppColors.gradientColors)),
                   const CustomSizedBoxWidth(0.03),
                   GradientText(TextStrings.filters,

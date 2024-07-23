@@ -7,12 +7,9 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
 import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
-import 'package:gofriendsgo/view/chat_list.dart/chat_list.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
-import 'package:gofriendsgo/view/profile_screen/profile_editing_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/custom_list.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
@@ -30,7 +27,7 @@ class HomeScreen extends StatelessWidget {
       drawer: const CustomDrawerWidget(),
       backgroundColor: const Color.fromARGB(255, 197, 220, 239),
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, mediaqueryheight(0.07, context)),
+          preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
           child: const HomeAppbar()),
       body: SingleChildScrollView(
         child: Column(
@@ -159,47 +156,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            buildBottomNavigationItem(icon: Icons.home_filled, label: 'Home'),
-            GestureDetector(
-              onTap: () {
-                PageNavigations().push(const BookingDetailsScreen());
-              },
-              child: buildBottomNavigationItem(
-                  icon: Icons.bookmark_add, label: 'Bookings'),
-            ),
-            GestureDetector(
-                onTap: () {
-                  PageNavigations().push(const ChatListScreen());
-                },
-                child: buildBottomNavigationItem(
-                    icon: Icons.forum, label: 'Chats')),
-            GestureDetector(
-              onTap: () {
-                PageNavigations().push(const ProfileEditingScreen());
-              },
-              child: buildBottomNavigationItem(
-                  icon: Icons.account_circle_outlined, label: 'Profile'),
-            ),
-          ],
-        ),
-      ),
     );
   }
-}
-
-Widget buildBottomNavigationItem(
-    {required IconData icon, required String label}) {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Icon(icon, color: Colors.black),
-      Text(label, style: const TextStyle(color: Colors.black)),
-    ],
-  );
 }
