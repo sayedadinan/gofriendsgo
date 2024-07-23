@@ -6,6 +6,7 @@ import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
+import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:provider/provider.dart';
 
@@ -14,9 +15,11 @@ void main() {
   HttpOverrides.global = MyHttpOverrides();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => UserViewModel()),
-    ChangeNotifierProvider(create: (_) => ServiceViewModel()),
-    ChangeNotifierProvider(create: (_) => CarosualViewModel()),
-    ChangeNotifierProvider(create: (_) => BannerViewModel()),
+    ChangeNotifierProvider(create: (_) => ServiceViewModel()..fetchServices()),
+    ChangeNotifierProvider(
+        create: (_) => CarosualViewModel()..fetchCarousals()),
+    ChangeNotifierProvider(create: (_) => BannerViewModel()..fetchBanners()),
+    ChangeNotifierProvider(create: (_) => StoriesViewModel()..fetchStories()),
   ], child: const MyApp()));
 }
 

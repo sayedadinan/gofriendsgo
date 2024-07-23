@@ -14,7 +14,6 @@ import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
-import 'package:gofriendsgo/view/success_screen/success_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/count_down.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/edit_text.dart';
