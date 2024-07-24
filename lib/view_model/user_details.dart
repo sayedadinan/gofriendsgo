@@ -4,13 +4,15 @@ import 'package:get/get.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/services/sign_up_service.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
+import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/bottom_navigation_bar/bottom_navigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserViewModel extends ChangeNotifier {
   String sourceController = '';
   final UserService _userService = UserService();
-
+ 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
   int? otpCode;
@@ -69,4 +71,6 @@ class UserViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  
 }

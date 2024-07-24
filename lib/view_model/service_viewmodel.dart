@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/service_model/serivce_model.dart';
 import 'package:gofriendsgo/services/service_fetch.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 
 class ServiceViewModel extends ChangeNotifier {
   final ServiceService _service = ServiceService();
@@ -17,7 +18,7 @@ class ServiceViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _services = await _service.fetchServices(token);
+      _services = await _service.fetchServices(SharedPreferecesServices.token!);
       log(_services[1].name);
     } catch (e) {
       // Handle error

@@ -13,6 +13,7 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/home_screen/home_screen.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/count_down.dart';
@@ -161,11 +162,12 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                           String otpCode = getOtpCode();
                           int val = int.parse(otpCode);
                           log(otpCode);
-                          Provider.of<UserViewModel>(context, listen: false)
+                       await   Provider.of<UserViewModel>(context, listen: false)
                               .verifyOtp(
                             val,
                             emailController.text,
                           );
+                         
                         } else {
                           // event occurs while we navigate from registeration screen.
                           // this event should be only happened after otp verification which has not implemented yet.
@@ -176,9 +178,6 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                       } else {
                         return;
                       }
-
-                      // Do something with otpCode
-                      // PageNavigations().push(const SuccessScreen());
                     },
                     text: 'Get OTP',
                     gradientColors: boxColor(),

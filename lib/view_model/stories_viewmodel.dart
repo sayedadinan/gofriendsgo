@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/story_model/story_model.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/services/story_service.dart';
 
 class StoriesViewModel extends ChangeNotifier {
@@ -17,7 +18,7 @@ class StoriesViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _storiesResponse = await _service.fetchStories(token);
+      _storiesResponse = await _service.fetchStories(SharedPreferecesServices.token!);
       if (_storiesResponse != null) {
         log('Stories fetched successfully');
         // For example, logging the title of the first story item if it exists

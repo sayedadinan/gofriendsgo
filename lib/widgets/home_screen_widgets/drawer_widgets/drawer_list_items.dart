@@ -8,8 +8,10 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/about_us_screen/about_us_screen.dart';
 import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
+import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view/meet_the_team_screen/meet_the_team_screen.dart';
 import 'package:gofriendsgo/view/sales_executive_screen/sales_executive_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerListItems extends StatelessWidget {
   const DrawerListItems({
@@ -76,7 +78,13 @@ class DrawerListItems extends StatelessWidget {
             PageNavigations().push(const AboutUsScreen());
           },
         ),
-        const ListTile(
+        ListTile(
+            onTap: () async {
+              final SharedPreferences sharedPreferences =
+                  await SharedPreferences.getInstance();
+              sharedPreferences.setString(TextStrings.authToken, "");
+              PageNavigations().pushAndRemoveUntill(LoginScreen());
+            },
             leading: Icon(Icons.logout_outlined),
             title: Text(TextStrings.logout)),
       ],

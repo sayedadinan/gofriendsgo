@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/carosual_model/carosual_model.dart';
 import 'package:gofriendsgo/services/carosual_fetch.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 
 class CarosualViewModel extends ChangeNotifier {
   final CarousalsService _service = CarousalsService();
@@ -17,7 +18,7 @@ class CarosualViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _carouselsModel = await _service.fetchCarousals(token);
+      _carouselsModel = await _service.fetchCarousals(SharedPreferecesServices.token!);
       if (_carouselsModel != null) {
         log('Carousels fetched successfully');
         // For example, logging the title of the first carousel item if it exists

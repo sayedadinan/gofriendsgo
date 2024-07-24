@@ -15,12 +15,23 @@ class BottomNavigationScreen extends StatefulWidget {
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   List<Widget> pages = [
     HomeScreen(),
-    const BookingDetailsScreen(fromBottomNav: true,),
-    const ChatListScreen(fromBottomNav: true,),
+    const BookingDetailsScreen(
+      fromBottomNav: true,
+    ),
+    const ChatListScreen(
+      fromBottomNav: true,
+    ),
     const ProfileEditingScreen()
   ];
   final PageController pageController = PageController();
   int currentIndex = 0;
+
+  @override
+  void initState() {
+    func(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

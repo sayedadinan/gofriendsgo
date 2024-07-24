@@ -7,8 +7,9 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/otp_verify_screen/otp_screen.dart';
 import 'package:gofriendsgo/view/signup_screen/signup_screen.dart';
-import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
+import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/login_widget/login_text.dart';
 import 'package:provider/provider.dart';
 
@@ -62,8 +63,10 @@ class LoginScreen extends StatelessWidget {
                 CustomButton(
                     fontFamily: CustomFonts.poppins,
                     function: () {
-                      context.read<StoriesViewModel>().fetchStories();
-                      // PageNavigations().push(const OtpVerifyScreen());
+                      context
+                          .read<UserViewModel>()
+                          .loginUser(emailController.text);
+                      PageNavigations().push(const OtpVerifyScreen());
                     },
                     text: 'Get OTP',
                     fontSize: 0.04,
