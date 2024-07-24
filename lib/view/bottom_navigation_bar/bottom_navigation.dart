@@ -14,7 +14,7 @@ class BottomNavigationScreen extends StatefulWidget {
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   List<Widget> pages = [
-    HomeScreen(),
+    const HomeScreen(),
     const BookingDetailsScreen(
       fromBottomNav: true,
     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
@@ -15,13 +16,12 @@ import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/grid_for_home.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/home_appbar.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/story_widget.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -30,7 +30,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-  //  func(context);
+    //  func(context);
     super.initState();
   }
 
@@ -90,9 +90,9 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 func(BuildContext context) {
+  SharedPreferecesServices().getToken();
   context.read<StoriesViewModel>().fetchStories();
   context.read<ServiceViewModel>().fetchServices();
   context.read<CarosualViewModel>().fetchCarousals();
   context.read<BannerViewModel>().fetchBanners();
- 
 }

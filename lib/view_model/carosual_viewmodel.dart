@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/carosual_model/carosual_model.dart';
 import 'package:gofriendsgo/services/carosual_fetch.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';

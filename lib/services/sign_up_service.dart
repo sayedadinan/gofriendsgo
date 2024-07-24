@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:get/get_connect/connect.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/bottom_navigation_bar/bottom_navigation.dart';
-import 'package:gofriendsgo/view/home_screen/home_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -56,7 +55,8 @@ class UserService {
         final responseData = jsonDecode(response.body);
         log('Response data: $responseData');
       } else {
-           Get.snackbar("validation error",response.body);
+        final responseData = jsonDecode(response.body);
+        Get.snackbar("validation error", responseData['error']);
         log('Failed to send email: ${response.statusCode}');
         log('Response body: ${response.body}');
       }
@@ -94,9 +94,12 @@ class UserService {
       // Store the token in SharedPreferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('authToken', token);
-      PageNavigations().push(BottomNavigationScreen());
+      SharedPreferecesServices.token = token;
+      PageNavigations().pushAndRemoveUntill(const BottomNavigationScreen());
       log('Token stored in SharedPreferences: $token');
     } else {
+      final responseData = jsonDecode(response.body);
+      Get.snackbar("validation error", responseData['error']);
       log('Failed to verify OTP: ${response.body}');
     }
   }

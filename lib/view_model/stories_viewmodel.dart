@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/story_model/story_model.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/services/story_service.dart';

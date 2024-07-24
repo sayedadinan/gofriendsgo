@@ -6,14 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
-import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/home_screen/home_screen.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/count_down.dart';
@@ -23,7 +21,15 @@ import 'package:provider/provider.dart';
 
 class OtpVerifyScreen extends StatefulWidget {
   final UserDetails? userDetails;
-  const OtpVerifyScreen({super.key, this.userDetails});
+  final String? loginEmail;
+  final String? signUpEmail;
+  final String? signUpName;
+  const OtpVerifyScreen(
+      {super.key,
+      this.userDetails,
+      this.loginEmail,
+      this.signUpEmail,
+      this.signUpName});
 
   @override
   _OtpVerifyScreenState createState() => _OtpVerifyScreenState();
@@ -119,9 +125,11 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                     weight: FontWeight.w800,
                   ),
                   const CustomSizedBoxHeight(0.02),
-                  const CustomText(
+                  CustomText(
                     fontFamily: CustomFonts.poppins,
-                    text: TextStrings.otpScreenMain,
+                    text: widget.userDetails == null
+                        ? 'we have sent the code to ${widget.loginEmail}'
+                        : 'Hey ${widget.signUpName} we have sent the code to ${widget.signUpEmail}',
                     size: 0.04,
                     color: Colors.black,
                   ),
@@ -141,7 +149,11 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                       ),
                     ),
                   ),
-                  const CustomEditText(),
+                  GestureDetector(
+                      onTap: () {
+                        PageNavigations().pop();
+                      },
+                      child: const CustomEditText()),
                 ],
               ),
               const CustomSizedBoxHeight(0.25),
@@ -162,12 +174,12 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                           String otpCode = getOtpCode();
                           int val = int.parse(otpCode);
                           log(otpCode);
-                       await   Provider.of<UserViewModel>(context, listen: false)
+                          await Provider.of<UserViewModel>(context,
+                                  listen: false)
                               .verifyOtp(
                             val,
                             emailController.text,
                           );
-                         
                         } else {
                           // event occurs while we navigate from registeration screen.
                           // this event should be only happened after otp verification which has not implemented yet.

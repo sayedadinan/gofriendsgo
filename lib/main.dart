@@ -75,11 +75,11 @@ class MyHttpOverrides extends HttpOverrides {
 
 Widget checkStartingScreen(String? value) {
   if (value == null) {
-    return OnBoardingScreen();
+    return const OnBoardingScreen();
   } else if (value.isEmpty) {
-    return LoginScreen();
+    return const LoginScreen();
   } else {
-    return BottomNavigationScreen();
+    return const BottomNavigationScreen();
   }
 }
 

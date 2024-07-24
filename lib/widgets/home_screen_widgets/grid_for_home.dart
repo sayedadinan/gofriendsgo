@@ -40,7 +40,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
           child: Consumer<ServiceViewModel>(
               builder: (context, serviceViewModel, child) {
             if (serviceViewModel.isLoading) {
-              return const CircularProgressIndicator();
+              return const Center(child:  CircularProgressIndicator());
             } else {
               return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),

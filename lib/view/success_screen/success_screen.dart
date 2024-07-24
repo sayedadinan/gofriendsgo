@@ -66,7 +66,7 @@ class SuccessScreen extends StatelessWidget {
             CustomButton(
                 fontFamily: CustomFonts.poppins,
                 function: () {
-                  PageNavigations().push(HomeScreen());
+                  PageNavigations().push(const HomeScreen());
                 },
                 text: 'Get Started',
                 fontSize: 0.04,

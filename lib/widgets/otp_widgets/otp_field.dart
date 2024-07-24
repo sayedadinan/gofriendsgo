@@ -22,7 +22,18 @@ Widget buildOTPField(BuildContext context, List<FocusNode> focusNodes,
       textAlign: TextAlign.center,
       maxLength: 1,
       decoration: InputDecoration(
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide:const  BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.circular(19),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide:const BorderSide(
+            color: Colors.black,
+          ),
+          borderRadius: BorderRadius.circular(19),
+        ),
         border: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.black),
           borderRadius: BorderRadius.circular(19),
         ),
         counterText: '',

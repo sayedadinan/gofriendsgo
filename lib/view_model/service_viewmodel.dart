@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/service_model/serivce_model.dart';
 import 'package:gofriendsgo/services/service_fetch.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';

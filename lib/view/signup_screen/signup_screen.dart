@@ -68,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _nameController,
                       hintText: 'Enter your Name',
                       labelText: 'Name',
-                      prefixIcon: const Icon(Icons.email_outlined),
+                      prefixIcon: const Icon(Icons.account_circle_outlined),
                     ),
                     const CustomSizedBoxHeight(0.02),
                     LabeledInputField(
@@ -93,6 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const CustomSizedBoxHeight(0.02),
                     LabeledInputField(
+                      maxlngths: 1,
                       controller: _refferelController,
                       hintText: '12FDFVD',
                       labelText: 'Referral Code',
@@ -133,6 +134,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             source: _sourceController.text,
                           );
                           PageNavigations().push(OtpVerifyScreen(
+                            signUpEmail: _emailController.text,
+                            signUpName: _nameController.text,
                             userDetails: userDetails,
                           ));
                         } else {

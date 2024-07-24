@@ -1,11 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/banner_model/banner_model.dart';
 import 'package:gofriendsgo/services/banner_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
-import 'package:gofriendsgo/view_model/user_details.dart';
 
 class BannerViewModel extends ChangeNotifier {
   final BannerService _service = BannerService();
