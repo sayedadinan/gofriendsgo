@@ -72,6 +72,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const CustomSizedBoxHeight(0.02),
                     LabeledInputField(
+                      submitFun: (value) {
+                        if (_signUpFormKey.currentState!.validate()) {
+                          _sourceController.text =
+                              userViewModel.sourceController;
+                          UserDetails userDetails = UserDetails(
+                            name: _nameController.text,
+                            email: _emailController.text,
+                            role: 'user',
+                            referral: _refferelController.text.isEmpty
+                                ? null
+                                : _refferelController.text,
+                            source: _sourceController.text,
+                          );
+                          PageNavigations().push(OtpVerifyScreen(
+                            signUpEmail: _emailController.text,
+                            signUpName: _nameController.text,
+                            userDetails: userDetails,
+                          ));
+                        } else {
+                          return;
+                        }
+                        return null;
+                      },
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
                       hintText: 'Enter your Email Address',
@@ -113,7 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       SignUpText(
                         onTapLogin: () {
-                          PageNavigations().push(const LoginScreen());
+                          PageNavigations().push(LoginScreen());
                         },
                       ),
                     ],

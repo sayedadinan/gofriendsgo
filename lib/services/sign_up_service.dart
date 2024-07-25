@@ -68,7 +68,7 @@ class UserService {
     }
   }
 
-  Future<void> verifyOtp(int otp, String email) async {
+  Future<http.Response> verifyOtp(int otp, String email) async {
     log("otp $otp");
     log(email);
     final url = 'https://gofriendsgo.teqsuit.com/api/verify/otp/$otp';
@@ -97,10 +97,12 @@ class UserService {
       SharedPreferecesServices.token = token;
       PageNavigations().pushAndRemoveUntill(const BottomNavigationScreen());
       log('Token stored in SharedPreferences: $token');
+  
     } else {
       final responseData = jsonDecode(response.body);
       Get.snackbar("validation error", responseData['error']);
       log('Failed to verify OTP: ${response.body}');
     }
+        return response;
   }
 }

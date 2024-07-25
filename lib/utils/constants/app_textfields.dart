@@ -7,6 +7,7 @@ class Inputfield extends StatelessWidget {
   final String hinttext;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
+   final String? Function(String?)? submitFun;
   final List<TextInputFormatter>? textInputFormatter;
   final Icon? icon;
   final Icon? prefixIcon;
@@ -21,16 +22,18 @@ class Inputfield extends StatelessWidget {
     this.validator,
     this.icon,
     this.prefixIcon,
-    this.maxLengths,
+    this.maxLengths, this.submitFun,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        textInputAction: TextInputAction.done, // Changes the action button on the keyboard to "Done"
+          onFieldSubmitted: submitFun,
       inputFormatters: textInputFormatter,
       maxLines: maxLengths,
       style: const TextStyle(color: Colors.black),
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.disabled,
       controller: controller,
       validator: validator,
       decoration: InputDecoration(

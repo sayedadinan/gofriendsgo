@@ -183,15 +183,15 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                         } else {
                           // event occurs while we navigate from registeration screen.
                           // this event should be only happened after otp verification which has not implemented yet.
-                          context
-                              .read<UserViewModel>()
-                              .registerUser(widget.userDetails!);
+                          // context
+                          //     .read<UserViewModel>()
+                          //     .registerUser(widget.userDetails!);
                         }
                       } else {
                         return;
                       }
                     },
-                    text: 'Get OTP',
+                    text: 'verify OTP',
                     gradientColors: boxColor(),
                     fontSize: 0.04,
                     buttonTextColor: textColor(),

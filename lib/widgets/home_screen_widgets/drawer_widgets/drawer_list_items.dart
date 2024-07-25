@@ -83,7 +83,7 @@ class DrawerListItems extends StatelessWidget {
               final SharedPreferences sharedPreferences =
                   await SharedPreferences.getInstance();
               sharedPreferences.setString(TextStrings.authToken, "");
-              PageNavigations().pushAndRemoveUntill(const LoginScreen());
+              PageNavigations().pushAndRemoveUntill( LoginScreen());
             },
             leading: const Icon(Icons.logout_outlined),
             title: const Text(TextStrings.logout)),

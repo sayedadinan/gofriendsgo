@@ -13,7 +13,7 @@ class LabeledInputField extends StatelessWidget {
   final int? maxlngths;
   final Icon? suffix;
   final TextEditingController? controller;
-  final String? Function(String?)? validator;
+  final String? Function(String?)? validator;  final String? Function(String?)? submitFun;
     final List<TextInputFormatter>? textInputFormatter;
     final TextInputType? keyboardType;
 
@@ -30,7 +30,7 @@ class LabeledInputField extends StatelessWidget {
     this.maxlngths,
     this.suffix,
     this.controller,
-    this.validator
+    this.validator, this.submitFun
   });
 
   @override
@@ -44,7 +44,7 @@ class LabeledInputField extends StatelessWidget {
           size: fontSize,
           color: textColor,
         ),
-        Inputfield(
+        Inputfield(submitFun: submitFun,
           keyboardType: keyboardType,
           textInputFormatter:textInputFormatter,
           validator: validator,

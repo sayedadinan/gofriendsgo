@@ -14,10 +14,10 @@ import 'package:gofriendsgo/widgets/login_widget/login_text.dart';
 import 'package:provider/provider.dart';
 
 TextEditingController emailController = TextEditingController();
-final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +52,16 @@ class LoginScreen extends StatelessWidget {
                       size: 0.04,
                       color: Colors.black),
                   Inputfield(
+                      submitFun: (value) {
+                        if (loginFormKey.currentState!.validate()) {
+                          context
+                              .read<UserViewModel>()
+                              .loginUser(emailController.text);
+                        } else {
+                          return;
+                        }
+                        return null;
+                      },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Email is required';
@@ -81,10 +91,9 @@ class LoginScreen extends StatelessWidget {
                     fontFamily: CustomFonts.poppins,
                     function: () {
                       if (loginFormKey.currentState!.validate()) {
-                          context
-                              .read<UserViewModel>()
-                              .loginUser(emailController.text);
-                    
+                        context
+                            .read<UserViewModel>()
+                            .loginUser(emailController.text);
                       } else {
                         return;
                       }
@@ -102,6 +111,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
 class RegisterLoadingIndicator extends StatelessWidget {
   const RegisterLoadingIndicator({
     super.key,
@@ -116,20 +126,20 @@ class RegisterLoadingIndicator extends StatelessWidget {
           SizedBox(
             height: mediaqueryheight(0.36, context),
           ),
-        Center(child: CircularProgressIndicator())
+          Center(child: CircularProgressIndicator())
         ],
       ),
     );
   }
 }
+
 Future<dynamic> loadingIndicator(BuildContext context) {
   return showDialog(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
       return const PopScope(
-          canPop: false,
-          child: Center(child: RegisterLoadingIndicator()));
+          canPop: false, child: Center(child: RegisterLoadingIndicator()));
     },
   );
 }

@@ -19,7 +19,7 @@ class SkipButtonOnBoarding extends StatelessWidget {
         painter: GradientBorderPainter(),
         child: InkWell(
           onTap: () {
-            PageNavigations().pushAndRemoveUntill(const LoginScreen());
+            PageNavigations().pushAndRemoveUntill( LoginScreen());
           },
           child: Container(
             decoration: BoxDecoration(

@@ -77,7 +77,7 @@ Widget checkStartingScreen(String? value) {
   if (value == null) {
     return const OnBoardingScreen();
   } else if (value.isEmpty) {
-    return const LoginScreen();
+    return  LoginScreen();
   } else {
     return const BottomNavigationScreen();
   }

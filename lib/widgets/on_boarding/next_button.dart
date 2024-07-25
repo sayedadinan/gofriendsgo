@@ -32,7 +32,7 @@ class NextButtonOnBoarding extends StatelessWidget {
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.ease);
                   } else {
-                    PageNavigations().pushAndRemoveUntill(const LoginScreen());
+                    PageNavigations().pushAndRemoveUntill( LoginScreen());
                   }
                 },
                 text: isPageViewBuilt && pageController.page! < 3

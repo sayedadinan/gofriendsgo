@@ -66,7 +66,8 @@ class UserViewModel extends ChangeNotifier {
 
   Future<void> verifyOtp(int otp, String email) async {
     try {
-      await _userService.verifyOtp(otp, email);
+ await _userService.verifyOtp(otp, email);
+//  if(response.statusCode==200){}
       // Handle success
       // Update any state if needed
       notifyListeners();

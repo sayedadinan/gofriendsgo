@@ -39,8 +39,6 @@ class _OtpCountDownState extends State<OtpCountDown> {
                 color: Colors.black,
               ),
               GestureDetector(
-                // write code here to resend otp to email
-
                 onTap: () {
                   setState(() {
                     count = 20;
