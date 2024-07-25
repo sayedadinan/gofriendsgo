@@ -14,9 +14,10 @@ class OtpCountDown extends StatefulWidget {
 
 class _OtpCountDownState extends State<OtpCountDown> {
   int count = 20;
+  late Timer timer;
   @override
   void initState() {
-    Timer.periodic(const Duration(seconds: 1), (_) {
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (count > 0) {
         setState(() {
           count--;
@@ -31,7 +32,6 @@ class _OtpCountDownState extends State<OtpCountDown> {
     return count == 0
         ? Row(
             children: [
-            
               const CustomText(
                 fontFamily: CustomFonts.poppins,
                 text: 'I didn\'t recieve a code',
@@ -39,9 +39,8 @@ class _OtpCountDownState extends State<OtpCountDown> {
                 color: Colors.black,
               ),
               GestureDetector(
-
                 // write code here to resend otp to email
-                
+
                 onTap: () {
                   setState(() {
                     count = 20;
@@ -63,5 +62,11 @@ class _OtpCountDownState extends State<OtpCountDown> {
             size: 0.04,
             color: Colors.black,
           );
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 }

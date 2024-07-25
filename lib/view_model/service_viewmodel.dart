@@ -14,10 +14,11 @@ class ServiceViewModel extends ChangeNotifier {
   bool get isLoading => _isLoading;
   Future<void> fetchServices() async {
     _isLoading = true;
-    notifyListeners();
+    
 
     try {
       _services = await _service.fetchServices(SharedPreferecesServices.token!);
+      notifyListeners();
       log(_services[1].name);
     } catch (e) {
       // Handle error

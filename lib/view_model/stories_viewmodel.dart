@@ -14,7 +14,7 @@ class StoriesViewModel extends ChangeNotifier {
 
   fetchStories() async {
     _isLoading = true;
-    notifyListeners();
+   
 
     try {
       _storiesResponse = await _service.fetchStories(SharedPreferecesServices.token!);
@@ -24,7 +24,7 @@ class StoriesViewModel extends ChangeNotifier {
         if (_storiesResponse!.data.stories.isNotEmpty) {
           log(_storiesResponse!.data.stories[0].title);
         }
-      }
+      } notifyListeners();
       return _storiesResponse;
     } catch (e) {
       // Handle error

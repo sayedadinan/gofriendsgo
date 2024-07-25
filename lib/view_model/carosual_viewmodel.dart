@@ -14,7 +14,7 @@ class CarosualViewModel extends ChangeNotifier {
 
   Future<void> fetchCarousals() async {
     _isLoading = true;
-    notifyListeners();
+ 
 
     try {
       _carouselsModel = await _service.fetchCarousals(SharedPreferecesServices.token!);
@@ -24,7 +24,7 @@ class CarosualViewModel extends ChangeNotifier {
         if (_carouselsModel!.data.isNotEmpty) {
           log(_carouselsModel!.data[0].title);
         }
-      }
+      }   notifyListeners();
     } catch (e) {
       // Handle error
       log('Error fetching carousals: $e');
