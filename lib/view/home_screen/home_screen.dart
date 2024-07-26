@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
-import 'package:gofriendsgo/utils/constants/paths.dart';
+// import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
-import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
+// import 'package:gofriendsgo/utils/navigations/navigations.dart';
+// import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';

@@ -6,6 +6,7 @@ import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view/fixed_departures_screen/fixed_departures_screen.dart';
 import 'package:gofriendsgo/view/passport_checlist/passport_checklist_screen.dart';
 import 'package:gofriendsgo/view/visa_checklist/visa_checlist_screen.dart';
@@ -23,7 +24,7 @@ class CategoriesWidget extends StatelessWidget {
         height: mediaqueryheight(0.32, context),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 3,
+          itemCount: 4,
           itemBuilder: (context, index) {
             final item = homeGridItems[index];
             return GestureDetector(
@@ -32,8 +33,10 @@ class CategoriesWidget extends StatelessWidget {
                   PageNavigations().push(const FixedDeparturesScreen());
                 } else if (index == 1) {
                   PageNavigations().push(const PassportChecklistScreen());
-                } else {
+                } else if (index == 2) {
                   PageNavigations().push(const VisaChecklistScreen());
+                } else {
+                  PageNavigations().push(const CabRatesScreen());
                 }
               },
               child: Padding(

@@ -24,4 +24,8 @@ List<HomeGrid> homeGridItems = [
       imagePath: 'assets/images/gridImage.png',
       titleText: 'visa checklist',
       subText: TextStrings.homeGridThirdSubText),
+  HomeGrid(
+      imagePath: 'assets/images/gridImage.png',
+      titleText: 'Cab rates',
+      subText: TextStrings.homeGridThirdSubText),
 ];
