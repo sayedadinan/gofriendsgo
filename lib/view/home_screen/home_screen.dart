@@ -56,31 +56,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SmoothPageIndicator(controller: adController, count: 3)),
             const GridForHomeScreen(),
             const CategoriesWidget(),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: GestureDetector(
-                onTap: () => PageNavigations().push(const CabRatesScreen()),
-                child: Consumer<BannerViewModel>(
-                    builder: (context, bannerViewModel, child) {
-                  if (bannerViewModel.isLoading) {
-                    return const CircularProgressIndicator();
-                  }
+            // Padding(
+            //   padding: const EdgeInsets.all(12.0),
+            //   child: GestureDetector(
+            //     onTap: () => PageNavigations().push(const CabRatesScreen()),
+            //     child: Consumer<BannerViewModel>(
+            //         builder: (context, bannerViewModel, child) {
+            //       if (bannerViewModel.isLoading) {
+            //         return const CircularProgressIndicator();
+            //       }
 
-                  final banner =
-                      bannerViewModel.bannersResponse!.data.banners[0];
-                  return ClipRRect(
-                    child: SizedBox(
-                      height: mediaqueryheight(0.08, context),
-                      child: Image.network(
-                          "https://gofriendsgo.teqsuit.com/public/storage/${banner.image}",
-                          errorBuilder: (context, error, stackTrace) {
-                        return Image.asset(AppImages.goFriendsGoLogo);
-                      }, fit: BoxFit.cover),
-                    ),
-                  );
-                }),
-              ),
-            ),
+            //       final banner =
+            //           bannerViewModel.bannersResponse!.data.banners[0];
+            //       return ClipRRect(
+            //         child: SizedBox(
+            //           height: mediaqueryheight(0.08, context),
+            //           child: Image.network(
+            //               "https://gofriendsgo.teqsuit.com/public/storage/${banner.image}",
+            //               errorBuilder: (context, error, stackTrace) {
+            //             return Image.asset(AppImages.goFriendsGoLogo);
+            //           }, fit: BoxFit.cover),
+            //         ),
+            //       );
+            //     }),
+            //   ),
+            // ),
             const CustomSizedBoxHeight(0.03),
           ],
         ),

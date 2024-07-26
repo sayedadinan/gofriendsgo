@@ -4,6 +4,7 @@ import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/view_model/departure_viewmodel.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/app_bar.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/departure.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/flight_departure.dart';
@@ -13,6 +14,7 @@ import 'package:gofriendsgo/widgets/fixed_departures/is_booked_container.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/package_amount.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/package_details.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/scheduled_days.dart';
+import 'package:provider/provider.dart';
 
 class FixedDeparturesScreen extends StatelessWidget {
   const FixedDeparturesScreen({super.key});
@@ -27,60 +29,68 @@ class FixedDeparturesScreen extends StatelessWidget {
           child: const FixedDepartureAppBar()),
       body: Padding(
           padding: commonScreenPadding(context),
-          child: ListView.builder(
-            itemCount: fixedDeparturesList.length,
-            itemBuilder: (context, index) {
-              final package = fixedDeparturesList[index];
-              return Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: mediaqueryheight(0.015, context)),
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(color: Color.fromRGBO(49, 103, 152, .42),offset: Offset(0, 2),blurRadius: 3,)
-                    ],
-                      borderRadius: BorderRadius.circular(8),
-                      color: AppColors.whiteColor),
-                  padding: EdgeInsets.all(
-                    mediaquerywidth(0.04, context),
-                  ),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        package.isDepartureFixed
-                            ? const FixedDepartureWithAirfareContainer()
-                            : const SizedBox(),
-                        const CustomSizedBoxHeight(0.015),
-                        FixedDeparturesPackageHeading(package: package),
-                        const CustomSizedBoxHeight(0.02),
-                        HotelRatings(package: package),
-                        const CustomSizedBoxHeight(0.01),
-                        ScheduledDays(package: package),
-                        const CustomSizedBoxHeight(0.012),
-                        FlightDeparture(package: package),
-                        const CustomSizedBoxHeight(0.01),
-                        const Divider(),
-                        const CustomSizedBoxHeight(0.01),
-                        ...packageDetails(package, context),
-                        const CustomSizedBoxHeight(0.014),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const GetDetailsButton(),
-                            TotalPackageAmount(package: package),
-                            const SizedBox()
-                          ],
+          child: Consumer<FixedDeparturesViewModel>(
+            builder: (context, departureViewModel, child) {
+              if (departureViewModel.isLoading) {
+                return const CircularProgressIndicator();
+              } else {
+                return ListView.builder(
+                  itemCount: departureViewModel.fixedDeparturesResponse!.data.fixedDepartures.length,
+                  itemBuilder: (context, index) {
+                    final package = fixedDeparturesList[index];
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: mediaqueryheight(0.015, context)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color.fromRGBO(49, 103, 152, .42),
+                                offset: Offset(0, 2),
+                                blurRadius: 3,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.whiteColor),
+                        padding: EdgeInsets.all(
+                          mediaquerywidth(0.04, context),
                         ),
-                      ]),
-                ),
-              );
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              package.isDepartureFixed
+                                  ? const FixedDepartureWithAirfareContainer()
+                                  : const SizedBox(),
+                              const CustomSizedBoxHeight(0.015),
+                              FixedDeparturesPackageHeading(package: package),
+                              const CustomSizedBoxHeight(0.02),
+                              HotelRatings(package: package),
+                              const CustomSizedBoxHeight(0.01),
+                              ScheduledDays(package: package),
+                              const CustomSizedBoxHeight(0.012),
+                              FlightDeparture(package: package),
+                              const CustomSizedBoxHeight(0.01),
+                              const Divider(),
+                              const CustomSizedBoxHeight(0.01),
+                              ...packageDetails(package, context),
+                              const CustomSizedBoxHeight(0.014),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const GetDetailsButton(),
+                                  TotalPackageAmount(package: package),
+                                  const SizedBox()
+                                ],
+                              ),
+                            ]),
+                      ),
+                    );
+                  },
+                );
+              }
             },
           )),
     );
   }
-
 }
-
-
-
-
