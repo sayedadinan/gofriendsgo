@@ -10,6 +10,7 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/signup_screen/signup_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
+import 'package:gofriendsgo/view_model/visa_viewmodel.dart';
 import 'package:gofriendsgo/widgets/login_widget/login_text.dart';
 import 'package:provider/provider.dart';
 
@@ -89,14 +90,16 @@ class LoginScreen extends StatelessWidget {
                 const CustomSizedBoxHeight(0.02),
                 CustomButton(
                     fontFamily: CustomFonts.poppins,
-                    function: () {
-                      if (loginFormKey.currentState!.validate()) {
-                        context
-                            .read<UserViewModel>()
-                            .loginUser(emailController.text);
-                      } else {
-                        return;
-                      }
+                    function: () {    context
+                            .read<VisaViewModel>()
+                            .fetchVisas();
+                      // if (loginFormKey.currentState!.validate()) {
+                      //   context
+                      //       .read<UserViewModel>()
+                      //       .loginUser(emailController.text);
+                      // } else {
+                      //   return;
+                      // }
                     },
                     text: 'Get OTP',
                     fontSize: 0.04,
