@@ -16,9 +16,19 @@ import 'package:gofriendsgo/widgets/fixed_departures/package_details.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/scheduled_days.dart';
 import 'package:provider/provider.dart';
 
-class FixedDeparturesScreen extends StatelessWidget {
+class FixedDeparturesScreen extends StatefulWidget {
   const FixedDeparturesScreen({super.key});
 
+  @override
+  State<FixedDeparturesScreen> createState() => _FixedDeparturesScreenState();
+}
+
+class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
+  @override
+  void initState() {
+ context.read<FixedDeparturesViewModel>().fetchFixedDepartures();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +47,7 @@ class FixedDeparturesScreen extends StatelessWidget {
                 return ListView.builder(
                   itemCount: departureViewModel.fixedDeparturesResponse!.data.fixedDepartures.length,
                   itemBuilder: (context, index) {
-                    final package = fixedDeparturesList[index];
+                    final package = departureViewModel.fixedDeparturesResponse!.data.fixedDepartures[index];
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: mediaqueryheight(0.015, context)),
@@ -58,28 +68,28 @@ class FixedDeparturesScreen extends StatelessWidget {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              package.isDepartureFixed
+                              package.tagStatus!=null
                                   ? const FixedDepartureWithAirfareContainer()
                                   : const SizedBox(),
                               const CustomSizedBoxHeight(0.015),
-                              FixedDeparturesPackageHeading(package: package),
+                              FixedDeparturesPackageHeading(title: package.title),
                               const CustomSizedBoxHeight(0.02),
-                              HotelRatings(package: package),
+                              HotelRatings(starCount: package.rating),
                               const CustomSizedBoxHeight(0.01),
-                              ScheduledDays(package: package),
+                              ScheduledDays(startDate: package.from,endDate: package.to,),
                               const CustomSizedBoxHeight(0.012),
-                              FlightDeparture(package: package),
+                              FlightDeparture(travelTo: package.travelTo),
                               const CustomSizedBoxHeight(0.01),
                               const Divider(),
                               const CustomSizedBoxHeight(0.01),
-                              ...packageDetails(package, context),
+                              ...packageDetails(fixedDeparturesList[index], context),
                               const CustomSizedBoxHeight(0.014),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   const GetDetailsButton(),
-                                  TotalPackageAmount(package: package),
+                                  TotalPackageAmount(amount: package.price),
                                   const SizedBox()
                                 ],
                               ),

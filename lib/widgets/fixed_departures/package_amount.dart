@@ -7,17 +7,17 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 class TotalPackageAmount extends StatelessWidget {
   const TotalPackageAmount({
     super.key,
-    required this.package,
+    required this.amount,
   });
 
-  final FixedDepartures package;
+  final String amount;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomText(
-            text: "₹ ${package.amount}",
+            text: "₹ $amount",
             fontFamily: CustomFonts.roboto,
             size: 0.07,
             weight: FontWeight.w800,
