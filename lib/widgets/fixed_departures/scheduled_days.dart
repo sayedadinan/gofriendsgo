@@ -7,10 +7,12 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 class ScheduledDays extends StatelessWidget {
   const ScheduledDays({
     super.key,
-    required this.package,
+    required this.startDate,
+    required this.endDate
   });
 
-  final FixedDepartures package;
+  final String startDate;
+  final String endDate;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class ScheduledDays extends StatelessWidget {
         Image.asset(AppImages.date),
         const CustomSizedBoxWidth(0.045),
         CustomText(
-            text: package.date,
+            text:'$startDate - $endDate',
             fontFamily: CustomFonts.roboto,
             size: 0.04,
             color: const Color.fromRGBO(0, 0, 0, 0.9))

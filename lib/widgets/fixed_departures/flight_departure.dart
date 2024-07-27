@@ -6,10 +6,10 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 class FlightDeparture extends StatelessWidget {
   const FlightDeparture({
     super.key,
-    required this.package,
+    required this.travelTo,
   });
 
-  final FixedDepartures package;
+  final String travelTo;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class FlightDeparture extends StatelessWidget {
         Image.asset(AppImages.flightTakeOff),
         const CustomSizedBoxWidth(0.045),
         CustomText(
-            text: package.locations,
+            text: travelTo,
             fontFamily: CustomFonts.roboto,
             size: 0.040,
             color: const Color.fromRGBO(0, 0, 0, 0.9))

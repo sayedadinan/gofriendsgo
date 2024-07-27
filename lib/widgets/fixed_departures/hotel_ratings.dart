@@ -1,16 +1,17 @@
-
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/detarture_model/departure_model.dart';
 import 'package:gofriendsgo/model/fixed_departures.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+
 class HotelRatings extends StatelessWidget {
   const HotelRatings({
     super.key,
-    required this.package,
+    required this.starCount, 
   });
 
-  final FixedDepartures package;
+  final int? starCount;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,11 @@ class HotelRatings extends StatelessWidget {
           (index) {
             return Icon(
               Icons.star_rate_rounded,
-              color: index > package.rating - 1
+              color: starCount == null
                   ? AppColors.backgroundColor
-                  : AppColors.fixedDeparturesAmberColor,
+                  : index > starCount! - 1
+                      ? AppColors.backgroundColor
+                      : AppColors.fixedDeparturesAmberColor,
             );
           },
         )

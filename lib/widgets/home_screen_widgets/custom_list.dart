@@ -3,6 +3,8 @@ import 'package:gofriendsgo/model/story_model/story_model.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/story_display_screen/story_display_screen.dart';
 
 class StoryItem extends StatelessWidget {
   final Story story;
@@ -23,13 +25,18 @@ class StoryItem extends StatelessWidget {
               width: 3.0,
             ),
           ),
-          child: ClipOval(
-            child: Image.network(
-              "https://gofriendsgo.teqsuit.com/public/storage/${story.image}",
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Image.asset(AppImages.goFriendsGoLogo);
-              },
+          child: GestureDetector(
+            onTap: () {
+              PageNavigations().push(StoryDisplayScreen());
+            },
+            child: ClipOval(
+              child: Image.network(
+                "https://gofriendsgo.teqsuit.com/public/storage/${story.image}",
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(AppImages.goFriendsGoLogo);
+                },
+              ),
             ),
           ),
         ),
