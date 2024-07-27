@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/visa_model/visa_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
@@ -8,7 +9,8 @@ import 'package:gofriendsgo/widgets/visa_checklist_details/heading_and_subheadin
 import 'package:gofriendsgo/widgets/visa_checklist_details/package_details.dart';
 
 class VisaChecklistDetailsScreen extends StatelessWidget {
-  const VisaChecklistDetailsScreen({super.key});
+  final Visa visa;
+  const VisaChecklistDetailsScreen({required this.visa, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +42,28 @@ class VisaChecklistDetailsScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(mediaqueryheight(0.02, context)),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomSizedBoxHeight(0.02),
-                      VisaRequirementHeading(),
-                      CustomSizedBoxHeight(0.015),
-                      Divider(),
-                      CustomSizedBoxHeight(0.025),
-                      VisaChecklistSubHeading(),
-                      Divider(),
-                      CustomSizedBoxHeight(0.03),
-                      HeadingAndDetails(),
+                      const CustomSizedBoxHeight(0.02),
+                      const VisaRequirementHeading(),
+                      const CustomSizedBoxHeight(0.015),
+                      const Divider(),
+                      const CustomSizedBoxHeight(0.025),
+                      VisaChecklistSubHeading(
+                        countryName: visa.visaFor,
+                      ),
+                      const Divider(),
+                      const CustomSizedBoxHeight(0.03),
+                      const HeadingAndDetails(),
                     ],
                   ),
                 ),
               ),
               const CustomSizedBoxHeight(0.04),
-              const GetDetailsAndAmount(),
+              GetDetailsAndAmount(
+                amount: visa.details[0].price,
+              ),
               const CustomSizedBoxHeight(0.04),
             ],
           ),

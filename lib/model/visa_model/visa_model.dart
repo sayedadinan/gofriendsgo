@@ -97,7 +97,7 @@ class VisaDetail {
       visaId: json['visa_id'],
       title: json['title'],
       description: json['description'],
-      price: json['price'] != null ?  json['price'].toDouble() : null,
+      price: json['price']?.toDouble(),
       createdAt: DateTime.parse(json['created_at']),
       updatedAt: DateTime.parse(json['updated_at']),
     );
