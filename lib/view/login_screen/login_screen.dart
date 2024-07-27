@@ -8,6 +8,7 @@ import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/signup_screen/signup_screen.dart';
+import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/login_widget/login_text.dart';
 import 'package:provider/provider.dart';
@@ -90,9 +91,10 @@ class LoginScreen extends StatelessWidget {
                         CustomButton(
                             fontFamily: CustomFonts.poppins,
                             function: () {
-                              if (loginFormKey.currentState!.validate()) {
-                                userViewModel.loginUser(emailController.text);
-                              }
+                              context.read<ProfileViewModel>().fetchProfile();
+                              //   if (loginFormKey.currentState!.validate()) {
+                              //     userViewModel.loginUser(emailController.text);
+                              //   }
                             },
                             text: 'Get OTP',
                             fontSize: 0.04,
