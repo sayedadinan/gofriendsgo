@@ -6,14 +6,16 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 
 
 class VisaChecklistSubHeading extends StatelessWidget {
+  final String countryName;
   const VisaChecklistSubHeading({
+  required this.countryName,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const CustomText(
-      text: "Visa for Singapore",
+    return  CustomText(
+      text: "Visa for $countryName",
       fontFamily: CustomFonts.lato,
       size: 0.05,
       color: AppColors.blackColor,

@@ -7,7 +7,9 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 
 class GetDetailsAndAmount extends StatelessWidget {
+  final double? amount;
   const GetDetailsAndAmount({
+    required this.amount,
     super.key,
   });
 
@@ -27,15 +29,15 @@ class GetDetailsAndAmount extends StatelessWidget {
           fontFamily: CustomFonts.roboto,
         ),
         const CustomSizedBoxWidth(0.04),
-        const Column(
+         Column(
           children: [
             CustomText(
-                text: "₹ 12,000",
+                text: amount==null? "null" :"₹ ${amount.toString()}",
                 fontFamily: CustomFonts.roboto,
                 size: 0.07,
                 weight: FontWeight.w800,
                 color: AppColors.fixedDeparturesAmberColor),
-            CustomText(
+            const CustomText(
               text: TextStrings.perPerson,
               fontFamily: CustomFonts.roboto,
               size: 0.035,

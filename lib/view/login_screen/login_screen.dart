@@ -127,7 +127,7 @@ class RegisterLoadingIndicator extends StatelessWidget {
           SizedBox(
             height: mediaqueryheight(0.36, context),
           ),
-          Center(child: CircularProgressIndicator())
+          const Center(child: CircularProgressIndicator())
         ],
       ),
     );
