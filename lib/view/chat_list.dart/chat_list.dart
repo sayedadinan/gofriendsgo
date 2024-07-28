@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/chat_list_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_bar.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
@@ -37,7 +36,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
       body: SingleChildScrollView(
         child: Consumer<ChatListViewmodel>(builder: (context, value, child) {
           if (value.isLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

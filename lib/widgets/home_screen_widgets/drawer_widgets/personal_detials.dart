@@ -32,12 +32,12 @@ class PersonalDetails extends StatelessWidget {
                     text: value.userPhone!,
                     fontFamily: CustomFonts.poppins,
                     size: 0.035,
-                    color: Color.fromRGBO(20, 20, 20, .6)),
+                    color: const Color.fromRGBO(20, 20, 20, .6)),
                 CustomText(
                     text: value.userEmail!,
                     fontFamily: CustomFonts.poppins,
                     size: 0.035,
-                    color: Color.fromRGBO(20, 20, 20, .6)),
+                    color: const Color.fromRGBO(20, 20, 20, .6)),
               ]);
         }
       },

@@ -21,7 +21,7 @@ class CategoriesWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: mediaquerywidth(0.04, context)),
       child: SizedBox(
-        height: mediaqueryheight(0.32, context),
+         height: mediaqueryheight(0.34, context),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 4,

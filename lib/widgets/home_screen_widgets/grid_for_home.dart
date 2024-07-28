@@ -57,7 +57,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                     // For the first 7 items or more items if expanded
                     return GestureDetector(
                       onTap: () {
-                        print('${API.baseImageUrl + gridItems.image}');
+                       
                         // PageNavigations().push(const ChatScreen());
                       },
                       child: Column(
@@ -84,7 +84,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                               // ),
                               child: Image.network(
                                   fit: BoxFit.cover,
-                                  '${API.baseImageUrl + gridItems.image}'),
+                                  API.baseImageUrl + gridItems.image),
                             ),
                           ),
                           SizedBox(
