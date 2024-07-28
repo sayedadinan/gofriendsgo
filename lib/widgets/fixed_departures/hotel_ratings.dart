@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/detarture_model/departure_model.dart';
-import 'package:gofriendsgo/model/fixed_departures.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';

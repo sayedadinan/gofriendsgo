@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/model/detarture_model/departure_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 
 class FixedDeparturesService {
-  final String _baseUrl = 'https://gofriendsgo.teqsuit.com/api/user';
 
   Future<FixedDeparturesModel> fetchFixedDepartures(String token) async {
     log('Fetching fixed departures from service file');
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/fixeddepartures'),
+        Uri.parse('${API.baseUrl}/fixeddepartures'),
         headers: {
           'Authorization': 'Bearer $token',
         },

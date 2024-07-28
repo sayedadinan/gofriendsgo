@@ -1,16 +1,15 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/model/visa_model/visa_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 
 class VisaService {
-  final String _baseUrl = 'https://gofriendsgo.teqsuit.com/api/user';
-
   Future<VisaModel> fetchVisas(String token) async {
     log('Fetching visas from service file');
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/visa'),
+        Uri.parse('${API.baseUrl}/visa'),
         headers: {
           'Authorization': 'Bearer $token',
         },

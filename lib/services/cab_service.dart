@@ -1,16 +1,15 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/model/cab_model/cab_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 
 class CabService {
-  final String _baseUrl = 'https://gofriendsgo.teqsuit.com/api/user';
-
   Future<CabModel> fetchCabs(String token) async {
     log('Fetching cabs from service file');
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/cabs'),
+        Uri.parse('${API.baseUrl}/cabs'),
         headers: {
           'Authorization': 'Bearer $token',
         },

@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/model/passport_model/passport_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 
 class PassportService {
-  final String _baseUrl = 'https://gofriendsgo.teqsuit.com/api/user';
 
   Future<PassportModel> fetchPassports(String token) async {
     log('Fetching passports from service file');
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/passport'),
+        Uri.parse('${API.baseUrl}/passport'),
         headers: {
           'Authorization': 'Bearer $token',
         },

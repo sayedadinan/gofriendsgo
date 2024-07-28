@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/bottom_navigation_bar/bottom_navigation.dart';
@@ -10,9 +11,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 //from here the user informations are sending to the backend
 class UserService {
-  final String _baseUrl = 'https://gofriendsgo.teqsuit.com/api';
+
   Future<Map<String, dynamic>?> registerUser(UserDetails userDetails) async {
-    final url = Uri.parse('$_baseUrl/register');
+    final url = Uri.parse('${API.loginUrl}register');
     final headers = {
       'Content-Type': 'application/json',
     };
@@ -39,7 +40,7 @@ class UserService {
   }
 
   Future<http.Response> postEmail(String email) async {
-    final url = Uri.parse('$_baseUrl/login');
+    final url = Uri.parse('${API.loginUrl}login');
     final payload = jsonEncode({'email': email});
     try {
       // Send the POST request
@@ -71,7 +72,7 @@ class UserService {
   Future<http.Response> verifyOtp(int otp, String email) async {
     log("otp $otp");
     log(email);
-    final url = 'https://gofriendsgo.teqsuit.com/api/verify/otp/$otp';
+    final url = 'https://gofriendsgo.certumventures.in/api/verify/otp/$otp';
     final response = await http.post(
       Uri.parse(url),
       headers: <String, String>{

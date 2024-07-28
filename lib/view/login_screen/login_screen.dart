@@ -91,10 +91,10 @@ class LoginScreen extends StatelessWidget {
                         CustomButton(
                             fontFamily: CustomFonts.poppins,
                             function: () {
-                              context.read<ProfileViewModel>().fetchProfile();
-                              //   if (loginFormKey.currentState!.validate()) {
-                              //     userViewModel.loginUser(emailController.text);
-                              //   }
+                              // context.read<ProfileViewModel>().fetchProfile();
+                              if (loginFormKey.currentState!.validate()) {
+                                userViewModel.loginUser(emailController.text);
+                              }
                             },
                             text: 'Get OTP',
                             fontSize: 0.04,

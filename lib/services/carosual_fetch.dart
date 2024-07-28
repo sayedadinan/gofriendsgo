@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 import 'package:gofriendsgo/model/carosual_model/carosual_model.dart';
 
 class CarousalsService {
-  final String _baseUrl = 'https://gofriendsgo.teqsuit.com/api/user';
+ 
 
   Future<CarouselsModel> fetchCarousals(String token) async {
     log('Fetching carousals from service file');
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/carousels'),
+        Uri.parse('${API.baseUrl}/carousels'),
         headers: {
           'Authorization': 'Bearer $token',
         },

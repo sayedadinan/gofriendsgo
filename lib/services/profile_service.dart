@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/model/profile_model/profile_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 
 class ProfileService {
-  final String _baseUrl = 'https://gofriendsgo.certumventures.in/api/user';
+
 
   Future<UserProfileModel?> fetchProfile(String token) async {
     log('Fetching profile started');
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/profile'),
+        Uri.parse('${API.baseUrl}/profile'),
         headers: {
           'Authorization': 'Bearer $token',
         },
