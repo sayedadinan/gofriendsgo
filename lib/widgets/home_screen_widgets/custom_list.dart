@@ -7,8 +7,10 @@ import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/story_display_screen/story_display_screen.dart';
 
 class StoryItem extends StatelessWidget {
-  final Story story;
-  const StoryItem({super.key, required this.story});
+ 
+ final List<Story> allStories;
+  final int currentIndex;
+ const StoryItem({super.key,  required this.allStories,required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +29,15 @@ class StoryItem extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              PageNavigations().push(StoryDisplayScreen());
+              PageNavigations().push(StoryDisplayScreen(
+                currentIndex: currentIndex,
+                allStories: allStories,
+             
+              ));
             },
             child: ClipOval(
               child: Image.network(
-                "https://gofriendsgo.teqsuit.com/public/storage/${story.image}",
+                "https://gofriendsgo.teqsuit.com/public/storage/${allStories[currentIndex].image}",
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset(AppImages.goFriendsGoLogo);
@@ -42,7 +48,7 @@ class StoryItem extends StatelessWidget {
         ),
         const SizedBox(height: 4.0),
         CustomText(
-          text: story.title,
+          text: allStories[currentIndex].title,
           fontFamily: CustomFonts.poppins,
           size: 0.04,
           color: Colors.black,

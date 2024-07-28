@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/fixed_departures.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 
