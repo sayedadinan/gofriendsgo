@@ -1,12 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
-import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/chat_screen/chat_screen.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +38,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
           child: Consumer<ServiceViewModel>(
               builder: (context, serviceViewModel, child) {
             if (serviceViewModel.isLoading) {
-              return const Center(child:  CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else {
               return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
@@ -59,7 +57,8 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                     // For the first 7 items or more items if expanded
                     return GestureDetector(
                       onTap: () {
-                        PageNavigations().push(const ChatScreen());
+                        print('${API.baseImageUrl + gridItems.image}');
+                        // PageNavigations().push(const ChatScreen());
                       },
                       child: Column(
                         children: [
@@ -72,9 +71,20 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                             height: mediaqueryheight(0.06, context),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
+                              // child: CachedNetworkImage(
+                              //   imageUrl:
+                              //       '${API.baseImageUrl + gridItems.image}',
+                              //   progressIndicatorBuilder:
+                              //       (context, url, downloadProgress) => Center(
+                              //     child: CircularProgressIndicator(
+                              //         value: downloadProgress.progress),
+                              //   ),
+                              //   errorWidget: (context, url, error) =>
+                              //       Icon(Icons.error),
+                              // ),
                               child: Image.network(
                                   fit: BoxFit.cover,
-                                  'https://gofriendsgo.teqsuit.com/public/storage/${gridItems.image}'),
+                                  '${API.baseImageUrl + gridItems.image}'),
                             ),
                           ),
                           SizedBox(

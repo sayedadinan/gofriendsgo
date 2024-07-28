@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 
@@ -20,7 +21,7 @@ PageView storyViewArea(
         width: double.infinity,
         height: mediaqueryheight(1, context),
         child: Image.network(
-          imagePath + currentImagePath,
+          API.baseImageUrl + currentImagePath,
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) {
             return Image.asset(AppImages.goFriendsGoLogo);

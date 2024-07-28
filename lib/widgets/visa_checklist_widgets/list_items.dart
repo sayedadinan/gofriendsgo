@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
@@ -42,7 +43,7 @@ class PackagesListView extends StatelessWidget {
                           BlendMode.darken,
                         ),
                         fit: BoxFit.cover,
-                        image: NetworkImage(imagePath+country.image))),
+                        image: NetworkImage(API.baseImageUrl+country.image))),
                 child: Center(
                   child: CustomText(
                     text: "Visa for ${country.visaFor}",

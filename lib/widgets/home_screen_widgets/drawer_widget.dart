@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/profile_screen/profile_editing_screen.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widgets/back_button.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widgets/circle_avatar_drawer.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widgets/drawer_list_items.dart';
@@ -27,44 +29,49 @@ class CustomDrawerWidget extends StatelessWidget {
               height: mediaqueryheight(0.36, context),
             ),
             const BackButtonOnDrawer(),
-            Positioned(
-                child: Padding(
-              padding: EdgeInsets.only(
-                  left: 10, right: 10, top: mediaqueryheight(0.13, context)),
-              child: Material(
-                borderRadius: BorderRadius.circular(8),
-                elevation: 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.whiteColor,
-                      borderRadius: BorderRadius.circular(8)),
-                  width: double.infinity,
-                  height: mediaqueryheight(0.2, context),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DrawerCircleAvatar(),
-                            CustomSizedBoxWidth(0.03),
-                            PersonalDetails(),
-                            Spacer(),
-                            Icon(Icons.edit)
-                          ],
-                        ),
-                        CustomSizedBoxHeight(0.02),
-                        ProgressIndicatorOnDrawer(),
-                        CustomSizedBoxHeight(0.01),
-                        ProfileCompletionStatus()
-                      ],
+            GestureDetector(
+              onTap: () {
+                PageNavigations().push(const ProfileEditingScreen());
+              },
+              child: Positioned(
+                  child: Padding(
+                padding: EdgeInsets.only(
+                    left: 10, right: 10, top: mediaqueryheight(0.13, context)),
+                child: Material(
+                  borderRadius: BorderRadius.circular(8),
+                  elevation: 4,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.circular(8)),
+                    width: double.infinity,
+                    height: mediaqueryheight(0.2, context),
+                    child: const Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DrawerCircleAvatar(),
+                              CustomSizedBoxWidth(0.03),
+                              PersonalDetails(),
+                              Spacer(),
+                              Icon(Icons.edit)
+                            ],
+                          ),
+                          CustomSizedBoxHeight(0.02),
+                          ProgressIndicatorOnDrawer(),
+                          CustomSizedBoxHeight(0.01),
+                          ProfileCompletionStatus()
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ))
+              )),
+            )
           ]),
           const DrawerListItems()
         ],
