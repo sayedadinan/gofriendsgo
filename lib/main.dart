@@ -31,7 +31,7 @@ void main() {
     ChangeNotifierProvider(create: (_) => VisaViewModel()),
     ChangeNotifierProvider(create: (_) => CabViewModel()),
     ChangeNotifierProvider(create: (_) => PassportViewModel()),
-    ChangeNotifierProvider(create: (_) => ProfileViewModel()),
+    ChangeNotifierProvider(create: (_) => ProfileViewModel()..fetchProfile()),
     ChangeNotifierProvider(
         create: (_) => FixedDeparturesViewModel()..fetchFixedDepartures()),
   ], child: const MyApp()));

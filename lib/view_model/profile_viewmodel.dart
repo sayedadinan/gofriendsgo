@@ -9,6 +9,13 @@ class ProfileViewModel extends ChangeNotifier {
   UserProfileModel? _profileResponse;
   bool _isLoading = false;
 
+  // Separate variables for specific data
+  String? userName;
+  String? userEmail;
+  String? userPhone;
+  String? profilePercentage;
+  // Add other fields as needed
+
   UserProfileModel? get profileResponse => _profileResponse;
   bool get isLoading => _isLoading;
 
@@ -19,8 +26,15 @@ class ProfileViewModel extends ChangeNotifier {
     try {
       _profileResponse = await _service.fetchProfile(tokenss);
       if (_profileResponse != null) {
+        userName = _profileResponse!.data.user.name;
+        userEmail = _profileResponse!.data.user.email;
+        userPhone = _profileResponse!.data.user.phone;
+        // profilePercentage=_profileResponse!.data.user.
+        // Extract other fields as needed
+
         log('Profile fetched successfully');
-        log('User Name: ${_profileResponse!.data.user.name}');
+        log('User Name: $userName');
+        log('User Email: $userEmail');
       }
     } catch (e) {
       log('Error fetching profile: $e');
