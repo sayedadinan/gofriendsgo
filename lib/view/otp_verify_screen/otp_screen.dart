@@ -217,6 +217,8 @@
 //     }
 //   }
 
+// ignore_for_file: library_private_types_in_public_api
+
 //   List<Color> boxColor() {
 //     if (otpVerificationFormKey.currentState != null &&
 //         otpVerificationFormKey.currentState!.validate()) {
