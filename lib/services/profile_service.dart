@@ -5,8 +5,6 @@ import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
 
 class ProfileService {
-
-
   Future<UserProfileModel?> fetchProfile(String token) async {
     log('Fetching profile started');
     try {
@@ -27,6 +25,34 @@ class ProfileService {
     } catch (e) {
       log('Error fetching profile: $e');
       return null;
+    }
+  }
+
+  Future<bool> updateUserProfile(
+      int userId, Map<String, dynamic> updatedData, String token) async {
+    print('started working');
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+
+    try {
+      final response = await http.patch(
+        Uri.parse('${API.baseUrl}/profile/$userId'),
+        headers: headers,
+        body: jsonEncode(updatedData),
+      );
+
+      if (response.statusCode == 200) {
+        print('Profile updated successfully');
+        return true; // Indicate success
+      } else {
+        print('Failed to update profile. Status code: ${response.statusCode}');
+        return false; // Indicate failure
+      }
+    } catch (e) {
+      print('Error updating profile: $e');
+      return false; // Indicate failure
     }
   }
 }

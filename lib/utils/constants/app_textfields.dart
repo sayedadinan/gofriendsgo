@@ -11,7 +11,7 @@ class Inputfield extends StatelessWidget {
   final List<TextInputFormatter>? textInputFormatter;
   final Icon? icon;
   final Icon? prefixIcon;
-  final int? maxLengths;
+  final int? maxLengths;final bool? isEnabled;
   const Inputfield({
     this.textInputFormatter,
     this.controller,
@@ -22,12 +22,12 @@ class Inputfield extends StatelessWidget {
     this.validator,
     this.icon,
     this.prefixIcon,
-    this.maxLengths, this.submitFun,
+    this.maxLengths, this.submitFun, this.isEnabled,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextFormField(enabled: isEnabled,
         textInputAction: TextInputAction.done, // Changes the action button on the keyboard to "Done"
           onFieldSubmitted: submitFun,
       inputFormatters: textInputFormatter,
