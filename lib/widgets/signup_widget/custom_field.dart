@@ -12,26 +12,28 @@ class LabeledInputField extends StatelessWidget {
   final Color textColor;
   final int? maxlngths;
   final Icon? suffix;
+  final bool? isEnabled;
   final TextEditingController? controller;
-  final String? Function(String?)? validator;  final String? Function(String?)? submitFun;
-    final List<TextInputFormatter>? textInputFormatter;
-    final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
+  final String? Function(String?)? submitFun;
+  final List<TextInputFormatter>? textInputFormatter;
+  final TextInputType? keyboardType;
 
-  const LabeledInputField({
-    this.keyboardType,
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.textInputFormatter,
-    this.prefixIcon,
-    this.fontFamily = 'Poppins',
-    this.fontSize = 0.04,
-    this.textColor = Colors.black,
-    this.maxlngths,
-    this.suffix,
-    this.controller,
-    this.validator, this.submitFun
-  });
+  const LabeledInputField(
+      {this.keyboardType,
+      super.key,
+      required this.labelText,
+      required this.hintText,
+      this.textInputFormatter,
+      this.prefixIcon,
+      this.fontFamily = 'Poppins',
+      this.fontSize = 0.04,
+      this.textColor = Colors.black,
+      this.maxlngths,
+      this.suffix,
+      this.controller,
+      this.validator,
+      this.submitFun, this.isEnabled});
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +46,10 @@ class LabeledInputField extends StatelessWidget {
           size: fontSize,
           color: textColor,
         ),
-        Inputfield(submitFun: submitFun,
+        Inputfield(
+          submitFun: submitFun,
           keyboardType: keyboardType,
-          textInputFormatter:textInputFormatter,
+          textInputFormatter: textInputFormatter,
           validator: validator,
           controller: controller,
           icon: suffix,
