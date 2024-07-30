@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
  import 'package:gofriendsgo/utils/constants/paths.dart';
@@ -8,8 +9,10 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
  import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
+import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
+import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/carosual_widget.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/category_widgets.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
@@ -91,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 func(BuildContext context) {
   SharedPreferecesServices().getToken();
+  context.read<ProfileViewModel>().fetchProfile();
   context.read<StoriesViewModel>().fetchStories();
   context.read<ServiceViewModel>().fetchServices();
   context.read<CarosualViewModel>().fetchCarousals();

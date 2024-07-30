@@ -25,21 +25,21 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
   @override
   void initState() {
     super.initState();
-          // Provider.of<ProfileViewModel>(context).fetchProfile();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   // Fetch data from the provider
-    //   // final profileViewModel =
-    //   //     Provider.of<ProfileViewModel>(context, listen: false);
-    //   // nameController.text = profileViewModel.userName ?? '';
-    //   // salesController.text = profileViewModel.specify ?? '';
-    //   // companyNameController.text = profileViewModel.companyName ?? '';
-    //   // emailController.text = profileViewModel.userEmail ?? '';
-    //   // dobController.text = profileViewModel.dob ?? '';
-    //   // mobileController.text = profileViewModel.userPhone ?? '';
-    //   // anniversayController.text = profileViewModel.specify ?? '';
-    //   // frequentController.text = profileViewModel.frequentFlyerNo ?? '';
-    //   // additionalController.text = profileViewModel.additionalDetails ?? '';
-    // });
+      context.read<ProfileViewModel>().fetchProfile();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //  //   Fetch data from the provider
+  //     final profileViewModel =
+  //         Provider.of<ProfileViewModel>(context, listen: false);
+  //     nameController.text = profileViewModel.userName ?? '';
+  //     salesController.text = profileViewModel.specify ?? '';
+  //     companyNameController.text = profileViewModel.companyName ?? '';
+  //     emailController.text = profileViewModel.userEmail ?? '';
+  //     dobController.text = profileViewModel.dob ?? '';
+  //     mobileController.text = profileViewModel.userPhone ?? '';
+  //     anniversayController.text = profileViewModel.specify ?? '';
+  //     frequentController.text = profileViewModel.frequentFlyerNo ?? '';
+  //     additionalController.text = profileViewModel.additionalDetails ?? '';
+  //   });
   }
 
   @override

@@ -8,11 +8,13 @@ class CustomText extends StatelessWidget {
   final Color color;
   final FontWeight? weight;
   final TextAlign? textAlign;
+  final TextOverflow? textOverflow;
   final String fontFamily;
   const CustomText(
       {super.key,
       required this.text,
       required this.fontFamily,
+      this.textOverflow,
       required this.size,
       required this.color,
      this.textAlign,
@@ -25,7 +27,7 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       style: TextStyle(
           fontWeight: weight,
-          
+          overflow: textOverflow,
           fontFamily: fontFamily,
           color: color,
           fontSize: mediaquerywidth(size, context)),

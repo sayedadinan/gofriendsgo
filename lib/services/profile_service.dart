@@ -2,16 +2,19 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/api/app_apis.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class ProfileService {
   Future<UserProfileModel?> fetchProfile(String token) async {
+    log(token);
+    log("shaham ${SharedPreferecesServices.token}");
     log('Fetching profile started');
     try {
       final response = await http.get(
         Uri.parse('${API.baseUrl}/profile'),
         headers: {
-          'Authorization': 'Bearer $token',
+          'Authorization': 'Bearer ${SharedPreferecesServices.token}',
         },
       );
 
@@ -23,7 +26,7 @@ class ProfileService {
         return null;
       }
     } catch (e) {
-      log('Error fetching profile: $e');
+      log('Error fetching profiles: $e');
       return null;
     }
   }

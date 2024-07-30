@@ -147,6 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         if (_signUpFormKey.currentState!.validate()) {
                           _sourceController.text =
                               userViewModel.sourceController;
+
                           UserDetails userDetails = UserDetails(
                             name: _nameController.text,
                             email: _emailController.text,
@@ -156,6 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 : _refferelController.text,
                             source: _sourceController.text,
                           );
+                         await userViewModel.registerUser(userDetails);
                           PageNavigations().push(OtpVerifyScreen(
                             signUpEmail: _emailController.text,
                             signUpName: _nameController.text,

@@ -31,7 +31,8 @@ class UserViewModel extends ChangeNotifier {
       _isLoading = false;
       _message = response['message'];
       log('successfully registered');
-      log(_message.toString());
+      // log(_message.toString());
+      log(response['data']['user']['otp']);
       // PageNavigations().pushAndRemoveUntill(const BottomNavigationScreen());
     } else {
       _isLoading = false;

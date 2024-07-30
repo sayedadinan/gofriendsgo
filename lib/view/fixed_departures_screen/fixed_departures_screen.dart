@@ -82,7 +82,7 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
                               const CustomSizedBoxHeight(0.01),
                               const Divider(),
                               const CustomSizedBoxHeight(0.01),
-                              ...packageDetails(fixedDeparturesList[index], context),
+                             // ...packageDetails(fixedDeparturesList[index], context),
                               const CustomSizedBoxHeight(0.014),
                               Row(
                                 mainAxisAlignment:

@@ -2,8 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/visa_model/visa_model.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/services/visa_service.dart';
-
+import 'package:gofriendsgo/services/api/app_apis.dart';
 
 class VisaViewModel extends ChangeNotifier {
   final VisaService _service = VisaService();
@@ -18,7 +19,7 @@ class VisaViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _visaResponse = await _service.fetchVisas(tokenss);
+      _visaResponse = await _service.fetchVisas(SharedPreferecesServices.token!);
       if (_visaResponse != null) {
         log('Visas fetched successfully');
         if (_visaResponse!.visas.isNotEmpty) {

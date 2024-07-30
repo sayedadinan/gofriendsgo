@@ -32,7 +32,7 @@ class User {
   final int id;
   final String name;
   final String email;
-  final String phone;
+  final dynamic phone;
   final String? profilePic;
   final String companyName;
   final String dob;

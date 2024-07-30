@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/profile_service.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/text_controllers.dart';
-
+import 'package:gofriendsgo/services/api/app_apis.dart';
 class ProfileViewModel extends ChangeNotifier {
   final ProfileService _service = ProfileService();
   UserProfileModel? _profileResponse;
@@ -34,14 +35,15 @@ class ProfileViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _profileResponse = await _service.fetchProfile(tokenss);
+      log(SharedPreferecesServices.token!);
+      _profileResponse = await _service.fetchProfile("");
       if (_profileResponse != null) {
         userName = _profileResponse!.data.user.name;
         userEmail = _profileResponse!.data.user.email;
         userPhone = _profileResponse!.data.user.phone;
         nameController.text = _profileResponse!.data.user.name;
         emailController.text = _profileResponse!.data.user.email;
-        mobileController.text = _profileResponse!.data.user.phone;
+        mobileController.text = _profileResponse!.data.user.phone??"23423423423";
         profilePic = _profileResponse!.data.user.profilePic;
         companyNameController.text = _profileResponse!.data.user.companyName;
         dobController.text = _profileResponse!.data.user.dob;
@@ -77,7 +79,7 @@ class ProfileViewModel extends ChangeNotifier {
       final success = await _service.updateUserProfile(
         userId,
         updatedData,
-        tokenss,
+        SharedPreferecesServices.token!,
       );
       if (success) {
         log('Profile updated successfully');

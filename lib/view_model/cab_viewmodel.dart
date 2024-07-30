@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/cab_model/cab_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/services/cab_service.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 
 class CabViewModel extends ChangeNotifier {
   final CabService _service = CabService();
@@ -17,7 +19,7 @@ class CabViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _cabResponse = await _service.fetchCabs(tokenss);
+      _cabResponse = await _service.fetchCabs(SharedPreferecesServices.token!);
       if (_cabResponse != null) {
         log('Cabs fetched successfully');
         if (_cabResponse!.data.cabs.isNotEmpty) {

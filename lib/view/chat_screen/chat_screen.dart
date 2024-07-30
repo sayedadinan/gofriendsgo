@@ -16,9 +16,18 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final List<Map<String, dynamic>> _messages = [];
+  late List<Map<String, dynamic>> _messages ;
 
   final TextEditingController _messageController = TextEditingController();
+
+  @override
+  void initState() {
+    _messages=[
+      {'message': "shaham", 'isCurrentUser': false},
+        {'message': "hey", 'isCurrentUser': true},
+    ];
+    super.initState();
+  }
 
   void _addMessage(String message) {
     setState(() {
@@ -41,7 +50,7 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              reverse: true,
+              reverse: false,
               itemCount: _messages.length,
               itemBuilder: (context, index) {
                 final message = _messages[index];
@@ -63,8 +72,9 @@ class _ChatScreenState extends State<ChatScreen> {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          const Expanded(
+         Expanded(
               child: ChatField(
+                controller: _messageController,
             hinttext: 'Type your message',
           )),
           const CustomSizedBoxWidth(0.02),

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/detarture_model/departure_model.dart';
 import 'package:gofriendsgo/services/departure_service.dart';
-
+import 'package:gofriendsgo/services/api/app_apis.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 class FixedDeparturesViewModel extends ChangeNotifier {
   final FixedDeparturesService _service = FixedDeparturesService();
   FixedDeparturesModel? _fixedDeparturesResponse;
@@ -17,7 +18,7 @@ class FixedDeparturesViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _fixedDeparturesResponse = await _service.fetchFixedDepartures(tokenss);
+      _fixedDeparturesResponse = await _service.fetchFixedDepartures(SharedPreferecesServices.token!);
       if (_fixedDeparturesResponse != null) {
         log('Fixed departures fetched successfully');
         // if (_fixedDeparturesResponse!.data.fixedDepartures.isNotEmpty) {

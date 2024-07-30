@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/passport_model/passport_model.dart';
 import 'package:gofriendsgo/services/passport_service.dart';
-
+import 'package:gofriendsgo/services/api/app_apis.dart';
+import 'package:gofriendsgo/services/shared_preferences.dart';
 class PassportViewModel extends ChangeNotifier {
   final PassportService _service = PassportService();
   PassportModel? _passportResponse;
@@ -17,7 +18,7 @@ class PassportViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _passportResponse = await _service.fetchPassports(tokenss);
+      _passportResponse = await _service.fetchPassports(SharedPreferecesServices.token!);
       if (_passportResponse != null) {
         log('Passports fetched successfully');
         if (_passportResponse!.passports.isNotEmpty) {

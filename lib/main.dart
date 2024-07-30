@@ -24,7 +24,7 @@ void main() {
 
   HttpOverrides.global = MyHttpOverrides();
   runApp(MultiProvider(providers: [
-     ChangeNotifierProvider(create: (_) => ChatListViewmodel()),
+    ChangeNotifierProvider(create: (_) => ChatListViewmodel()),
     ChangeNotifierProvider(create: (_) => UserViewModel()),
     ChangeNotifierProvider(create: (_) => ServiceViewModel()),
     ChangeNotifierProvider(create: (_) => CarosualViewModel()),
@@ -33,9 +33,9 @@ void main() {
     ChangeNotifierProvider(create: (_) => VisaViewModel()),
     ChangeNotifierProvider(create: (_) => CabViewModel()),
     ChangeNotifierProvider(create: (_) => PassportViewModel()),
-    ChangeNotifierProvider(create: (_) => ProfileViewModel()..fetchProfile()),
+    ChangeNotifierProvider(create: (_) => ProfileViewModel()),
     ChangeNotifierProvider(
-        create: (_) => FixedDeparturesViewModel()..fetchFixedDepartures()),
+        create: (_) => FixedDeparturesViewModel()),
   ], child: const MyApp()));
 }
 
@@ -102,6 +102,3 @@ checkToken(SharedPreferecesServices sharedPreferecesServices,
 }
 
 typedef TokenCallback = void Function(String? token);
-String tokenss =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmQxZDk2NmQyODgyNTFiZDVmMGIzNGYxYzQ1NDRjNWZlNjgzOWQyNmFhM2NiMDRiZWRmYzhlOGFmOTllOTdkZmRhNjcxNzc5MzJkMzExNjYiLCJpYXQiOjE3MjIwODk0MzAuMTQ0ODc5LCJuYmYiOjE3MjIwODk0MzAuMTQ0ODgxLCJleHAiOjE3NTM2MjU0MzAuMTQyNzE4LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.OguaoHU2dvDw-tKuC0gyVvg0d9LFmpFxyecnPBAlJu90En7Figy3FOpsPt5ygP-HSrgj-_D5N_utQdh5yqblmKdzhxA1hM9uFly5PqC4Grbo01xuQ1t9YFIadDDKU4hi2LW3jwYttdaBZ7nV4YSuDnnQCmytgFnHEFQzxwLOeev7_6etp6K5XvXyBhrw8RxJG90Q5JjoOvQU0-Jdh-cM2UJViYA5qTra12Bx8H8LTctTn4IkIwpxcGptXmjep0csEBWAqC69Iv4gKsRn01eSaB9BqCRd8oyiGSiq0EUhhjOyD_5s5r03nYqR8zGmjO9kWelyMuTqoNk6Y0itHyY8c1vMJknRtsjz-WJvGQwmzidEt64W_uDFfJYPBCEgjs0FiMk3fs6NRm2cL9CeQd5ghYrK_nntudXRV5C3ZyKZLxxtTu4a4XVRivSFS5Q5x3vBE_G6x-VmYVZhsycKRfMfgc_9m5zfWp7RQd6L_p0qI4vWYT86cE4vgq128wn-h154BH_UtkhLWMchYNROkcfNx7oRX3OmXE1f9upTcnZlgyBpALyL-gdDcV4huSCH3CLkoYHVjrsKdLMl_aHvEJA_w-GodsdkvEz_5gvqAtu_svSrODhChtytytaiC5ji6Fwxu5tm7KbyEIypGstylmDXVoh8YgjCO9oRzIqX4HaH1v0';
-

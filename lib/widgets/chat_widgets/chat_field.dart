@@ -104,8 +104,8 @@ void showAttachmentOptions(BuildContext context) {
         content: Padding(
           padding: EdgeInsets.only(top: mediaqueryheight(0.03, context)),
           child: SizedBox(
-            width: 340,
-            height: 250,
+            width: mediaquerywidth(0.9, context),
+            height: mediaqueryheight(0.14, context),
             child: GridView.count(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -115,12 +115,9 @@ void showAttachmentOptions(BuildContext context) {
               children: [
                 _buildGridOption(context, Icons.contact_page, 'Document',
                     const Color.fromARGB(255, 61, 18, 181)),
-                _buildGridOption(context, Icons.person, 'Contact', Colors.blue),
-                _buildGridOption(
-                    context, Icons.camera_enhance, 'Camera', Colors.green),
+              
                 _buildGridOption(context, Icons.photo, 'Gallery', Colors.pink),
-                _buildGridOption(
-                    context, Icons.headphones, 'Audio', Colors.blue),
+               
               ],
             ),
           ),
