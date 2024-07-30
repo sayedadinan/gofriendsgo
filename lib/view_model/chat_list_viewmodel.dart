@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/chat_models/chat_list_model/chat_list_model.dart';
+import 'package:gofriendsgo/model/chat_models/chat_list_model.dart';
 import 'package:gofriendsgo/services/chats/get_chat_list_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 

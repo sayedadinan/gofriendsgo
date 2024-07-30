@@ -1,4 +1,6 @@
 
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
@@ -8,7 +10,6 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
-import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/count_down.dart';
 import 'package:gofriendsgo/widgets/otp_widgets/edit_text.dart';

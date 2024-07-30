@@ -23,7 +23,9 @@ class ChatAppbar extends StatelessWidget {
               end: Alignment.centerLeft)),
       child: Column(
         children: [
-          const CustomSizedBoxHeight(0.03),
+           SizedBox(
+            height: mediaqueryheight(0.05, context),
+          ),
           Row(
             children: [
               const CustomSizedBoxWidth(0.04),

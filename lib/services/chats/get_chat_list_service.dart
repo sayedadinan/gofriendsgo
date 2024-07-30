@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:http/http.dart' as http;
-import 'package:gofriendsgo/model/chat_models/chat_list_model/chat_list_model.dart';
+import 'package:gofriendsgo/model/chat_models/chat_list_model.dart';
 
 class ChatServices {
  

@@ -22,9 +22,10 @@ class ChatListScreen extends StatefulWidget {
 class _ChatListScreenState extends State<ChatListScreen> {
   @override
   void initState() {
-  context.read<ChatListViewmodel>().fetchChatList();
+    context.read<ChatListViewmodel>().fetchChatList();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +59,9 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     final chatListModels = value.chatsModel!.data[index];
                     return ListTile(
                       onTap: () {
-                        PageNavigations().push(ChatScreen());
+                        PageNavigations().push(ChatScreen(
+                          chatData: chatListModels,
+                        ));
                       },
                       title: CustomText(
                         weight: FontWeight.w600,

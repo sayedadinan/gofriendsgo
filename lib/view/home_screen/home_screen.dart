@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/profile_model/profile_model.dart';
+import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
+import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
  import 'package:gofriendsgo/utils/constants/paths.dart';
@@ -12,7 +13,6 @@ import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
-import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/carosual_widget.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/category_widgets.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widget.dart';
@@ -71,14 +71,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   final banner =
                       bannerViewModel.bannersResponse!.data.banners[0];
-                  return ClipRRect(
-                    child: SizedBox(
-                      height: mediaqueryheight(0.08, context),
-                      child: Image.network(
-                          "https://gofriendsgo.teqsuit.com/public/storage/${banner.image}",
-                          errorBuilder: (context, error, stackTrace) {
-                        return Image.asset(AppImages.goFriendsGoLogo);
-                      }, fit: BoxFit.cover),
+                  return GestureDetector(
+                    onTap: () {
+                      FetchMessagesService().sendMessageId(FetchMessagesRequest(chatId: 4), SharedPreferecesServices.token!);
+                    },
+                    child: ClipRRect(
+                      child: SizedBox(
+                        height: mediaqueryheight(0.08, context),
+                        child: Image.network(
+                            "https://gofriendsgo.teqsuit.com/public/storage/${banner.image}",
+                            errorBuilder: (context, error, stackTrace) {
+                          return Image.asset(AppImages.goFriendsGoLogo);
+                        }, fit: BoxFit.cover),
+                      ),
                     ),
                   );
                 }),

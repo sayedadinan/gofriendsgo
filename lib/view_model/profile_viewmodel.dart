@@ -1,11 +1,9 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/profile_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/text_controllers.dart';
-import 'package:gofriendsgo/services/api/app_apis.dart';
 class ProfileViewModel extends ChangeNotifier {
   final ProfileService _service = ProfileService();
   UserProfileModel? _profileResponse;

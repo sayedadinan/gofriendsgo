@@ -1,9 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/main.dart';
 import 'package:gofriendsgo/model/passport_model/passport_model.dart';
 import 'package:gofriendsgo/services/passport_service.dart';
-import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 class PassportViewModel extends ChangeNotifier {
   final PassportService _service = PassportService();
