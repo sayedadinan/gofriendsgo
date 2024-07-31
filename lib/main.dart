@@ -24,6 +24,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   HttpOverrides.global = MyHttpOverrides();
+  //test
   runApp(MultiProvider(providers: [
         ChangeNotifierProvider(create: (_) => FetchChatsViewModel()),
     ChangeNotifierProvider(create: (_) => ChatListViewmodel()),
