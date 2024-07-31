@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/story_model/story_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
@@ -36,7 +37,7 @@ class StoryItem extends StatelessWidget {
             },
             child: ClipOval(
               child: Image.network(
-                "https://gofriendsgo.certumventures.in/public/storage/${allStories[currentIndex].image}",
+                API.baseImageUrl+allStories[currentIndex].image,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset(AppImages.goFriendsGoLogo);

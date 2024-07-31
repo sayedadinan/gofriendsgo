@@ -13,7 +13,7 @@ class FixedDeparturesViewModel extends ChangeNotifier {
 
   Future<void> fetchFixedDepartures() async {
     _isLoading = true;
-    notifyListeners();
+   
 
     try {
       _fixedDeparturesResponse = await _service.fetchFixedDepartures(SharedPreferecesServices.token!);
@@ -23,6 +23,7 @@ class FixedDeparturesViewModel extends ChangeNotifier {
         //   log(_fixedDeparturesResponse!.data.fixedDepartures[0].);
         // }
       }
+    
     } catch (e) {
       log('Error fetching fixed departures: $e');
     } finally {

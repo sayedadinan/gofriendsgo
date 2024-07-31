@@ -14,7 +14,7 @@ class VisaViewModel extends ChangeNotifier {
 
   Future<void> fetchVisas() async {
     _isLoading = true;
-    notifyListeners();
+   
 
     try {
       _visaResponse = await _service.fetchVisas(SharedPreferecesServices.token!);
@@ -24,6 +24,7 @@ class VisaViewModel extends ChangeNotifier {
           log(_visaResponse!.visas[0].visaFor);
         }
       }
+    
     } catch (e) {
       log('Error fetching visas: $e');
     } finally {

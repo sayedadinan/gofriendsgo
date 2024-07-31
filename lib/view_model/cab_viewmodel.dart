@@ -14,7 +14,7 @@ class CabViewModel extends ChangeNotifier {
 
   Future<void> fetchCabs() async {
     _isLoading = true;
-    notifyListeners();
+    
 
     try {
       _cabResponse = await _service.fetchCabs(SharedPreferecesServices.token!);
