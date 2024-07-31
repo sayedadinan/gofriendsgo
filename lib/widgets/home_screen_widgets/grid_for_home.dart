@@ -1,4 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
@@ -57,7 +58,6 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                     // For the first 7 items or more items if expanded
                     return GestureDetector(
                       onTap: () {
-                       
                         // PageNavigations().push(const ChatScreen());
                       },
                       child: Column(
@@ -71,20 +71,20 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                             height: mediaqueryheight(0.06, context),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              // child: CachedNetworkImage(
-                              //   imageUrl:
-                              //       '${API.baseImageUrl + gridItems.image}',
-                              //   progressIndicatorBuilder:
-                              //       (context, url, downloadProgress) => Center(
-                              //     child: CircularProgressIndicator(
-                              //         value: downloadProgress.progress),
-                              //   ),
-                              //   errorWidget: (context, url, error) =>
-                              //       Icon(Icons.error),
-                              // ),
-                              child: Image.network(
-                                  fit: BoxFit.cover,
-                                  API.baseImageUrl + gridItems.image),
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    '${API.baseImageUrl + gridItems.image}',
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) => Center(
+                                  child: CircularProgressIndicator(
+                                      value: downloadProgress.progress),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
+                              // child: Image.network(
+                              //     fit: BoxFit.cover,
+                              //     API.baseImageUrl + gridItems.image),
                             ),
                           ),
                           SizedBox(

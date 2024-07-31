@@ -7,10 +7,10 @@ import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/story_display_screen/story_display_screen.dart';
 
 class StoryItem extends StatelessWidget {
- 
- final List<Story> allStories;
+  final List<Story> allStories;
   final int currentIndex;
- const StoryItem({super.key,  required this.allStories,required this.currentIndex});
+  const StoryItem(
+      {super.key, required this.allStories, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,11 @@ class StoryItem extends StatelessWidget {
               PageNavigations().push(StoryDisplayScreen(
                 currentIndex: currentIndex,
                 allStories: allStories,
-             
               ));
             },
             child: ClipOval(
               child: Image.network(
-                "https://gofriendsgo.teqsuit.com/public/storage/${allStories[currentIndex].image}",
+                "https://gofriendsgo.certumventures.in/public/storage/${allStories[currentIndex].image}",
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset(AppImages.goFriendsGoLogo);

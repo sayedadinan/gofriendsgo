@@ -32,7 +32,7 @@ class HomeCarosualWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(
-                                "https://gofriendsgo.teqsuit.com/public/storage/${carosuals.image}"),
+                                "https://gofriendsgo.certumventures.in/public/storage/${carosuals.image}"),
                             fit: BoxFit.cover),
                         borderRadius: BorderRadius.circular(12)));
               },

@@ -14,17 +14,18 @@ class StoriesViewModel extends ChangeNotifier {
 
   fetchStories() async {
     _isLoading = true;
-   
 
     try {
-      _storiesResponse = await _service.fetchStories(SharedPreferecesServices.token!);
+      _storiesResponse =
+          await _service.fetchStories(SharedPreferecesServices.token!);
       if (_storiesResponse != null) {
         log('Stories fetched successfully');
         // For example, logging the title of the first story item if it exists
         if (_storiesResponse!.data.stories.isNotEmpty) {
-          log(_storiesResponse!.data.stories[0].title);
+          log('from story image ${_storiesResponse!.data.stories[0].image}');
         }
-      } notifyListeners();
+      }
+      notifyListeners();
       return _storiesResponse;
     } catch (e) {
       // Handle error

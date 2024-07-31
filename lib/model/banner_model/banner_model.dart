@@ -73,4 +73,9 @@ class Banner {
       'image': image,
     };
   }
+
+  @override
+  String toString() {
+    return 'image $image';
+  }
 }

@@ -15,17 +15,19 @@ class BannerViewModel extends ChangeNotifier {
 
   Future<void> fetchBanners() async {
     _isLoading = true;
- 
 
     try {
-      _bannersResponse = await _service.fetchBanner(SharedPreferecesServices.token!);
+      _bannersResponse =
+          await _service.fetchBanner(SharedPreferecesServices.token!);
       if (_bannersResponse != null) {
         log('Banners fetched successfully');
+        // log(Banner());
         // For example, logging the name of the first banner item if it exists
         if (_bannersResponse!.data.banners.isNotEmpty) {
-          log(_bannersResponse!.data.banners[0].name);
+          log(_bannersResponse!.data.banners[0].image);
         }
-      }   notifyListeners();
+      }
+      notifyListeners();
     } catch (e) {
       // Handle error
       log('Error fetching banners: $e');
