@@ -4,6 +4,7 @@ import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/profile_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/text_controllers.dart';
+
 class ProfileViewModel extends ChangeNotifier {
   final ProfileService _service = ProfileService();
   UserProfileModel? _profileResponse;
@@ -30,7 +31,6 @@ class ProfileViewModel extends ChangeNotifier {
 
   Future<void> fetchProfile() async {
     _isLoading = true;
-    notifyListeners();
 
     try {
       log(SharedPreferecesServices.token!);
@@ -41,7 +41,8 @@ class ProfileViewModel extends ChangeNotifier {
         userPhone = _profileResponse!.data.user.phone;
         nameController.text = _profileResponse!.data.user.name;
         emailController.text = _profileResponse!.data.user.email;
-        mobileController.text = _profileResponse!.data.user.phone??"23423423423";
+        mobileController.text =
+            _profileResponse!.data.user.phone ?? "23423423423";
         profilePic = _profileResponse!.data.user.profilePic;
         companyNameController.text = _profileResponse!.data.user.companyName;
         dobController.text = _profileResponse!.data.user.dob;
@@ -59,6 +60,7 @@ class ProfileViewModel extends ChangeNotifier {
         log('Profile fetched successfully');
         log('User Name: $userName');
         log('User Email: $userEmail');
+        notifyListeners();
       }
     } catch (e) {
       log('Error fetching profile: $e');
