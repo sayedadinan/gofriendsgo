@@ -34,36 +34,38 @@ class ProfileViewModel extends ChangeNotifier {
 
     try {
       log(SharedPreferecesServices.token!);
-      _profileResponse = await _service.fetchProfile("");
+      _profileResponse = await _service.fetchProfile();
       if (_profileResponse != null) {
-        userName = _profileResponse!.data.user.name;
-        userEmail = _profileResponse!.data.user.email;
-        userPhone = _profileResponse!.data.user.phone;
-        nameController.text = _profileResponse!.data.user.name;
-        emailController.text = _profileResponse!.data.user.email;
+        userName = _profileResponse!.data.user.name ?? '';
+        userEmail = _profileResponse!.data.user.email ?? '';
+        userPhone = _profileResponse!.data.user.phone ?? '';
+        nameController.text = _profileResponse!.data.user.name ?? '';
+        emailController.text = _profileResponse!.data.user.email ?? '';
         mobileController.text =
             _profileResponse!.data.user.phone ?? "23423423423";
-        profilePic = _profileResponse!.data.user.profilePic;
-        companyNameController.text = _profileResponse!.data.user.companyName;
-        dobController.text = _profileResponse!.data.user.dob;
-        frequentController.text = _profileResponse!.data.user.frequentFlyerNo;
+        profilePic = _profileResponse!.data.user.profilePic ?? '';
+        companyNameController.text =
+            _profileResponse!.data.user.companyName ?? '';
+        dobController.text = _profileResponse!.data.user.dob ?? '';
+        frequentController.text =
+            _profileResponse!.data.user.frequentFlyerNo ?? '';
         additionalController.text =
-            _profileResponse!.data.user.additionalDetails;
-        emailVerified = _profileResponse!.data.user.emailVerifiedAt;
-        emailVerified = _profileResponse!.data.user.profilePic;
-        source = _profileResponse!.data.user.source;
-        specify = _profileResponse!.data.user.specify;
-        status = _profileResponse!.data.user.status;
+            _profileResponse!.data.user.additionalDetails ?? '';
+        emailVerified = _profileResponse!.data.user.emailVerifiedAt ?? '';
+        emailVerified = _profileResponse!.data.user.profilePic ?? '';
+        source = _profileResponse!.data.user.source ?? '';
+        specify = _profileResponse!.data.user.specify ?? '';
+        status = _profileResponse!.data.user.status ?? "";
         // profilePercentage=_profileResponse!.data.user.
         // Extract other fields as needed
 
         log('Profile fetched successfully');
-        log('User Name: $userName');
-        log('User Email: $userEmail');
+        // log('User Name: $userName');
+        // log('User Email: $userEmail');
         notifyListeners();
       }
     } catch (e) {
-      log('Error fetching profile: $e');
+      log('Error fetching profiiiile: $e');
     } finally {
       _isLoading = false;
       notifyListeners();

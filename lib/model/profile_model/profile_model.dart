@@ -1,11 +1,10 @@
-
-
 class UserProfileModel {
   final bool status;
-  final String message;
+  final dynamic message;
   final UserData data;
 
-  UserProfileModel({required this.status, required this.message, required this.data});
+  UserProfileModel(
+      {required this.status, required this.message, required this.data});
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
     return UserProfileModel(
@@ -29,29 +28,29 @@ class UserData {
 }
 
 class User {
-  final int id;
-  final String name;
-  final String email;
+  final dynamic id;
+  final dynamic name;
+  final dynamic email;
   final dynamic phone;
-  final String? profilePic;
-  final String companyName;
-  final String dob;
-  final String frequentFlyerNo;
-  final String additionalDetails;
-  final String? emailVerifiedAt;
-  final String? referral;
-  final String? source;
-  final String? specify;
-  final int status;
-  final String? otp;
-  final String? otpCreatedAt;
-  final int target;
-  final String createdAt;
-  final String updatedAt;
-  final int activeStatus;
-  final String avatar;
-  final int darkMode;
-  final String? messengerColor;
+  final dynamic profilePic;
+  final dynamic companyName;
+  final dynamic dob;
+  final dynamic frequentFlyerNo;
+  final dynamic additionalDetails;
+  final dynamic emailVerifiedAt;
+  final dynamic referral;
+  final dynamic source;
+  final dynamic specify;
+  final dynamic status;
+  final dynamic otp;
+  final dynamic otpCreatedAt;
+  final dynamic target;
+  final dynamic createdAt;
+  final dynamic updatedAt;
+  final dynamic activeStatus;
+  final dynamic avatar;
+  final dynamic darkMode;
+  final dynamic messengerColor;
   final List<Role> roles;
 
   User({
@@ -83,7 +82,8 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     var rolesFromJson = json['roles'] as List;
-    List<Role> roleList = rolesFromJson.map((role) => Role.fromJson(role)).toList();
+    List<Role> roleList =
+        rolesFromJson.map((role) => Role.fromJson(role)).toList();
 
     return User(
       id: json['id'],
@@ -115,11 +115,11 @@ class User {
 }
 
 class Role {
-  final int id;
-  final String name;
-  final String guardName;
-  final String createdAt;
-  final String updatedAt;
+  final dynamic id;
+  final dynamic name;
+  final dynamic guardName;
+  final dynamic createdAt;
+  final dynamic updatedAt;
 
   Role({
     required this.id,
