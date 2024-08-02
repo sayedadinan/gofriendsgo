@@ -7,11 +7,12 @@ class Inputfield extends StatelessWidget {
   final String hinttext;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
-   final String? Function(String?)? submitFun;
+  final String? Function(String?)? submitFun;
   final List<TextInputFormatter>? textInputFormatter;
   final Icon? icon;
   final Icon? prefixIcon;
-  final int? maxLengths;final bool? isEnabled;
+  final int? maxLengths;
+  final bool? isEnabled;
   const Inputfield({
     this.textInputFormatter,
     this.controller,
@@ -22,14 +23,17 @@ class Inputfield extends StatelessWidget {
     this.validator,
     this.icon,
     this.prefixIcon,
-    this.maxLengths, this.submitFun, this.isEnabled,
+    this.maxLengths,
+    this.submitFun,
+    this.isEnabled,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(enabled: isEnabled,
-        textInputAction: TextInputAction.done, // Changes the action button on the keyboard to "Done"
-          onFieldSubmitted: submitFun,
+    return TextFormField(
+      enabled: isEnabled,
+      textInputAction: TextInputAction.done,
+      onFieldSubmitted: submitFun,
       inputFormatters: textInputFormatter,
       maxLines: maxLengths,
       style: const TextStyle(color: Colors.black),
@@ -54,7 +58,7 @@ class Inputfield extends StatelessWidget {
         hintText: hinttext,
         prefixIcon: prefixIcon,
         suffixIcon: icon,
-        hintStyle: const TextStyle(color: Color.fromARGB(255, 183, 177, 177)),
+        hintStyle: const TextStyle(color: Color.fromARGB(255, 124, 114, 114)),
         labelStyle: const TextStyle(color: Colors.white),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
       ),

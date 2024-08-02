@@ -15,7 +15,7 @@ class ChatAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: mediaqueryheight(0.17, context),
+      height: mediaqueryheight(0.21, context),
       decoration: const BoxDecoration(
           gradient: LinearGradient(
               colors: AppColors.gradientColors,
@@ -23,7 +23,7 @@ class ChatAppbar extends StatelessWidget {
               end: Alignment.centerLeft)),
       child: Column(
         children: [
-           SizedBox(
+          SizedBox(
             height: mediaqueryheight(0.05, context),
           ),
           Row(

@@ -61,7 +61,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.bookmark_add,
+                  Icons.menu_book_rounded,
                 ),
                 label: "Bookings"),
             BottomNavigationBarItem(

@@ -3,11 +3,11 @@ import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
 import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
- import 'package:gofriendsgo/utils/constants/paths.dart';
+import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
- import 'package:gofriendsgo/utils/navigations/navigations.dart';
- import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
@@ -73,13 +73,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       bannerViewModel.bannersResponse!.data.banners[0];
                   return GestureDetector(
                     onTap: () {
-                      FetchMessagesService().sendMessageId(FetchMessagesRequest(chatId: 4), SharedPreferecesServices.token!);
+                      FetchMessagesService().sendMessageId(
+                          FetchMessagesRequest(chatId: 4),
+                          SharedPreferecesServices.token!);
                     },
                     child: ClipRRect(
                       child: SizedBox(
                         height: mediaqueryheight(0.08, context),
                         child: Image.network(
-                            "https://gofriendsgo.teqsuit.com/public/storage/${banner.image}",
+                            "https://gofriendsgo.certumventures.in/public/storage/${banner.image}",
                             errorBuilder: (context, error, stackTrace) {
                           return Image.asset(AppImages.goFriendsGoLogo);
                         }, fit: BoxFit.cover),
