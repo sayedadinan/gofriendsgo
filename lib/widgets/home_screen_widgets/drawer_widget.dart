@@ -29,49 +29,49 @@ class CustomDrawerWidget extends StatelessWidget {
               height: mediaqueryheight(0.36, context),
             ),
             const BackButtonOnDrawer(),
-            GestureDetector(
-              onTap: () {
-                PageNavigations().push(const ProfileEditingScreen());
-              },
-              child: Positioned(
+            Positioned(
+                child: Padding(
+              padding: EdgeInsets.only(
+                  left: 10, right: 10, top: mediaqueryheight(0.13, context)),
+              child: Material(
+                borderRadius: BorderRadius.circular(8),
+                elevation: 4,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.whiteColor,
+                      borderRadius: BorderRadius.circular(8)),
+                  width: double.infinity,
+                  height: mediaqueryheight(0.2, context),
                   child: Padding(
-                padding: EdgeInsets.only(
-                    left: 10, right: 10, top: mediaqueryheight(0.13, context)),
-                child: Material(
-                  borderRadius: BorderRadius.circular(8),
-                  elevation: 4,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
-                        borderRadius: BorderRadius.circular(8)),
-                    width: double.infinity,
-                    height: mediaqueryheight(0.2, context),
-                    child: const Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              DrawerCircleAvatar(),
-                              CustomSizedBoxWidth(0.03),
-                              PersonalDetails(),
-                              Spacer(),
-                              Icon(Icons.edit)
-                            ],
-                          ),
-                          CustomSizedBoxHeight(0.02),
-                          ProgressIndicatorOnDrawer(),
-                          CustomSizedBoxHeight(0.01),
-                          ProfileCompletionStatus()
-                        ],
-                      ),
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const DrawerCircleAvatar(),
+                            const CustomSizedBoxWidth(0.03),
+                            const PersonalDetails(),
+                            const Spacer(),
+                            GestureDetector(
+                              child: const Icon(Icons.edit),
+                              onTap: () {
+                                PageNavigations().push(const ProfileEditingScreen());
+                              },
+                            )
+                          ],
+                        ),
+                        const CustomSizedBoxHeight(0.02),
+                        const ProgressIndicatorOnDrawer(),
+                        const CustomSizedBoxHeight(0.01),
+                        const ProfileCompletionStatus()
+                      ],
                     ),
                   ),
                 ),
-              )),
-            )
+              ),
+            ))
           ]),
           const DrawerListItems()
         ],

@@ -28,7 +28,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
   @override
   void initState() {
-    func(context);
+    // func(context);
     super.initState();
   }
 

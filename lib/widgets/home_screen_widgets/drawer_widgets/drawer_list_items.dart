@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
@@ -40,7 +42,7 @@ class DrawerListItems extends StatelessWidget {
           },
         ),
         ListTile(
-          leading: const Icon(Icons.badge_outlined),
+          leading: const FaIcon(FontAwesomeIcons.briefcase,size: 20,),
           title: const Text(TextStrings.myBookings),
           onTap: () {
             PageNavigations().push(const BookingDetailsScreen(
@@ -49,7 +51,7 @@ class DrawerListItems extends StatelessWidget {
           },
         ),
         ListTile(
-          leading: const Icon(Icons.hail),
+          leading:  SvgPicture.asset(AppImages.personRaisedHand),
           title: const Text(TextStrings.salesExecutive),
           onTap: () {
             PageNavigations().push(const SalesExecutiveScreen());
@@ -83,7 +85,7 @@ class DrawerListItems extends StatelessWidget {
               final SharedPreferences sharedPreferences =
                   await SharedPreferences.getInstance();
               sharedPreferences.setString(TextStrings.authToken, "");
-              PageNavigations().pushAndRemoveUntill( LoginScreen());
+              PageNavigations().pushAndRemoveUntill(LoginScreen());
             },
             leading: const Icon(Icons.logout_outlined),
             title: const Text(TextStrings.logout)),

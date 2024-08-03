@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
@@ -53,8 +54,7 @@ class HomeAppbar extends StatelessWidget {
                       onTap: () {
                         PageNavigations().push(const NotificationScreen());
                       },
-                      child: const Icon(Icons.notifications_active,
-                          color: AppColors.whiteColor)),
+                      child:  SvgPicture.asset(AppImages.notificationsUnread)),
                   const CustomSizedBoxWidth(0.09),
                 ],
               ),

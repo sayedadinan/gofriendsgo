@@ -41,6 +41,8 @@ dependencies:
   get: ^4.6.6
   shared_preferences: ^2.2.3
   cached_network_image: ^3.3.1
+  font_awesome_flutter: ^10.7.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +94,8 @@ flutter:
     - assets/images/whatsapp  1.png
     - assets/images/passport.png
     - assets/images/visacheck.png
+    - assets/images/person_raised_hand.svg
+    - assets/images/notifications_unread.svg
         
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

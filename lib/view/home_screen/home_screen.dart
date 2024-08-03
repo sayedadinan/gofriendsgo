@@ -33,7 +33,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    //   func(context);
+    func(context);
     super.initState();
   }
 
@@ -79,12 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: ClipRRect(
                       child: SizedBox(
-                        height: mediaqueryheight(0.08, context),
+                        height: mediaqueryheight(0.15, context),
+                        width: double.infinity,
                         child: Image.network(
-                            "https://gofriendsgo.certumventures.in/public/storage/${banner.image}",
-                            errorBuilder: (context, error, stackTrace) {
-                          return Image.asset(AppImages.goFriendsGoLogo);
-                        }, fit: BoxFit.cover),
+                          "https://gofriendsgo.certumventures.in/public/storage/${banner.image}",
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset(AppImages.goFriendsGoLogo);
+                          },
+                        ),
                       ),
                     ),
                   );
