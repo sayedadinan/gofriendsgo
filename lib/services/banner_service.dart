@@ -10,6 +10,7 @@ class BannerService {
     try {
       final response = await http.get(
         Uri.parse('${API.baseUrl}/banners'),
+        
         headers: {'Authorization': 'Bearer $token'},
       );
 

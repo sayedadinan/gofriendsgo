@@ -15,7 +15,6 @@ class FetchChatsViewModel extends ChangeNotifier {
 
   Future<void> fetchMessages(FetchMessagesRequest fetchMessageRequest) async {
     _isLoading = true;
-    notifyListeners();
 
     try {
       _fetchMessagesModel = await _service.fetchMessages(
@@ -23,6 +22,8 @@ class FetchChatsViewModel extends ChangeNotifier {
       if (_fetchMessagesModel != null) {
         log('messages fetched successfully');
       }
+      
+      notifyListeners();
     } catch (e) {
       log('Error fetching cabs: $e');
     } finally {

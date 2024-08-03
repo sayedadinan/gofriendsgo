@@ -17,11 +17,11 @@ List<HomeGrid> homeGridItems = [
       titleText: 'Fixed Departure',
       subText: TextStrings.homeGridFirstSubText),
   HomeGrid(
-      imagePath: 'assets/images/gridImage.png',
+      imagePath: 'assets/images/passport.png',
       titleText: 'passport checklist',
       subText: TextStrings.homeGridSecondSubText),
   HomeGrid(
-      imagePath: 'assets/images/gridImage.png',
+      imagePath: 'assets/images/visacheck.png',
       titleText: 'visa checklist',
       subText: TextStrings.homeGridThirdSubText),
   HomeGrid(

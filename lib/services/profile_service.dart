@@ -6,8 +6,11 @@ import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class ProfileService {
-  Future<UserProfileModel?> fetchProfile(String token) async {
-    log(token);
+  Future<UserProfileModel?> fetchProfile() async {
+    // log(token);
+    // String token =
+    //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzkzZTc4YmJjMDBiNjEzODY2NTM2YTY1YTdmM2Y1NjgzOWFmZWVhMjBmMTgyMGY2ZTNmMDgwMzJjYjFiOTQ2ZTYxYzRkMTQ5MjE5NTlhZDMiLCJpYXQiOjE3MjI1MDYzMzAuODgxMzU0LCJuYmYiOjE3MjI1MDYzMzAuODgxMzU2LCJleHAiOjE3NTQwNDIzMzAuODc5OTE0LCJzdWIiOiIyMyIsInNjb3BlcyI6W119.b7F-dCgQQAsOL7DqjxU2Fzjz-euSWWWvAytouFzQCs5k1KJntoHavhwfwEtg09kwtf-UCA0JKS4wbXo_IBPzX7Ya4aF6QIcC29rLKqpv8NlePmIzQ-zbitiQkwSdsW59DyygFTTvp-Yy72e3LM7hKTQGyWedX8SE2JbsI0sKgJb8bOSCgYxv2FPRJunT5FaZlpGHnc-qkOJpsElJUjGbRH7-hE6GjUAViB9ue8TY9Xo02zYMpFNQ8QUR2CxgJhLMWjBmppOKkdy0swa7WiBZcjfr2D9dwHWK7QtR_4vXDlAGulKO-qOGTni6BEpXlw9VC-HEB8kZwGm7YKVkvl5XqvrbpOdv9IOIDCoQ3bjPJ14rSYLPqIhAyovgGr0dNeVX_XZnv-4Y83TmzE8E04rtmmQgLdJxVX8vWMjtXE74oVOb1f19vpGxiij7DsjU-ym3y6Z25RKaMHrvvKWiuUHCQ5g7f-mNWYbihWKnhj1L4jy8fyg2NWPVmgIrKD29KQJHEjBbnbX3VNYZsv77D-6JW9WNctCcLeb-cHvP2EuKokYT9yXZpDOMBNxyg2t6t77CCWeqzE0I6C2-soSFnw59r5X89RAH0VJ_d_kTH_ucJHRgsjlA4vg1OLO5ZKi1oHa29j6Z9VR4GOyDdyeBX1yfATZgd6vAJcc6URnUTiw3GTk';
+
     log("shaham ${SharedPreferecesServices.token}");
     log('Fetching profile started');
     try {
@@ -19,6 +22,7 @@ class ProfileService {
       );
 
       if (response.statusCode == 200) {
+        log('successsss');
         final data = jsonDecode(response.body);
         return UserProfileModel.fromJson(data);
       } else {

@@ -53,7 +53,7 @@ class HomeAppbar extends StatelessWidget {
                       onTap: () {
                         PageNavigations().push(const NotificationScreen());
                       },
-                      child: const Icon(Icons.notification_add,
+                      child: const Icon(Icons.notifications_active,
                           color: AppColors.whiteColor)),
                   const CustomSizedBoxWidth(0.09),
                 ],

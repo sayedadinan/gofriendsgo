@@ -49,7 +49,7 @@ class CategoriesWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       const CustomSizedBoxHeight(0.02),
-                      Image.asset(AppImages.tripImage),
+                      Image.asset(item.imagePath),
                       CustomText(
                         text: item.titleText,
                         fontFamily: CustomFonts.inter,
