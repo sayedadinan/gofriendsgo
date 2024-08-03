@@ -16,6 +16,8 @@ class AppImages {
   static const String linkedin = "assets/images/linkedin  1.png";
   static const String twitter = "assets/images/twitter  1.png";
   static const String whatsapp = "assets/images/whatsapp  1.png";
+  static const String  personRaisedHand = "assets/images/person_raised_hand.svg";
+  static const String  notificationsUnread = "assets/images/notifications_unread.svg";
 }
 
 class CustomFonts {

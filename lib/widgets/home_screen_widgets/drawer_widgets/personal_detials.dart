@@ -34,11 +34,11 @@ class PersonalDetails extends StatelessWidget {
                       weight: FontWeight.w600,
                       color: AppColors.blackColor),
                 ),
-                // CustomText(
-                //     text: value.userPhone!,
-                //     fontFamily: CustomFonts.poppins,
-                //     size: 0.035,
-                //     color: const Color.fromRGBO(20, 20, 20, .6)),
+                CustomText(
+                    text: value.userPhone!,
+                    fontFamily: CustomFonts.poppins,
+                    size: 0.035,
+                    color: const Color.fromRGBO(20, 20, 20, .6)),
                 SizedBox(
                      width: mediaquerywidth(0.35, context),
                   height: mediaqueryheight(0.03, context),
