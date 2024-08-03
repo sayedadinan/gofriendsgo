@@ -13,7 +13,7 @@ import 'package:gofriendsgo/widgets/fixed_departures/is_booked_container.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/package_amount.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/scheduled_days.dart';
 import 'package:provider/provider.dart';
-
+//
 class FixedDeparturesScreen extends StatefulWidget {
   const FixedDeparturesScreen({super.key});
 
