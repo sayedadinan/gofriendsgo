@@ -1,5 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/chat_models/chat_list_model.dart';
 import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
@@ -7,6 +9,7 @@ import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/view_model/fetching_chats.dart';
+import 'package:gofriendsgo/view_model/send_message_viewmodel.dart';
 import 'package:gofriendsgo/widgets/chat_widgets/chat_appbar.dart';
 import 'package:gofriendsgo/widgets/chat_widgets/chat_bubble.dart';
 import 'package:gofriendsgo/widgets/chat_widgets/chat_field.dart';
@@ -69,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                   ),
                 ),
-                _buildMessageInput(),
+                _buildMessageInput(widget.chatData.id),
               ],
             );
           }
@@ -79,7 +82,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget _buildMessageInput() {
+  Widget _buildMessageInput(id) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -101,7 +104,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 Icons.send,
                 color: AppColors.whiteColor,
               ),
-              onPressed: () {},
+              onPressed: () {
+                log('sending from screen');
+                context
+                    .read<SendMessageViewModel>()
+                    .sendMessage(message: _messageController.text, chatId: id);
+              },
             ),
           ),
         ],
