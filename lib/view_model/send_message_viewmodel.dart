@@ -17,6 +17,7 @@ class SendMessageViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
+     
       await _service.sendMessage(
         token: SharedPreferecesServices.token!,
         message: message,
@@ -24,6 +25,7 @@ class SendMessageViewModel extends ChangeNotifier {
         filePath: filePath,
       );
       log('Message sent successfully');
+       log(chatId.toString());
     } catch (e) {
       log('Error sending message: $e');
     } finally {

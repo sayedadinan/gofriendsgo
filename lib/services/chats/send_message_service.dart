@@ -20,7 +20,7 @@ class SendMessageService {
     request.fields['type'] = 'user';
     request.fields['message'] = message;
     request.fields['temporaryMsgId'] = 'temp_1';
-    request.fields['chat_id'] = '4';
+    request.fields['chat_id'] = chatId;
     if (filePath != null) {
       var file = await http.MultipartFile.fromPath(
         'file', // Field name

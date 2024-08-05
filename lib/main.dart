@@ -10,6 +10,7 @@ import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/cab_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/chat_list_viewmodel.dart';
+import 'package:gofriendsgo/view_model/create_chat_viewmodel.dart';
 import 'package:gofriendsgo/view_model/departure_viewmodel.dart';
 import 'package:gofriendsgo/view_model/fetching_chats.dart';
 import 'package:gofriendsgo/view_model/passport_viewmodel.dart';
@@ -27,6 +28,7 @@ void main() {
   HttpOverrides.global = MyHttpOverrides();
   //test
   runApp(MultiProvider(providers: [
+     ChangeNotifierProvider(create: (_) => CreateChatViewModel()),
     ChangeNotifierProvider(create: (_) => FetchChatsViewModel()),
     ChangeNotifierProvider(create: (_) => ChatListViewmodel()),
     ChangeNotifierProvider(create: (_) => UserViewModel()),
