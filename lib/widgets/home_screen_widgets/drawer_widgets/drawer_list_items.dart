@@ -11,10 +11,9 @@ import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/about_us_screen/about_us_screen.dart';
 import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
 import 'package:gofriendsgo/view/gallery_screen/gallery_screen.dart';
-import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view/meet_the_team_screen/meet_the_team_screen.dart';
 import 'package:gofriendsgo/view/sales_executive_screen/sales_executive_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widgets/showdialogu.dart';
 
 class DrawerListItems extends StatelessWidget {
   const DrawerListItems({
@@ -77,9 +76,7 @@ class DrawerListItems extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.star_half_rounded),
           title: const Text(TextStrings.rateUs),
-          onTap: () {
-            PageNavigations().push(const AboutUsScreen());
-          },
+          onTap: () {},
         ),
         ListTile(
           leading: const Icon(Icons.business),
@@ -90,10 +87,7 @@ class DrawerListItems extends StatelessWidget {
         ),
         ListTile(
             onTap: () async {
-              final SharedPreferences sharedPreferences =
-                  await SharedPreferences.getInstance();
-              sharedPreferences.setString(TextStrings.authToken, "");
-              PageNavigations().pushAndRemoveUntill(LoginScreen());
+              showLogoutDialog();
             },
             leading: const Icon(Icons.logout_outlined),
             title: const Text(TextStrings.logout)),
