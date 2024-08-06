@@ -2,11 +2,26 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/services/chats/send_message_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SendMessageViewModel extends ChangeNotifier {
   final SendMessageService _service = SendMessageService();
   bool _isLoading = false;
+  String? _imagePath;
+  
   bool get isLoading => _isLoading;
+  String? get imagePath => _imagePath;
+
+
+  // getImage()async{
+  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //   if (image!=null) {
+  //     _imagePath=image.path
+  //   } 
+  // }
+
+
+
 
   Future<void> sendMessage({
     required String message,

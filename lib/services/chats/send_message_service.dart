@@ -10,12 +10,8 @@ class SendMessageService {
     String? filePath,
   }) async {
     log('Sending message from service file');
-
     var uri = Uri.parse('${API.baseUrl}/sendMessage');
-
     var request = http.MultipartRequest('POST', uri);
-
-    // Add text fields
     request.fields['id'] = '2';
     request.fields['type'] = 'user';
     request.fields['message'] = message;
@@ -23,14 +19,12 @@ class SendMessageService {
     request.fields['chat_id'] = chatId;
     if (filePath != null) {
       var file = await http.MultipartFile.fromPath(
-        'file', // Field name
+        'file',
         filePath,
         filename: filePath.split('/').last,
       );
       request.files.add(file);
     }
-
-    // Add headers
     request.headers['Authorization'] = 'Bearer $token';
 
     try {

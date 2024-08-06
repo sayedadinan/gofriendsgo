@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/widgets/chat_widgets/gradient_icon.dart';
+import 'package:provider/provider.dart';
 
 class ChatField extends StatelessWidget {
   final TextEditingController? controller;
@@ -114,10 +115,17 @@ void showAttachmentOptions(BuildContext context) {
               // crossAxisSpacing: 8.0,
               children: [
                 _buildGridOption(context, Icons.contact_page, 'Document',
-                    const Color.fromARGB(255, 61, 18, 181)),
-              
-                _buildGridOption(context, Icons.photo, 'Gallery', Colors.pink),
-               
+                    const Color.fromARGB(255, 61, 18, 181),(){}),
+                _buildGridOption(
+                  context,
+                  Icons.photo,
+                  'Gallery',
+                  Colors.pink,
+                (){
+                  // context.read<>()
+                }
+                
+                ),
               ],
             ),
           ),
@@ -127,13 +135,10 @@ void showAttachmentOptions(BuildContext context) {
   );
 }
 
-Widget _buildGridOption(
-    BuildContext context, IconData icon, String label, Color color) {
+Widget _buildGridOption(BuildContext context, IconData icon, String label,
+    Color color, Function()? ontap) {
   return InkWell(
-    onTap: () {
-      // Handle the action for the selected option
-      Navigator.of(context).pop();
-    },
+    onTap: ontap,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [

@@ -4,11 +4,18 @@ import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/profile_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/constants/text_controllers.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+
+enum FromDates { dob, marriage }
 
 class ProfileViewModel extends ChangeNotifier {
   final ProfileService _service = ProfileService();
   UserProfileModel? _profileResponse;
   bool _isLoading = false;
+  bool _onEditPressed = false;
+  
+  String? _newMarriageAnniversary;
 
   // Separate variables for specific data
   String? userName;
@@ -25,9 +32,57 @@ class ProfileViewModel extends ChangeNotifier {
   String? source;
   String? specify;
   int? status;
+  String? _newImagePath;
 
   UserProfileModel? get profileResponse => _profileResponse;
   bool get isLoading => _isLoading;
+  String? get newImagePath => _newImagePath;
+  bool get onEditPressed => _onEditPressed;
+
+  String? get newMarriageAnniversary => _newMarriageAnniversary;
+
+  addNewImage() async {
+    final imagePath =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (imagePath != null) {
+      _newImagePath = imagePath.path;
+    }
+    notifyListeners();
+  }
+
+  disposing() {
+    _newImagePath = null;
+    _onEditPressed = false;
+    _newMarriageAnniversary = null;
+   
+    notifyListeners();
+    log("hey man");
+  }
+
+  void editButtonPressed() {
+    _onEditPressed = true;
+    log("gekki");
+    notifyListeners();
+  }
+
+  Future<void> dateSelection(FromDates from, context) async {
+    DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1996),
+      lastDate: DateTime.now(),
+    );
+
+    if (selectedDate != null) {
+      final DateFormat formatter = DateFormat('d MMMM yyyy');
+      final String formattedDate = formatter.format(selectedDate);
+
+      from == FromDates.dob
+          ? dob = formattedDate
+          : _newMarriageAnniversary = formattedDate;
+    }
+    notifyListeners();
+  }
 
   Future<void> fetchProfile() async {
     _isLoading = true;
@@ -46,7 +101,7 @@ class ProfileViewModel extends ChangeNotifier {
         profilePic = _profileResponse!.data.user.profilePic ?? '';
         companyNameController.text =
             _profileResponse!.data.user.companyName ?? '';
-        dobController.text = _profileResponse!.data.user.dob ?? '';
+        dob = _profileResponse!.data.user.dob;
         frequentController.text =
             _profileResponse!.data.user.frequentFlyerNo ?? '';
         additionalController.text =
@@ -62,7 +117,6 @@ class ProfileViewModel extends ChangeNotifier {
         log('Profile fetched successfully');
         // log('User Name: $userName');
         // log('User Email: $userEmail');
-        notifyListeners();
       }
     } catch (e) {
       log('Error fetching profiiiile: $e');
