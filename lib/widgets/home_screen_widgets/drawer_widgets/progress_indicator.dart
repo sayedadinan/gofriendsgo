@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
+import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class ProgressIndicatorOnDrawer extends StatelessWidget {
   const ProgressIndicatorOnDrawer({
@@ -8,11 +10,17 @@ class ProgressIndicatorOnDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-      minHeight: mediaqueryheight(0.01, context),
-      value: 0.4,
-      borderRadius: BorderRadius.circular(90),
-      valueColor: const AlwaysStoppedAnimation(Color.fromRGBO(61, 9, 174, 1)),
+    return Consumer<ProfileViewModel>(
+      builder: (context, value, child) {
+        print(value.profilePercentage);
+        return LinearProgressIndicator(
+          minHeight: mediaqueryheight(0.01, context),
+          value: value.profilePercentage,
+          borderRadius: BorderRadius.circular(90),
+          valueColor:
+              const AlwaysStoppedAnimation(Color.fromRGBO(61, 9, 174, 1)),
+        );
+      },
     );
   }
 }

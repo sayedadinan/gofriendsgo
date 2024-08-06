@@ -21,7 +21,7 @@ class ProfileViewModel extends ChangeNotifier {
   String? userName;
   String? userEmail;
   String? userPhone;
-  String? profilePercentage;
+  double? profilePercentage;
   String? profilePic;
   String? companyName;
   String? dob;
@@ -32,7 +32,7 @@ class ProfileViewModel extends ChangeNotifier {
   String? source;
   String? specify;
   int? status;
-  String? _newImagePath;
+  String? subString;  String? _newImagePath;
 
   UserProfileModel? get profileResponse => _profileResponse;
   bool get isLoading => _isLoading;
@@ -111,15 +111,15 @@ class ProfileViewModel extends ChangeNotifier {
         source = _profileResponse!.data.user.source ?? '';
         specify = _profileResponse!.data.user.specify ?? '';
         status = _profileResponse!.data.user.status ?? "";
-        // profilePercentage=_profileResponse!.data.user.
-        // Extract other fields as needed
+        subString = userName!.substring(0, 2);
 
         log('Profile fetched successfully');
         // log('User Name: $userName');
         // log('User Email: $userEmail');
+        notifyListeners();
       }
     } catch (e) {
-      log('Error fetching profiiiile: $e');
+      log('Error fetching profile: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -151,5 +151,42 @@ class ProfileViewModel extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  void calculateProfilePercentage() {
+    // ignore: unused_local_variable
+    int nullCount = 0;
+    int notNullCount = 0;
+
+    // Check each variable
+    List<String?> variables = [
+      userName,
+      userEmail,
+      userPhone,
+      profilePic,
+      companyName,
+      dob,
+      frequentFlyerNo,
+      additionalDetails,
+      emailVerified,
+      referral,
+      source,
+      specify,
+    ];
+
+    for (var variable in variables) {
+      if (variable == null) {
+        nullCount++;
+      } else {
+        notNullCount++;
+      }
+    }
+
+    double ratio = notNullCount / variables.length;
+
+    // Round to two decimal places and assign to profilePercentage
+    profilePercentage = double.parse(ratio.toStringAsFixed(2));
+
+    log('Profile completeness percentage: $profilePercentage');
   }
 }

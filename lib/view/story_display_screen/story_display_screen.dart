@@ -42,7 +42,7 @@ class _StoryDisplayScreenState extends State<StoryDisplayScreen> {
   void _startTimer() {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() {
-        _progress += 0.00333;
+        _progress += 0.01; // Adjust this value to reduce display time
         if (_progress >= 1.0) {
           _progress = 0.0;
           _currentIndex++;

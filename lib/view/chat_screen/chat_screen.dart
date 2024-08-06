@@ -29,7 +29,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   void initState() {
-    context.read<FetchChatsViewModel>().fetchMessages(widget.chatData.id);
+    // context
+    //     .read<FetchChatsViewModel>()
+    //     .fetchMessages(FetchMessagesRequest(chatId: widget.chatData.id));
 
     super.initState();
   }

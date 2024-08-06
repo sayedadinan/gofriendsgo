@@ -10,10 +10,10 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/about_us_screen/about_us_screen.dart';
 import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
-import 'package:gofriendsgo/view/login_screen/login_screen.dart';
+import 'package:gofriendsgo/view/gallery_screen/gallery_screen.dart';
 import 'package:gofriendsgo/view/meet_the_team_screen/meet_the_team_screen.dart';
 import 'package:gofriendsgo/view/sales_executive_screen/sales_executive_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widgets/showdialogu.dart';
 
 class DrawerListItems extends StatelessWidget {
   const DrawerListItems({
@@ -42,7 +42,10 @@ class DrawerListItems extends StatelessWidget {
           },
         ),
         ListTile(
-          leading: const FaIcon(FontAwesomeIcons.briefcase,size: 20,),
+          leading: const FaIcon(
+            FontAwesomeIcons.briefcase,
+            size: 20,
+          ),
           title: const Text(TextStrings.myBookings),
           onTap: () {
             PageNavigations().push(const BookingDetailsScreen(
@@ -51,7 +54,7 @@ class DrawerListItems extends StatelessWidget {
           },
         ),
         ListTile(
-          leading:  SvgPicture.asset(AppImages.personRaisedHand),
+          leading: SvgPicture.asset(AppImages.personRaisedHand),
           title: const Text(TextStrings.salesExecutive),
           onTap: () {
             PageNavigations().push(const SalesExecutiveScreen());
@@ -64,14 +67,16 @@ class DrawerListItems extends StatelessWidget {
             PageNavigations().push(const MeetTheTeamScreen());
           },
         ),
-        const ListTile(
-            leading: Icon(Icons.collections), title: Text(TextStrings.gallery)),
+        ListTile(
+            onTap: () {
+              PageNavigations().push(const GalleryScreen());
+            },
+            leading: Icon(Icons.collections),
+            title: Text(TextStrings.gallery)),
         ListTile(
           leading: const Icon(Icons.star_half_rounded),
           title: const Text(TextStrings.rateUs),
-          onTap: () {
-            PageNavigations().push(const AboutUsScreen());
-          },
+          onTap: () {},
         ),
         ListTile(
           leading: const Icon(Icons.business),
@@ -82,10 +87,7 @@ class DrawerListItems extends StatelessWidget {
         ),
         ListTile(
             onTap: () async {
-              final SharedPreferences sharedPreferences =
-                  await SharedPreferences.getInstance();
-              sharedPreferences.setString(TextStrings.authToken, "");
-              PageNavigations().pushAndRemoveUntill(LoginScreen());
+              showLogoutDialog();
             },
             leading: const Icon(Icons.logout_outlined),
             title: const Text(TextStrings.logout)),
