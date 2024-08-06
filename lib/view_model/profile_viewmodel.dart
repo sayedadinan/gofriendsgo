@@ -25,7 +25,7 @@ class ProfileViewModel extends ChangeNotifier {
   String? source;
   String? specify;
   int? status;
-
+  String? subString;
   UserProfileModel? get profileResponse => _profileResponse;
   bool get isLoading => _isLoading;
 
@@ -56,6 +56,7 @@ class ProfileViewModel extends ChangeNotifier {
         source = _profileResponse!.data.user.source ?? '';
         specify = _profileResponse!.data.user.specify ?? '';
         status = _profileResponse!.data.user.status ?? "";
+        subString = userName!.substring(0, 2);
         // profilePercentage=_profileResponse!.data.user.
         // Extract other fields as needed
 

@@ -13,13 +13,12 @@ class BannerService {
         
         headers: {'Authorization': 'Bearer $token'},
       );
-
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
         return BannersModel.fromJson(parsed);
       } else {
         log('Error: Failed to load carousals with status code ${response.statusCode}');
-        throw Exception('Failed to load carousals');
+        throw Exception('Failed to load carousal this error is showing from banner service area ');
       }
     } catch (e) {
       log('Exception caught: $e');
