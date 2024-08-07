@@ -1,9 +1,7 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
 import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
-import 'package:gofriendsgo/services/shared_preferences.dart';
 
 class FetchChatsViewModel extends ChangeNotifier {
   final FetchMessagesService _service = FetchMessagesService();
