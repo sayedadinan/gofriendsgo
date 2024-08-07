@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
-import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
+// import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
 
 class FetchChatsViewModel extends ChangeNotifier {
-  final FetchMessagesService _service = FetchMessagesService();
+  // final FetchMessagesService _service = FetchMessagesService();
   FetchMessagesModel? _fetchMessagesModel;
   bool _isLoading = false;
 

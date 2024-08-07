@@ -22,7 +22,7 @@ class HeadingAndDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: AppColors.backgroundColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(8), topRight: Radius.circular(8))),

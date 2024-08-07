@@ -81,7 +81,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         selectedItemColor: AppColors.blackColor,
         unselectedItemColor:AppColors.blackColor,
         showUnselectedLabels: true,
-        unselectedLabelStyle: TextStyle(color:Color.fromRGBO(94, 95, 96,1))
+        unselectedLabelStyle: const TextStyle(color:Color.fromRGBO(94, 95, 96,1))
 ,        onTap: (value) {
           setState(() {
             currentIndex = value;
