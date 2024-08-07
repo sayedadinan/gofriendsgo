@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:gofriendsgo/model/user_model/user_details_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
+import 'package:gofriendsgo/utils/constants/app_textfields.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
@@ -28,10 +29,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _refferelController = TextEditingController();
   final TextEditingController _sourceController = TextEditingController();
+  final TextEditingController _reasonController = TextEditingController();
   final GlobalKey<FormState> _signUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
+    final userViewModel = Provider.of<UserViewModel>(context, listen: true);
     return Scaffold(
       body: Padding(
         padding: commonScreenPadding(context),
@@ -123,7 +125,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       prefixIcon: const Icon(Icons.tag),
                     ),
                     const CustomSizedBoxHeight(0.02),
-                    StaticDropdownField()
+                    StaticDropdownField(),
+                    const CustomSizedBoxHeight(0.02),
+                    Consumer<UserViewModel>(
+                      builder: (context, value, child) {
+                        if (value.sourceController == 'Other') {
+                          return Inputfield(
+                            controller: _reasonController,
+                            maxLengths: 5,
+                            hinttext: 'from where you heard about us',
+                          );
+                        } else {
+                          const SizedBox();
+                        }
+                        return const SizedBox();
+                      },
+                    )
                   ],
                 ),
               ),
@@ -157,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 : _refferelController.text,
                             source: _sourceController.text,
                           );
-                         await userViewModel.registerUser(userDetails);
+                          await userViewModel.registerUser(userDetails);
                           PageNavigations().push(OtpVerifyScreen(
                             signUpEmail: _emailController.text,
                             signUpName: _nameController.text,

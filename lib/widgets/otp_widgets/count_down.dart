@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/services/sign_up_service.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
-import 'package:gofriendsgo/view_model/user_details.dart';
-import 'package:provider/provider.dart';
 
 class OtpCountDown extends StatefulWidget {
   final String email;
-  const OtpCountDown({
+  final UserService _userService = UserService();
+  OtpCountDown({
     super.key,
     required this.email,
   });
@@ -50,7 +50,8 @@ class _OtpCountDownState extends State<OtpCountDown> {
                 },
                 child: GestureDetector(
                   onTap: () {
-                    context.read<UserViewModel>().loginUser(widget.email);
+                    widget._userService.postEmail(widget.email);
+                    // context.read<UserViewModel>().loginUser(widget.email);
                   },
                   child: const CustomText(
                     fontFamily: CustomFonts.poppins,

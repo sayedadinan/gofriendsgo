@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/fixed_departures.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';

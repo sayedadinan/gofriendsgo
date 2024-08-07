@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/passport_checklist_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';

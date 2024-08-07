@@ -20,6 +20,7 @@ class OtpVerifyScreen extends StatefulWidget {
   final String? loginEmail;
   final String? signUpEmail;
   final String? signUpName;
+
   const OtpVerifyScreen(
       {super.key,
       this.userDetails,
@@ -164,7 +165,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               OtpCountDown(
-                                email: widget.loginEmail!,
+                                email: widget.loginEmail ?? widget.signUpEmail!,
                               ),
                             ],
                           ),
