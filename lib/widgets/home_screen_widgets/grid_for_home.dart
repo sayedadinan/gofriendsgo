@@ -1,4 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/services/api/app_apis.dart';
@@ -6,6 +7,8 @@ import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
+import 'package:gofriendsgo/utils/navigations/navigations.dart';
+import 'package:gofriendsgo/view/chat_screen/create_chat_screen.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -58,7 +61,8 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                     // For the first 7 items or more items if expanded
                     return GestureDetector(
                       onTap: () {
-                        // PageNavigations().push(const ChatScreen());
+                 
+                        PageNavigations().push( CreateChatScreen(serviceName: gridItems.name,image: gridItems.image,));
                       },
                       child: Column(
                         children: [

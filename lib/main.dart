@@ -9,12 +9,13 @@ import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/cab_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
-import 'package:gofriendsgo/view_model/chat_list_viewmodel.dart';
+import 'package:gofriendsgo/view_model/chats/chat_list_viewmodel.dart';
+import 'package:gofriendsgo/view_model/chats/create_chat_viewmodel.dart';
 import 'package:gofriendsgo/view_model/departure_viewmodel.dart';
-import 'package:gofriendsgo/view_model/fetching_chats.dart';
+import 'package:gofriendsgo/view_model/chats/fetching_chats.dart';
 import 'package:gofriendsgo/view_model/passport_viewmodel.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
-import 'package:gofriendsgo/view_model/send_message_viewmodel.dart';
+import 'package:gofriendsgo/view_model/chats/send_message_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
@@ -27,7 +28,8 @@ void main() {
   HttpOverrides.global = MyHttpOverrides();
   //test
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => FetchChatsViewModel()),
+     ChangeNotifierProvider(create: (_) => CreateChatViewModel()),
+   ChangeNotifierProvider(create: (_) => FetchChatsViewModel()),
     ChangeNotifierProvider(create: (_) => ChatListViewmodel()),
     ChangeNotifierProvider(create: (_) => UserViewModel()),
     ChangeNotifierProvider(create: (_) => ServiceViewModel()),

@@ -16,22 +16,22 @@ class FetchChatsViewModel extends ChangeNotifier {
   Future<void> fetchMessages(FetchMessagesRequest fetchMessageRequest) async {
     _isLoading = true;
 
-    try {
-      _fetchMessagesModel = await _service.fetchMessages(
-          fetchMessageRequest, SharedPreferecesServices.token!);
-      if (_fetchMessagesModel != null) {
-        log('messages fetched successfully');
-      }
+  //   try {
+  //     _fetchMessagesModel = await _service.fetchMessages(
+  //         fetchMessageRequest, SharedPreferecesServices.token!);
+  //     if (_fetchMessagesModel != null) {
+  //       log('messages fetched successfully');
+  //     }
 
-      notifyListeners();
-    } catch (e) {
-      log('Error fetching cabs: $e');
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
-}
+  //     notifyListeners();
+  //   } catch (e) {
+  //     log('Error fetching cabs: $e');
+  //   } finally {
+  //     _isLoading = false;
+  //     notifyListeners();
+  //   }
+  // }
+//}
 
 // import 'dart:async';
 // import 'dart:developer';
@@ -85,3 +85,4 @@ class FetchChatsViewModel extends ChangeNotifier {
 //     super.dispose();
 //   }
 // }
+  }}

@@ -7,7 +7,7 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/chat_screen/chat_screen.dart';
-import 'package:gofriendsgo/view_model/chat_list_viewmodel.dart';
+import 'package:gofriendsgo/view_model/chats/chat_list_viewmodel.dart';
 import 'package:gofriendsgo/widgets/booking_details_widgets/booking_details_searchbar.dart';
 import 'package:provider/provider.dart';
 

@@ -18,6 +18,7 @@ class LabeledInputField extends StatelessWidget {
   final String? Function(String?)? submitFun;
   final List<TextInputFormatter>? textInputFormatter;
   final TextInputType? keyboardType;
+  
 
   const LabeledInputField(
       {this.keyboardType,
@@ -47,6 +48,7 @@ class LabeledInputField extends StatelessWidget {
           color: textColor,
         ),
         Inputfield(
+          isEnabled: isEnabled,
           submitFun: submitFun,
           keyboardType: keyboardType,
           textInputFormatter: textInputFormatter,

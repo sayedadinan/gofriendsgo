@@ -41,7 +41,12 @@ class Inputfield extends StatelessWidget {
       controller: controller,
       validator: validator,
       decoration: InputDecoration(
+        disabledBorder:OutlineInputBorder(
+          
+            borderSide: const BorderSide(color: Color.fromARGB(82, 136, 132, 136)),
+            borderRadius: BorderRadius.circular(12)), 
         enabledBorder: OutlineInputBorder(
+          
             borderSide: const BorderSide(color: Color.fromARGB(54, 38, 8, 37)),
             borderRadius: BorderRadius.circular(12)),
         focusedBorder: const OutlineInputBorder(
