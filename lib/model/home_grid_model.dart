@@ -18,11 +18,11 @@ List<HomeGrid> homeGridItems = [
       subText: TextStrings.homeGridFirstSubText),
   HomeGrid(
       imagePath: 'assets/images/passport.png',
-      titleText: 'passport checklist',
+      titleText: 'Passport checklist',
       subText: TextStrings.homeGridSecondSubText),
   HomeGrid(
       imagePath: 'assets/images/visacheck.png',
-      titleText: 'visa checklist',
+      titleText: 'Visa checklist',
       subText: TextStrings.homeGridThirdSubText),
   HomeGrid(
       imagePath: 'assets/images/gridImage.png',

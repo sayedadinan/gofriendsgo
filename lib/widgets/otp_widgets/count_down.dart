@@ -2,10 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
+import 'package:gofriendsgo/view_model/user_details.dart';
+import 'package:provider/provider.dart';
 
 class OtpCountDown extends StatefulWidget {
+  final String email;
   const OtpCountDown({
     super.key,
+    required this.email,
   });
 
   @override
@@ -44,12 +48,17 @@ class _OtpCountDownState extends State<OtpCountDown> {
                     count = 20;
                   });
                 },
-                child: const CustomText(
-                  fontFamily: CustomFonts.poppins,
-                  text: ' Resend',
-                  weight: FontWeight.w600,
-                  size: 0.04,
-                  color: Colors.black,
+                child: GestureDetector(
+                  onTap: () {
+                    context.read<UserViewModel>().loginUser(widget.email);
+                  },
+                  child: const CustomText(
+                    fontFamily: CustomFonts.poppins,
+                    text: ' Resend',
+                    weight: FontWeight.w600,
+                    size: 0.04,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ],
