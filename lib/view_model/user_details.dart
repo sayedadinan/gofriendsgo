@@ -9,7 +9,6 @@ import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view/otp_verify_screen/otp_screen.dart';
 
 class UserViewModel extends ChangeNotifier {
-  String sourceController = '';
   final UserService _userService = UserService();
 
   bool _isLoading = false;
@@ -17,6 +16,14 @@ class UserViewModel extends ChangeNotifier {
   int? otpCode;
   String? _message;
   String? get message => _message;
+  String _sourceController = '';
+
+  String get sourceController => _sourceController;
+
+  set sourceController(String value) {
+    _sourceController = value;
+    notifyListeners();
+  }
 
   Future<void> registerUser(UserDetails userDetails) async {
     log('reached');

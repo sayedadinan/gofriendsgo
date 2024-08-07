@@ -1,5 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
@@ -78,7 +80,9 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                             right: 0,
                             child: GestureDetector(
                               onTap: () {
-                                  value.onEditPressed ? value.addNewImage() : null;
+                                value.onEditPressed
+                                    ? value.addNewImage()
+                                    : null;
                               },
                               child: Container(
                                 decoration: const BoxDecoration(
@@ -88,7 +92,8 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                                 padding: const EdgeInsets.all(6),
                                 child: Icon(Icons.camera_alt_outlined,
                                     size: mediaquerywidth(0.06, context),
-                                    color: const Color.fromRGBO(165, 128, 199, 1)),
+                                    color:
+                                        const Color.fromRGBO(165, 128, 199, 1)),
                               ),
                             ))
                       ]),
@@ -235,23 +240,37 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                           function: value.onEditPressed
                               ? () {
                                   final updatedData = {
-                                    "name": nameController.text,
-                                    "company_name": companyNameController.text,
-                                    "email": emailController.text,
-                                    "dob": value.dob,
-                                    "phone": mobileController.text,
+                                    "name": nameController.text.isEmpty
+                                        ? ""
+                                        : nameController.text,
+                                    "company_name":
+                                        companyNameController.text.isEmpty
+                                            ? ""
+                                            : companyNameController.text,
+                                    "email": emailController.text.isEmpty
+                                        ? ""
+                                        : emailController.text,
+                                    "dob": value.dob ?? "",
+                                    "phone": mobileController.text.isEmpty
+                                        ? ""
+                                        : mobileController.text,
                                     "frequent_flyer_no":
-                                        frequentController.text,
+                                        frequentController.text.isEmpty
+                                            ? ""
+                                            : frequentController.text,
                                     "additional_details":
-                                        additionalController.text,
+                                        additionalController.text.isEmpty
+                                            ? ""
+                                            : additionalController.text,
                                   };
+                                  log('shahu ${value.profileResponse!.data.user.id}');
                                   context
                                       .read<ProfileViewModel>()
-                                      .updateProfile(13, updatedData);
+                                      .updateProfile(
+                                          value.profileResponse!.data.user.id,
+                                          updatedData);
                                 }
-                              : () {
-                               
-                              },
+                              : () {},
                           text: 'Save',
                           fontSize: 0.04,
                           buttonTextColor: AppColors.whiteColor,
