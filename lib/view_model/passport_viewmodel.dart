@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/passport_model/passport_model.dart';
 import 'package:gofriendsgo/services/passport_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
+
 class PassportViewModel extends ChangeNotifier {
   final PassportService _service = PassportService();
   PassportModel? _passportResponse;
@@ -13,16 +14,18 @@ class PassportViewModel extends ChangeNotifier {
 
   Future<void> fetchPassports() async {
     _isLoading = true;
-    notifyListeners();
 
     try {
-      _passportResponse = await _service.fetchPassports(SharedPreferecesServices.token!);
+      _passportResponse =
+          await _service.fetchPassports(SharedPreferecesServices.token!);
       if (_passportResponse != null) {
         log('Passports fetched successfully');
         if (_passportResponse!.passports.isNotEmpty) {
           log(_passportResponse!.passports[0].title);
         }
       }
+
+      notifyListeners();
     } catch (e) {
       log('Error fetching passports: $e');
     } finally {
