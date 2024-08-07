@@ -72,8 +72,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: CachedNetworkImage(
-                                imageUrl:
-                                    API.baseImageUrl + gridItems.image,
+                                imageUrl: API.baseImageUrl + gridItems.image,
                                 progressIndicatorBuilder:
                                     (context, url, downloadProgress) => Center(
                                   child: CircularProgressIndicator(

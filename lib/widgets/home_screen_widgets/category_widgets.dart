@@ -21,7 +21,7 @@ class CategoriesWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: mediaquerywidth(0.04, context)),
       child: SizedBox(
-         height: mediaqueryheight(0.34, context),
+        height: mediaqueryheight(0.34, context),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 4,
@@ -47,42 +47,51 @@ class CategoriesWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       color: AppColors.whiteColor),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const CustomSizedBoxHeight(0.02),
-                      Image.asset(item.imagePath),
-                      CustomText(
-                        text: item.titleText,
-                        fontFamily: CustomFonts.inter,
-                        size: 0.03,
-                        color: AppColors.blackColor,
-                        weight: FontWeight.w700,
+                      Column(
+                        children: [
+                          Image.asset(item.imagePath),
+                        ],
                       ),
-                      const CustomSizedBoxHeight(0.01),
-                      CustomText(
-                          textAlign: TextAlign.center,
-                          text: item.subText,
-                          fontFamily: CustomFonts.inter,
-                          size: 0.02,
-                          color: AppColors.blackColor),
-                      const CustomSizedBoxHeight(0.01),
-                      Container(
-                        decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                                end: Alignment.centerLeft,
-                                begin: Alignment.centerRight,
-                                colors: AppColors.gradientColors),
-                            borderRadius: BorderRadius.circular(12)),
-                        width: mediaquerywidth(0.23, context),
-                        height: mediaqueryheight(0.04, context),
-                        child: const Center(
-                          child: CustomText(
-                              text: 'Get Details',
+                      Column(
+                        children: [
+                          CustomText(
+                            text: item.titleText,
+                            fontFamily: CustomFonts.inter,
+                            size: 0.03,
+                            color: AppColors.blackColor,
+                            weight: FontWeight.w700,
+                          ),
+                          const CustomSizedBoxHeight(0.01),
+                          CustomText(
+                              textAlign: TextAlign.center,
+                              text: item.subText,
                               fontFamily: CustomFonts.inter,
-                              size: 0.03,
-                              color: Colors.white),
-                        ),
+                              size: 0.02,
+                              color: AppColors.blackColor),
+                          const CustomSizedBoxHeight(0.01),
+                          Container(
+                            decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                    end: Alignment.centerLeft,
+                                    begin: Alignment.centerRight,
+                                    colors: AppColors.gradientColors),
+                                borderRadius: BorderRadius.circular(12)),
+                            width: mediaquerywidth(0.23, context),
+                            height: mediaqueryheight(0.04, context),
+                            child: const Center(
+                              child: CustomText(
+                                  text: 'Get Details',
+                                  fontFamily: CustomFonts.inter,
+                                  size: 0.03,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          const CustomSizedBoxHeight(0.02),
+                        ],
                       ),
-                      const CustomSizedBoxHeight(0.01),
                     ],
                   ),
                 ),
