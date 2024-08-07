@@ -112,6 +112,7 @@ class ProfileViewModel extends ChangeNotifier {
         specify = _profileResponse!.data.user.specify ?? '';
         status = _profileResponse!.data.user.status ?? "";
         subString = userName!.substring(0, 2);
+        calculateProfilePercentage() ;
 
         log('Profile fetched successfully');
         // log('User Name: $userName');

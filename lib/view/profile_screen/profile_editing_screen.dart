@@ -1,5 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
@@ -249,7 +251,9 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                                       .read<ProfileViewModel>()
                                       .updateProfile(13, updatedData);
                                 }
-                              : () {},
+                              : () {
+                               
+                              },
                           text: 'Save',
                           fontSize: 0.04,
                           buttonTextColor: AppColors.whiteColor,
