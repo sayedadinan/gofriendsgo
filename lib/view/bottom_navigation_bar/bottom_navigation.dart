@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
+import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
 import 'package:gofriendsgo/view/chat_list.dart/chat_list.dart';
 import 'package:gofriendsgo/view/home_screen/home_screen.dart';
@@ -28,8 +30,41 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
   @override
   void initState() {
-    // func(context);
     super.initState();
+  }
+
+  Widget _buildGradientIcon(IconData icon, bool isSelected) {
+    return isSelected
+        ? ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return const LinearGradient(
+                colors: AppColors.gradientColors,
+                tileMode: TileMode.mirror,
+              ).createShader(bounds);
+            },
+            child: Icon(
+              icon,
+              color: Colors.white,
+            ),
+          )
+        : Icon(icon);
+  }
+
+  Widget _buildGradientSvgIcon(String asset, bool isSelected) {
+    return isSelected
+        ? ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return const LinearGradient(
+                colors: AppColors.gradientColors,
+                tileMode: TileMode.mirror,
+              ).createShader(bounds);
+            },
+            child: SvgPicture.asset(
+              asset,
+              
+            ),
+          )
+        : SvgPicture.asset(asset);
   }
 
   @override
@@ -41,40 +76,38 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: AppColors.whiteColor,
-          currentIndex: currentIndex,
-          selectedItemColor: const Color.fromRGBO(156, 10, 182, 1),
-          unselectedItemColor: AppColors.blackColor,
-          showUnselectedLabels: true,
-          unselectedLabelStyle: const TextStyle(color: Colors.black),
-          onTap: (value) {
-            setState(() {
-              currentIndex = value;
-              pageController.jumpToPage(value);
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                ),
-                label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.menu_book_rounded,
-                ),
-                label: "Bookings"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.forum,
-                ),
-                label: "Chats"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_circle_outlined,
-                ),
-                label: "Profile"),
-          ]),
+        backgroundColor: AppColors.whiteColor,
+        currentIndex: currentIndex,
+        selectedItemColor: AppColors.blackColor,
+        unselectedItemColor:AppColors.blackColor,
+        showUnselectedLabels: true,
+        unselectedLabelStyle: TextStyle(color:Color.fromRGBO(94, 95, 96,1))
+,        onTap: (value) {
+          setState(() {
+            currentIndex = value;
+            pageController.jumpToPage(value);
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: _buildGradientIcon(Icons.home_filled, currentIndex == 0),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: _buildGradientSvgIcon(AppImages.bookings, currentIndex == 1),
+            label: "Bookings",
+          ),
+          BottomNavigationBarItem(
+            icon: _buildGradientIcon(Icons.forum_outlined, currentIndex == 2),
+            label: "Chats",
+          ),
+          BottomNavigationBarItem(
+            icon: _buildGradientIcon(
+                Icons.account_circle_outlined, currentIndex == 3),
+            label: "Profile",
+          ),
+        ],
+      ),
     );
   }
 }

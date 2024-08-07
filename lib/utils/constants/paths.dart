@@ -18,6 +18,7 @@ class AppImages {
   static const String whatsapp = "assets/images/whatsapp  1.png";
   static const String  personRaisedHand = "assets/images/person_raised_hand.svg";
   static const String  notificationsUnread = "assets/images/notifications_unread.svg";
+  static const String bookings = "assets/images/booking_icon.svg";
 }
 
 class CustomFonts {
