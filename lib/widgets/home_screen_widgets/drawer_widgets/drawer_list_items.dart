@@ -71,8 +71,8 @@ class DrawerListItems extends StatelessWidget {
             onTap: () {
               PageNavigations().push(const GalleryScreen());
             },
-            leading: Icon(Icons.collections),
-            title: Text(TextStrings.gallery)),
+            leading: const Icon(Icons.collections),
+            title: const Text(TextStrings.gallery)),
         ListTile(
           leading: const Icon(Icons.star_half_rounded),
           title: const Text(TextStrings.rateUs),

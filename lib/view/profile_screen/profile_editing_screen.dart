@@ -1,7 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:developer';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/app_button.dart';
@@ -51,7 +49,7 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.transparentColor,
-        title: CustomText(
+        title: const CustomText(
           text: "Profile",
           fontFamily: CustomFonts.inter,
           size: 0.065,
@@ -83,14 +81,14 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                                   value.onEditPressed ? value.addNewImage() : null;
                               },
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color.fromRGBO(243, 231, 254, 1),
                                   shape: BoxShape.circle,
                                 ),
-                                padding: EdgeInsets.all(6),
+                                padding: const EdgeInsets.all(6),
                                 child: Icon(Icons.camera_alt_outlined,
                                     size: mediaquerywidth(0.06, context),
-                                    color: Color.fromRGBO(165, 128, 199, 1)),
+                                    color: const Color.fromRGBO(165, 128, 199, 1)),
                               ),
                             ))
                       ]),
@@ -137,7 +135,7 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                             color: AppColors.succesIconColor),
                       ),
                       const CustomSizedBoxHeight(0.02),
-                      Align(
+                      const Align(
                         alignment: AlignmentDirectional.topStart,
                         child: CustomText(
                           fontFamily: CustomFonts.poppins,
@@ -153,22 +151,22 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                               : null;
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 14, vertical: 14),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color.fromARGB(54, 38, 8, 37)),
+                              borderRadius: BorderRadius.circular(12)),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   (value.dob ?? "Select the date"),
-                                  style: TextStyle(fontSize: 16),
+                                  style: const TextStyle(fontSize: 16),
                                 ),
-                                Icon(Icons.calendar_month,
+                                const Icon(Icons.calendar_month,
                                     color: AppColors.dateIconColor),
                               ]),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Color.fromARGB(54, 38, 8, 37)),
-                              borderRadius: BorderRadius.circular(12)),
                         ),
                       ),
                       const CustomSizedBoxHeight(0.02),
@@ -180,7 +178,7 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                         isEnabled: value.onEditPressed,
                       ),
                       const CustomSizedBoxHeight(0.02),
-                      Align(
+                      const Align(
                         alignment: AlignmentDirectional.topStart,
                         child: CustomText(
                           fontFamily: CustomFonts.poppins,
@@ -196,23 +194,23 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                               : null;
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 14, vertical: 14),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color.fromARGB(54, 38, 8, 37)),
+                              borderRadius: BorderRadius.circular(12)),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   value.newMarriageAnniversary ??
                                       "Select the date",
-                                  style: TextStyle(fontSize: 16),
+                                  style: const TextStyle(fontSize: 16),
                                 ),
-                                Icon(Icons.calendar_month,
+                                const Icon(Icons.calendar_month,
                                     color: AppColors.dateIconColor),
                               ]),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Color.fromARGB(54, 38, 8, 37)),
-                              borderRadius: BorderRadius.circular(12)),
                         ),
                       ),
                       const CustomSizedBoxHeight(0.02),

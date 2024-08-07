@@ -55,7 +55,7 @@ class VisaChecklistDetailsScreen extends StatelessWidget {
                       ),
                       const Divider(),
                       const CustomSizedBoxHeight(0.03),
-                      const HeadingAndDetails(),
+                       HeadingAndDetails(visa.details.first),
                     ],
                   ),
                 ),

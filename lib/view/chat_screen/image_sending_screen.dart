@@ -10,12 +10,12 @@ class ImageSendingScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: AppColors.blackColor,
             image: DecorationImage(
               image: AssetImage(AppImages.aboutUsImage),
             )),
-        child: Column(
+        child: const Column(
           children: [],
         ),
       )),

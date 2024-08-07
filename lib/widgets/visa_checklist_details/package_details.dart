@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/visa_checklist_model.dart';
+import 'package:gofriendsgo/model/visa_model/visa_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
@@ -7,7 +8,8 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 
 class HeadingAndDetails extends StatelessWidget {
-  const HeadingAndDetails({
+ final VisaDetail visaDetail;
+  const HeadingAndDetails(this.visaDetail,{
     super.key,
   });
 

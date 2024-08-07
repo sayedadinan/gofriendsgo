@@ -1,10 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/chat_models/chat_list_model.dart';
 import 'package:gofriendsgo/model/chat_models/create_chat_model.dart';
-import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
 import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
@@ -13,9 +10,6 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view_model/chats/create_chat_viewmodel.dart';
-import 'package:gofriendsgo/view_model/chats/fetching_chats.dart';
-import 'package:gofriendsgo/widgets/chat_widgets/chat_appbar.dart';
-import 'package:gofriendsgo/widgets/chat_widgets/chat_bubble.dart';
 import 'package:gofriendsgo/widgets/chat_widgets/chat_field.dart';
 import 'package:provider/provider.dart';
 
@@ -97,7 +91,7 @@ class _ChatScreenState extends State<CreateChatScreen> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: SizedBox()),
+            const Expanded(child: SizedBox()),
             _buildMessageInput(),
           ],
         ));

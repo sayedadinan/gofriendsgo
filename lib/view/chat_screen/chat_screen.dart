@@ -3,9 +3,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/chat_models/chat_list_model.dart';
-import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
-import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
-import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
@@ -46,7 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
         body: Consumer<FetchChatsViewModel>(
           builder: (context, value, child) {
             if (value.messages.isEmpty) {
-              return SizedBox();
+              return const SizedBox();
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,

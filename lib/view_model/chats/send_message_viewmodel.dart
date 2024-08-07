@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/services/chats/send_message_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SendMessageViewModel extends ChangeNotifier {
   final SendMessageService _service = SendMessageService();

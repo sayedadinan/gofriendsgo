@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/widgets/chat_widgets/gradient_icon.dart';
-import 'package:provider/provider.dart';
 
 class ChatField extends StatelessWidget {
   final TextEditingController? controller;

@@ -2,9 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/model/chat_models/create_chat_model.dart';
-import 'package:gofriendsgo/model/chat_models/fetch_messages_model.dart';
 import 'package:gofriendsgo/services/chats/create_chat_service.dart';
-import 'package:gofriendsgo/services/chats/fetch_messages_service.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
 import 'package:http/http.dart';
 

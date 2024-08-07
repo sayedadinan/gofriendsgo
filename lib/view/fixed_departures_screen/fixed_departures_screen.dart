@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/fixed_departures.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/screen_padding.dart';
@@ -11,6 +12,7 @@ import 'package:gofriendsgo/widgets/fixed_departures/get_details_button.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/hotel_ratings.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/is_booked_container.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/package_amount.dart';
+import 'package:gofriendsgo/widgets/fixed_departures/package_details.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/scheduled_days.dart';
 import 'package:provider/provider.dart';
 //
@@ -40,7 +42,7 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
           child: Consumer<FixedDeparturesViewModel>(
             builder: (context, departureViewModel, child) {
               if (departureViewModel.isLoading) {
-                return const CircularProgressIndicator();
+                return Center(child: const CircularProgressIndicator());
               } else {
                 return ListView.builder(
                   itemCount: departureViewModel.fixedDeparturesResponse!.data.fixedDepartures.length,
@@ -80,7 +82,8 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
                               const CustomSizedBoxHeight(0.01),
                               const Divider(),
                               const CustomSizedBoxHeight(0.01),
-                             // ...packageDetails(fixedDeparturesList[index], context),
+                              
+                              ...packageDetails(package.description, context),
                               const CustomSizedBoxHeight(0.014),
                               Row(
                                 mainAxisAlignment:
