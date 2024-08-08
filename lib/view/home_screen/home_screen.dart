@@ -9,8 +9,10 @@ import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
+import 'package:gofriendsgo/view_model/bookings_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
+import 'package:gofriendsgo/view_model/sales_exe_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/carosual_widget.dart';
@@ -109,4 +111,6 @@ func(BuildContext context) {
   context.read<ServiceViewModel>().fetchServices();
   context.read<CarosualViewModel>().fetchCarousals();
   context.read<BannerViewModel>().fetchBanners();
+  context.read<BookingViewModel>().fetchBookingsfromservice();
+  context.read<SalesPersonViewModel>().fetchSalesPerson();
 }

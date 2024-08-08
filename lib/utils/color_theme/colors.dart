@@ -12,7 +12,7 @@ class AppColors {
     Color(0xFF3120D8),
     Color(0xFF9C0AB6)
   ];
-  static const succesIconColor = Color.fromARGB(255, 63, 244, 69);
+  static const succesIconColor = Color.fromARGB(255, 26, 184, 31);
   static const notificationSelectedBarColor = Color.fromRGBO(255, 0, 243, 0.07);
   static const notificationUnSelectedBarColor =
       Color.fromARGB(102, 204, 202, 202);
