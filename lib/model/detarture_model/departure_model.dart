@@ -1,50 +1,73 @@
-// FixedDeparturesModel.dart
+import 'dart:convert';
+
 class FixedDeparturesModel {
-  final bool status;
-  final String message;
-  final Data data;
+  bool status;
+  String message;
+  Data data;
 
-  FixedDeparturesModel({required this.status, required this.message, required this.data});
+  FixedDeparturesModel({
+    required this.status,
+    required this.message,
+    required this.data,
+  });
 
-  factory FixedDeparturesModel.fromJson(Map<String, dynamic> json) {
-    return FixedDeparturesModel(
-      status: json['status'],
-      message: json['message'],
-      data: Data.fromJson(json['data']),
-    );
-  }
+  factory FixedDeparturesModel.fromJson(String str) =>
+      FixedDeparturesModel.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory FixedDeparturesModel.fromMap(Map<String, dynamic> json) =>
+      FixedDeparturesModel(
+        status: json["status"],
+        message: json["message"],
+        data: Data.fromMap(json["data"]),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "status": status,
+        "message": message,
+        "data": data.toMap(),
+      };
 }
 
 class Data {
-  final List<Departure> fixedDepartures;
+  List<FixedDeparture> fixedDepartures;
 
-  Data({required this.fixedDepartures});
+  Data({
+    required this.fixedDepartures,
+  });
 
-  factory Data.fromJson(Map<String, dynamic> json) {
-    var list = json['fixed_departures'] as List;
-    List<Departure> departures = list.map((i) => Departure.fromJson(i)).toList();
-    return Data(
-      fixedDepartures: departures,
-    );
-  }
+  factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory Data.fromMap(Map<String, dynamic> json) => Data(
+        fixedDepartures: List<FixedDeparture>.from(
+            json["fixed_departures"].map((x) => FixedDeparture.fromMap(x))),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "fixed_departures":
+            List<dynamic>.from(fixedDepartures.map((x) => x.toMap())),
+      };
 }
 
-class Departure {
-  final int id;
-  final String title;
-  final String from;
-  final String to;
-  final String travelTo;
-  final String price;
-  final int? rating;
-  final List<String> description;
-  final List<Tag> tag;
-  final int status;
-  final int? tagStatus;
-  final String createdAt;
-  final String updatedAt;
+class FixedDeparture {
+  int id;
+  String title;
+  String from;
+  String to;
+  String travelTo;
+  String price;
+  int? rating;
+  List<String> description;
+  // List<Tag> tag;
+  int status;
+  int tagStatus;
+  DateTime createdAt;
+  DateTime updatedAt;
 
-  Departure({
+  FixedDeparture({
     required this.id,
     required this.title,
     required this.from,
@@ -53,45 +76,71 @@ class Departure {
     required this.price,
     this.rating,
     required this.description,
-    required this.tag,
+    // required this.tag,
     required this.status,
-    this.tagStatus,
+    required this.tagStatus,
     required this.createdAt,
     required this.updatedAt,
   });
 
-  factory Departure.fromJson(Map<String, dynamic> json) {
-    var tagsList = json['tag'] as List;
-    List<Tag> tags = tagsList.map((i) => Tag.fromJson(i)).toList();
-    var descriptionList = json['description'].cast<String>();
-    return Departure(
-      id: json['id'],
-      title: json['title'],
-      from: json['from'],
-      to: json['to'],
-      travelTo: json['travel_to'],
-      price: json['price'],
-      rating: json['rating'],
-      description: descriptionList,
-      tag: tags,
-      status: json['status'],
-      tagStatus: json['tag_status'],
-      createdAt: json['created_at'],
-      updatedAt: json['updated_at'],
-    );
-  }
+  factory FixedDeparture.fromJson(String str) =>
+      FixedDeparture.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory FixedDeparture.fromMap(Map<String, dynamic> json) => FixedDeparture(
+        id: json["id"],
+        title: json["title"],
+        from: json["from"],
+        to: json["to"],
+        travelTo: json["travel_to"],
+        price: json["price"],
+        rating: json["rating"] ?? null,
+        description: List<String>.from(json["description"].map((x) => x)),
+        // tag: List<Tag>.from(json["tag"].map((x) => Tag.fromMap(x))),
+        status: json["status"],
+        tagStatus: json["tag_status"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "title": title,
+        "from": from,
+        "to": to,
+        "travel_to": travelTo,
+        "price": price,
+        "rating": rating,
+        "description": List<dynamic>.from(description.map((x) => x)),
+        // "tag": List<dynamic>.from(tag.map((x) => x.toMap())),
+        "status": status,
+        "tag_status": tagStatus,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+      };
 }
 
 class Tag {
-  final String name;
-  final String status;
+  String name;
+  String status;
 
-  Tag({required this.name, required this.status});
+  Tag({
+    required this.name,
+    required this.status,
+  });
 
-  factory Tag.fromJson(Map<String, dynamic> json) {
-    return Tag(
-      name: json['name'],
-      status: json['status'],
-    );
-  }
+  factory Tag.fromJson(String str) => Tag.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory Tag.fromMap(Map<String, dynamic> json) => Tag(
+        name: json["name"],
+        status: json["status"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "name": name,
+        "status": status,
+      };
 }
