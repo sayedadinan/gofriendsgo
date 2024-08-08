@@ -1,37 +1,37 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/bookings_model/bookings_model.dart';
-import 'package:gofriendsgo/services/booking_service.dart';
-import 'package:gofriendsgo/services/shared_preferences.dart';
+import 'package:gofriendsgo/model/sales_exe_model/sales_execut_model.dart';
+import 'package:gofriendsgo/services/sales_exe_service.dart';
+// Update with the actual path to your SalesPerson service class
+import 'package:gofriendsgo/services/shared_preferences.dart'; // Update with the actual path to your SharedPreferences service class
 
-class BookingViewModel extends ChangeNotifier {
-  final BookingService _service = BookingService();
-  BookingResponse? _bookingResponse;
+class SalesPersonViewModel extends ChangeNotifier {
+  final SalesPersonService _service = SalesPersonService();
+  SalesPersonResponse? _salesPersonResponse;
   bool _isLoading = false;
 
-  BookingResponse? get bookingResponse => _bookingResponse;
+  SalesPersonResponse? get salesPersonResponse => _salesPersonResponse;
   bool get isLoading => _isLoading;
 
-  Future<void> fetchBookingsfromservice() async {
-    log('message');
+  Future<void> fetchSalesPerson() async {
+    log('Fetching sales person details from view model');
     _isLoading = true;
-// Notify listeners that loading has started
 
     try {
-      _bookingResponse =
-          await _service.fetchBookings(SharedPreferecesServices.token!);
-      if (_bookingResponse != null) {
-        log('Bookings fetched successfully');
-        // Example: logging the user name of the first booking if it exists
-        if (_bookingResponse!.data.bookings.isNotEmpty) {
-          log(_bookingResponse!.data.bookings[0].services);
-        }
+      _salesPersonResponse =
+          await _service.fetchSalesPerson(SharedPreferecesServices.token!);
+      if (_salesPersonResponse != null) {
+        log('Sales person details fetched successfully');
+        // Example: logging the name of the sales person if it exists
+        // if (_salesPersonResponse!.data != null) {
+        //   log(_salesPersonResponse!.data.email);
+        // }
       }
-      notifyListeners();
+      notifyListeners(); // Notify listeners that loading has started
     } catch (e) {
       // Handle error
-      log('Error fetching bookings: $e');
+      log('Error fetching sales person details: $e');
     } finally {
       _isLoading = false;
       notifyListeners(); // Notify listeners that loading has ended
