@@ -4,33 +4,36 @@ import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/view_model/sales_exe_viewmodel.dart';
 import 'package:gofriendsgo/widgets/sales_executive_widgets/person_details.dart';
 
 class PersonInfo extends StatelessWidget {
-  const PersonInfo({
+  final SalesPersonViewModel value;
+  const PersonInfo(
+    this.value, {
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SalesExecutiveImage(),
-        CustomSizedBoxWidth(0.085),
+        SalesExecutiveImage(value),
+        const CustomSizedBoxWidth(0.085),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                SalesExecutiveName(),
-                CustomSizedBoxWidth(0.02),
-                Icon(
+                SalesExecutiveName(value),
+                const CustomSizedBoxWidth(0.02),
+                const Icon(
                   Icons.star_rate_rounded,
                   color: AppColors.fixedDeparturesAmberColor,
                 ),
-                CustomSizedBoxWidth(0.02),
-                CustomText(
+                const CustomSizedBoxWidth(0.02),
+                const CustomText(
                     text: "4.5",
                     fontFamily: CustomFonts.roboto,
                     size: 0.035,
@@ -38,16 +41,17 @@ class PersonInfo extends StatelessWidget {
                     color: AppColors.blackColor)
               ],
             ),
-            CustomText(
+            const CustomText(
                 text: TextStrings.salesExecutive,
                 fontFamily: CustomFonts.roboto,
                 size: 0.04,
                 color: Color.fromRGBO(60, 60, 60, 1)),
-            CustomSizedBoxHeight(0.01),
-            ContactPhoneAndEmailLogo()
+            const CustomSizedBoxHeight(0.01),
+            ContactPhoneAndEmailLogo(value)
           ],
         )
       ],
     );
   }
+
 }
