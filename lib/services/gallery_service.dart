@@ -9,7 +9,7 @@ class GalleryService {
     log('Fetching gallery from service file');
     try {
       final response = await http.get(
-        Uri.parse('${API.baseUrl}/user/gallery'),
+        Uri.parse('${API.baseUrl}/gallery'),
         headers: {'Authorization': 'Bearer $token'},
       );
       if (response.statusCode == 200) {
