@@ -42,7 +42,7 @@ context.read<PassportViewModel>().fetchPassports();
         child: Consumer<PassportViewModel>(
           builder: (context, value, child) {
             if (value.isLoading) {
-              return Center(child: CircularProgressIndicator(),);
+              return const Center(child: CircularProgressIndicator(),);
             }
             return SingleChildScrollView(
             child: Column(
@@ -64,11 +64,11 @@ context.read<PassportViewModel>().fetchPassports();
                     child:  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomSizedBoxHeight(0.02),
-                        PassportRequirementHeading(),
-                        CustomSizedBoxHeight(0.015),
-                        Divider(),
-                        CustomSizedBoxHeight(0.025),
+                        const CustomSizedBoxHeight(0.02),
+                        const PassportRequirementHeading(),
+                        const CustomSizedBoxHeight(0.015),
+                        const Divider(),
+                        const CustomSizedBoxHeight(0.025),
                         DetailsOfPassportChecklist(value)
                       ],
                     ),

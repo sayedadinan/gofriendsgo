@@ -41,7 +41,7 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
           child: Consumer<FixedDeparturesViewModel>(
             builder: (context, departureViewModel, child) {
               if (departureViewModel.isLoading) {
-                return Center(child: const CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
                   itemCount: departureViewModel.fixedDeparturesResponse!.data.fixedDepartures.length,
