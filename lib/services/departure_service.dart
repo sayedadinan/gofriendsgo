@@ -18,13 +18,13 @@ class FixedDeparturesService {
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
         print('this is that $parsed');
-        return FixedDeparturesModel.fromJson(parsed);
+        return FixedDeparturesModel.fromMap(parsed);
       } else {
         log('Error: Failed to load fixed departures with status code ${response.statusCode}');
         throw Exception('Failed to load fixed departures');
       }
     } catch (e) {
-      log('Exception caught: $e');
+      log('Exception caughts: $e');
       throw Exception('Failed to load fixed departures: $e');
     }
   }

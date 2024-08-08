@@ -54,14 +54,13 @@ class Data {
 
 class FixedDeparture {
   int id;
-  String title;
-  String from;
-  String to;
-  String travelTo;
-  String price;
+  dynamic title;
+  dynamic from;
+  dynamic to;
+  dynamic travelTo;
+  dynamic price;
   int? rating;
   List<String> description;
-  // List<Tag> tag;
   int status;
   int tagStatus;
   DateTime createdAt;
@@ -76,7 +75,6 @@ class FixedDeparture {
     required this.price,
     this.rating,
     required this.description,
-    // required this.tag,
     required this.status,
     required this.tagStatus,
     required this.createdAt,
@@ -97,7 +95,6 @@ class FixedDeparture {
         price: json["price"],
         rating: json["rating"] ?? null,
         description: List<String>.from(json["description"].map((x) => x)),
-        // tag: List<Tag>.from(json["tag"].map((x) => Tag.fromMap(x))),
         status: json["status"],
         tagStatus: json["tag_status"],
         createdAt: DateTime.parse(json["created_at"]),
@@ -113,34 +110,9 @@ class FixedDeparture {
         "price": price,
         "rating": rating,
         "description": List<dynamic>.from(description.map((x) => x)),
-        // "tag": List<dynamic>.from(tag.map((x) => x.toMap())),
         "status": status,
         "tag_status": tagStatus,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-      };
-}
-
-class Tag {
-  String name;
-  String status;
-
-  Tag({
-    required this.name,
-    required this.status,
-  });
-
-  factory Tag.fromJson(String str) => Tag.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Tag.fromMap(Map<String, dynamic> json) => Tag(
-        name: json["name"],
-        status: json["status"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "name": name,
-        "status": status,
       };
 }

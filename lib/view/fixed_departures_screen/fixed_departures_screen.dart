@@ -44,7 +44,7 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
-                  itemCount: departureViewModel.fixedDeparturesResponse!.data.fixedDepartures.length,
+                  itemCount: departureViewModel.fixedDeparturesResponse !.data.fixedDepartures.length,
                   itemBuilder: (context, index) {
                     final package = departureViewModel.fixedDeparturesResponse!.data.fixedDepartures[index];
                     return Padding(
