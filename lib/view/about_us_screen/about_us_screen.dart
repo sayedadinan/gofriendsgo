@@ -52,17 +52,14 @@ class AboutUsScreen extends StatelessWidget {
                   children: [
                     OurStoryHeading(),
                     CustomSizedBoxHeight(0.02),
-                    OurStoryTexts(TextStrings.ourStoryFirstText),
+                    OurStoryTexts(TextStrings.ourStorySecondText),
                     CustomSizedBoxHeight(0.02),
                     OurStoryImage(),
                     CustomSizedBoxHeight(0.02),
-                    OurStoryTexts(TextStrings.ourStoryFirstText),
-                    CustomSizedBoxHeight(0.02),
-                    OurStoryTexts(TextStrings.ourStorySecondText),
-                    CustomSizedBoxHeight(0.02),
-                    OurStoryHeading(),
-                    CustomSizedBoxHeight(0.02),
-                    OurStoryTexts(TextStrings.ourStorySecondText),
+                    // OurStoryTexts(TextStrings.ourStorySecondText),
+                
+                    OurStoryTexts(TextStrings.ourStoryThirdText),
+                   
                     CustomSizedBoxHeight(0.02),
                     FollowUsHeading(),
                     CustomSizedBoxHeight(0.02),
@@ -78,6 +75,3 @@ class AboutUsScreen extends StatelessWidget {
     );
   }
 }
-
-
-
