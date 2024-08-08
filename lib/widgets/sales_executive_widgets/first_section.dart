@@ -4,10 +4,12 @@ import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/view_model/sales_exe_viewmodel.dart';
 import 'package:gofriendsgo/widgets/sales_executive_widgets/person_info.dart';
 
-class FirstSectionInSalesExecutiveSection extends StatelessWidget {
-  const FirstSectionInSalesExecutiveSection({
+class FirstSectionInSalesExecutiveSection extends StatelessWidget { 
+ final SalesPersonViewModel value; 
+  const FirstSectionInSalesExecutiveSection(this.value,{
     super.key,
   });
 
@@ -21,20 +23,20 @@ class FirstSectionInSalesExecutiveSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: AppColors.whiteColor),
         padding: const EdgeInsets.all(20),
-        child: const Column(
+        child:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PersonInfo(),
-            CustomSizedBoxHeight(0.035),
-            CustomText(
+            PersonInfo(value),
+            const CustomSizedBoxHeight(0.035),
+            const CustomText(
               text: TextStrings.about,
               fontFamily: CustomFonts.roboto,
               size: 0.04,
               color: Color.fromRGBO(0, 0, 0, 0.8),
               weight: FontWeight.w500,
             ),
-            CustomSizedBoxHeight(0.01),
-            CustomText(
+            const CustomSizedBoxHeight(0.01),
+            const CustomText(
               text: TextStrings.salesExecutiveAboutDetails,
               fontFamily: CustomFonts.roboto,
               size: 0.04,

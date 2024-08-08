@@ -50,22 +50,27 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         : Icon(icon);
   }
 
-  Widget _buildGradientSvgIcon(String asset, bool isSelected) {
-    return isSelected
-        ? ShaderMask(
-            shaderCallback: (Rect bounds) {
-              return const LinearGradient(
-                colors: AppColors.gradientColors,
-                tileMode: TileMode.mirror,
-              ).createShader(bounds);
-            },
-            child: SvgPicture.asset(
-              asset,
-              
-            ),
-          )
-        : SvgPicture.asset(asset);
+Widget _buildGradientSvgIcon(String asset, bool isSelected) {
+  if (isSelected) {
+    return ShaderMask(
+      shaderCallback: (Rect bounds) {
+        return const LinearGradient(
+          colors: AppColors.gradientColors,
+          tileMode: TileMode.mirror,
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.srcIn, 
+      child: SvgPicture.asset(
+        asset,       
+      ),
+    );
+  } else {
+    return SvgPicture.asset(
+      asset,
+   
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {
