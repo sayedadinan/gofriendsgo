@@ -20,6 +20,7 @@ import 'package:gofriendsgo/view_model/chats/send_message_viewmodel.dart';
 import 'package:gofriendsgo/view_model/sales_exe_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
+import 'package:gofriendsgo/view_model/team_viewmodel.dart';
 import 'package:gofriendsgo/view_model/user_details.dart';
 import 'package:gofriendsgo/view_model/visa_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +47,7 @@ void main() {
     ChangeNotifierProvider(create: (_) => SendMessageViewModel()),
     ChangeNotifierProvider(create: (_) => BookingViewModel()),
     ChangeNotifierProvider(create: (_) => SalesPersonViewModel()),
+    ChangeNotifierProvider(create: (_) => TeamsViewModel()),
   ], child: const MyApp()));
 }
 
