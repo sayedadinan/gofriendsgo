@@ -136,7 +136,7 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                         labelText: 'Email',
                         controller: emailController,
                         isEnabled: false,
-                        suffix: const Icon(Icons.done_rounded,
+                        suffix: const Icon(Icons.check_circle_outline,
                             color: AppColors.succesIconColor),
                       ),
                       const CustomSizedBoxHeight(0.02),

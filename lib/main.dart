@@ -7,6 +7,7 @@ import 'package:gofriendsgo/view/bottom_navigation_bar/bottom_navigation.dart';
 import 'package:gofriendsgo/view/login_screen/login_screen.dart';
 import 'package:gofriendsgo/view/on_boarding_screen/on_boarding_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
+import 'package:gofriendsgo/view_model/bookings_viewmodel.dart';
 import 'package:gofriendsgo/view_model/cab_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/chats/chat_list_viewmodel.dart';
@@ -28,8 +29,8 @@ void main() {
   HttpOverrides.global = MyHttpOverrides();
   //test
   runApp(MultiProvider(providers: [
-     ChangeNotifierProvider(create: (_) => CreateChatViewModel()),
-   ChangeNotifierProvider(create: (_) => FetchChatsViewModel()),
+    ChangeNotifierProvider(create: (_) => CreateChatViewModel()),
+    ChangeNotifierProvider(create: (_) => FetchChatsViewModel()),
     ChangeNotifierProvider(create: (_) => ChatListViewmodel()),
     ChangeNotifierProvider(create: (_) => UserViewModel()),
     ChangeNotifierProvider(create: (_) => ServiceViewModel()),
@@ -42,6 +43,7 @@ void main() {
     ChangeNotifierProvider(create: (_) => ProfileViewModel()),
     ChangeNotifierProvider(create: (_) => FixedDeparturesViewModel()),
     ChangeNotifierProvider(create: (_) => SendMessageViewModel()),
+    ChangeNotifierProvider(create: (_) => BookingViewModel()),
   ], child: const MyApp()));
 }
 
