@@ -11,7 +11,7 @@ import 'package:gofriendsgo/utils/navigations/navigations.dart';
 import 'package:gofriendsgo/view/about_us_screen/about_us_screen.dart';
 import 'package:gofriendsgo/view/booking_screen/booking_screen.dart';
 import 'package:gofriendsgo/view/gallery_screen/gallery_screen.dart';
-import 'package:gofriendsgo/view/meet_the_team_screen/meet_the_team_screen.dart';
+import 'package:gofriendsgo/view/our_team_screen/meet_the_team_screen.dart';
 import 'package:gofriendsgo/view/sales_executive_screen/sales_executive_screen.dart';
 import 'package:gofriendsgo/widgets/home_screen_widgets/drawer_widgets/showdialogu.dart';
 

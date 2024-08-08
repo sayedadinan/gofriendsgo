@@ -93,7 +93,7 @@ class FixedDeparture {
         to: json["to"],
         travelTo: json["travel_to"],
         price: json["price"],
-        rating: json["rating"] ?? null,
+        rating: json["rating"],
         description: List<String>.from(json["description"].map((x) => x)),
         status: json["status"],
         tagStatus: json["tag_status"],
