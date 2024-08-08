@@ -44,9 +44,21 @@ class TextStrings {
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever sin';
 
   static const String ourStoryFirstText =
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,';
+      'Get Best Flight & Hotel Prices. We are Travel Expert for 18+ Destinations Since 2010. Gofriends Go Pvt. Ltd. helps Customers to book Flights, Hotels, Holiday Packages and All Travel Needs at best prices.';
   static const String ourStorySecondText =
-      'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing';
+      'We are Holidays Expert of 18+ Destinations with strong on-ground support. Customers can customize an entire holiday package Through Us. Gofriends Go Provides Trusted Service Guarantee as we provide Dedicated Sales Person and 24x7 Support and work only with verified travel partners. If you are a traveller, we have end to end solutions for all your Travel needs. We offer a host of facilities to help you Enjoy your Trip such as:';
+  static const String ourStoryThirdText =
+      "- Flights: A comprehensive Agency with coverage of almost every sector and major airlines.\n- Hotels: Contracted Premium Properties with 24*7 Support.\n- Holiday Packages: Expert in 18+ Destinations like Maldives, Thailand, Mauritius, Dubai, Bali, Europe, Vietnam, Singapore and domestic ones like Ladakh, Kashmir, Goa, North East, Kerala, Andaman with superior On-Ground Support.\n- 24*7 Support from the team in across flights, hotels & packages.\n- Dedicated Sales Person to ensure all your calls are answered and offer end to end support. Get all your work done even while traveling with Us and our 24*7 Support.";
+
+
+   static const String facebookUrl ="https://www.facebook.com/GofriendsGo1/?_rdr";
+   static const String instagramUrl ="https://www.instagram.com/gofriendsgo_/";
+   static const String linkedInUrl ="https://in.linkedin.com/company/gofriendsgo";
+   static const String whatsappUrl ="https://wa.link/sv3w8y";
+
+
+
+ 
   static const String profileProgress = 'Your Profile is 50% Completed';
   static const String addPhoto = "Add Photo";
   static const String myAccount = "My Account";

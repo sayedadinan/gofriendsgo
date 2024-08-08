@@ -40,7 +40,7 @@ class AboutUsFirstContent extends StatelessWidget {
             height: mediaqueryheight(0.1, context),
             child: const CustomText(
               textAlign: TextAlign.center,
-              text: TextStrings.ourMissionSubTitle,
+              text: TextStrings.ourStoryFirstText,
               fontFamily: CustomFonts.roboto,
               size: 0.03,
               color: Color.fromRGBO(255, 255, 255, 0.57),
