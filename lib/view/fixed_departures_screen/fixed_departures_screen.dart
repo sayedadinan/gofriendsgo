@@ -67,6 +67,7 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              // ignore: unnecessary_null_comparison
                               package.tagStatus!=null
                                   ? const FixedDepartureWithAirfareContainer()
                                   : const SizedBox(),

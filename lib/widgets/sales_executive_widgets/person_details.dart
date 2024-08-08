@@ -1,5 +1,5 @@
+
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
@@ -27,8 +27,9 @@ class SalesExecutiveName extends StatelessWidget {
 }
 
 class ContactPhoneAndEmailLogo extends StatelessWidget {
-    final SalesPersonViewModel value;
-  const ContactPhoneAndEmailLogo(this.value,{
+  final SalesPersonViewModel value;
+  const ContactPhoneAndEmailLogo(
+    this.value, {
     super.key,
   });
 
@@ -37,9 +38,9 @@ class ContactPhoneAndEmailLogo extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-        onTap: () {
-          _sendEmail(value.salesPersonResponse!.data.email);
-        },
+          onTap: () {
+            _sendEmail(value.salesPersonResponse!.data.email);
+          },
           child: Container(
             decoration: BoxDecoration(
                 border: Border.all(color: AppColors.backgroundColor),
@@ -55,7 +56,7 @@ class ContactPhoneAndEmailLogo extends StatelessWidget {
         ),
         const CustomSizedBoxWidth(0.02),
         GestureDetector(
-  onTap: () {
+          onTap: () {
             _launchDialer(value.salesPersonResponse!.data.phone);
           },
           child: Container(
@@ -74,30 +75,28 @@ class ContactPhoneAndEmailLogo extends StatelessWidget {
       ],
     );
   }
+
   _sendEmail(String email) async {
-  final Uri uri = Uri(scheme: 'mailto', path: email);
-  if (await canLaunchUrl(uri)) {
-    
-    await launchUrl(uri,mode: LaunchMode.externalApplication);
-  
+    final Uri uri = Uri(scheme: 'mailto', path: email);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
-}
-  
+
   _launchDialer(String phoneNumber) async {
     final Uri url = Uri(
       scheme: 'tel',
       path: phoneNumber,
     );
     if (await canLaunchUrl(url)) {
-      await launchUrl(url,mode: LaunchMode.externalApplication);
+      await launchUrl(url, mode: LaunchMode.externalApplication);
     }
   }
 }
 
 class SalesExecutiveImage extends StatelessWidget {
-  final SalesPersonViewModel value;
-  const SalesExecutiveImage(
-    this.value, {
+  // final SalesPersonViewModel value;
+  const SalesExecutiveImage({
     super.key,
   });
 
@@ -107,14 +106,26 @@ class SalesExecutiveImage extends StatelessWidget {
       width: mediaquerywidth(0.2, context),
       height: mediaqueryheight(0.12, context),
       decoration: BoxDecoration(
-          color: AppColors.backgroundColor,
-          shape: BoxShape.circle,
-          image: DecorationImage(
-              image: NetworkImage(
-            value.salesPersonResponse!.data.profilePic != null
-                ? API.baseImageUrl + value.salesPersonResponse!.data.profilePic!
-                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVeVNrw_5JYx80ESLOHIVIyBbaeZxtXaJK9A&s',
-          ))),
+        color: AppColors.backgroundColor,
+        shape: BoxShape.circle,
+        // image: DecorationImage(
+        //     image: NetworkImage(
+        //   value.salesPersonResponse!.data.profilePic != null
+        //       ? API.baseImageUrl + value.salesPersonResponse!.data.profilePic!
+        //       : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVeVNrw_5JYx80ESLOHIVIyBbaeZxtXaJK9A&s',
+        // ))
+      ),
+      // child: Consumer<SalesPersonViewModel>(
+      //   builder: (context, value, child) => CachedNetworkImage(
+      //     imageUrl:
+      //         API.baseImageUrl + value.salesPersonResponse!.data.profilePic!,
+      //     progressIndicatorBuilder: (context, url, downloadProgress) => Center(
+      //       child: CircularProgressIndicator(value: downloadProgress.progress),
+      //     ),
+      //     errorWidget: (context, url, error) =>
+      //         Image.asset(AppImages.tripImage),
+      //   ),
+      // ),
     );
   }
 }

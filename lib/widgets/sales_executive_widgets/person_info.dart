@@ -19,7 +19,7 @@ class PersonInfo extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SalesExecutiveImage(value),
+        SalesExecutiveImage(),
         const CustomSizedBoxWidth(0.085),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

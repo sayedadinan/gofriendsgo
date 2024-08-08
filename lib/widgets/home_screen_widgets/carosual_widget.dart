@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
+import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -29,12 +32,19 @@ class HomeCarosualWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 final carosuals = carosualViewModel.carouselsModel!.data[index];
                 return Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://gofriendsgo.certumventures.in/public/storage/${carosuals.image}"),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(12)));
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12)),
+                  child: CachedNetworkImage(
+                    imageUrl: API.baseImageUrl + carosuals.image,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => Center(
+                      child: CircularProgressIndicator(
+                          value: downloadProgress.progress),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        Image.asset(AppImages.tripImage),
+                  ),
+                );
               },
             );
           }

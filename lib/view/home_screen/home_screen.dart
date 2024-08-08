@@ -12,7 +12,9 @@ import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/bookings_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
 import 'package:gofriendsgo/view_model/departure_viewmodel.dart';
+import 'package:gofriendsgo/view_model/gallery_viewmodel.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
+import 'package:gofriendsgo/view_model/sales_exe_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
 import 'package:gofriendsgo/view_model/team_viewmodel.dart';
@@ -115,4 +117,6 @@ func(BuildContext context) {
   context.read<BookingViewModel>().fetchBookingsfromservice();
   context.read<TeamsViewModel>().fetchTeams();
   context.read<FixedDeparturesViewModel>().fetchFixedDepartures();
+  context.read<SalesPersonViewModel>().fetchSalesPerson();
+  context.read<GalleryViewModel>().fetchGallery();
 }
