@@ -1,70 +1,50 @@
-import 'dart:convert';
-
+// FixedDeparturesModel.dart
 class FixedDeparturesModel {
   final bool status;
-  final dynamic message;
-  final FixedDeparturesData data;
+  final String message;
+  final Data data;
 
-  FixedDeparturesModel({
-    required this.status,
-    required this.message,
-    required this.data,
-  });
+  FixedDeparturesModel({required this.status, required this.message, required this.data});
 
   factory FixedDeparturesModel.fromJson(Map<String, dynamic> json) {
     return FixedDeparturesModel(
       status: json['status'],
       message: json['message'],
-      data: FixedDeparturesData.fromJson(json['data']),
+      data: Data.fromJson(json['data']),
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'status': status,
-      'message': message,
-      'data': data.toJson(),
-    };
   }
 }
 
-class FixedDeparturesData {
-  final List<FixedDeparture> fixedDepartures;
+class Data {
+  final List<Departure> fixedDepartures;
 
-  FixedDeparturesData({
-    required this.fixedDepartures,
-  });
+  Data({required this.fixedDepartures});
 
-  factory FixedDeparturesData.fromJson(Map<String, dynamic> json) {
-    return FixedDeparturesData(
-      fixedDepartures: (json['fixed_departures'] as List<dynamic>)
-          .map((item) => FixedDeparture.fromJson(item))
-          .toList(),
+  factory Data.fromJson(Map<String, dynamic> json) {
+    var list = json['fixed_departures'] as List;
+    List<Departure> departures = list.map((i) => Departure.fromJson(i)).toList();
+    return Data(
+      fixedDepartures: departures,
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'fixed_departures': fixedDepartures.map((item) => item.toJson()).toList(),
-    };
-  }
 }
-class FixedDeparture {
+
+class Departure {
   final int id;
-  final dynamic title;
-  final dynamic from;
-  final dynamic to;
-  final dynamic travelTo;
-  final dynamic price;
-  final dynamic rating; 
-  final List<dynamic> description;
-  final List<dynamic> tag;
+  final String title;
+  final String from;
+  final String to;
+  final String travelTo;
+  final String price;
+  final int? rating;
+  final List<String> description;
+  final List<Tag> tag;
   final int status;
-  final dynamic tagStatus; 
-  final dynamic createdAt;
-  final dynamic updatedAt;
+  final int? tagStatus;
+  final String createdAt;
+  final String updatedAt;
 
-  FixedDeparture({
+  Departure({
     required this.id,
     required this.title,
     required this.from,
@@ -80,8 +60,11 @@ class FixedDeparture {
     required this.updatedAt,
   });
 
-  factory FixedDeparture.fromJson(Map<String, dynamic> json) {
-    return FixedDeparture(
+  factory Departure.fromJson(Map<String, dynamic> json) {
+    var tagsList = json['tag'] as List;
+    List<Tag> tags = tagsList.map((i) => Tag.fromJson(i)).toList();
+    var descriptionList = json['description'].cast<String>();
+    return Departure(
       id: json['id'],
       title: json['title'],
       from: json['from'],
@@ -89,30 +72,26 @@ class FixedDeparture {
       travelTo: json['travel_to'],
       price: json['price'],
       rating: json['rating'],
-      description: List<dynamic>.from(jsonDecode(json['description'])),
-      tag: List<dynamic>.from(jsonDecode(json['tag'])),
+      description: descriptionList,
+      tag: tags,
       status: json['status'],
       tagStatus: json['tag_status'],
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
     );
   }
+}
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'from': from,
-      'to': to,
-      'travel_to': travelTo,
-      'price': price,
-      'rating': rating,
-      'description': jsonEncode(description),
-      'tag': jsonEncode(tag),
-      'status': status,
-      'tag_status': tagStatus,
-      'created_at': createdAt,
-      'updated_at': updatedAt,
-    };
+class Tag {
+  final String name;
+  final String status;
+
+  Tag({required this.name, required this.status});
+
+  factory Tag.fromJson(Map<String, dynamic> json) {
+    return Tag(
+      name: json['name'],
+      status: json['status'],
+    );
   }
 }

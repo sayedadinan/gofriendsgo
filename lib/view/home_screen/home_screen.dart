@@ -11,6 +11,7 @@ import 'package:gofriendsgo/view/cab_rates_screen/cab_rates_screen.dart';
 import 'package:gofriendsgo/view_model/banner_viewmodel.dart';
 import 'package:gofriendsgo/view_model/bookings_viewmodel.dart';
 import 'package:gofriendsgo/view_model/carosual_viewmodel.dart';
+import 'package:gofriendsgo/view_model/departure_viewmodel.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
 import 'package:gofriendsgo/view_model/service_viewmodel.dart';
 import 'package:gofriendsgo/view_model/stories_viewmodel.dart';
@@ -113,4 +114,5 @@ func(BuildContext context) {
   context.read<BannerViewModel>().fetchBanners();
   context.read<BookingViewModel>().fetchBookingsfromservice();
   context.read<TeamsViewModel>().fetchTeams();
+  context.read<FixedDeparturesViewModel>().fetchFixedDepartures();
 }
