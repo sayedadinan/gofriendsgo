@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gofriendsgo/model/teams_model/teams_model.dart';
+import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
@@ -6,8 +9,11 @@ import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
 
 class GridViewMeetTheTeam extends StatelessWidget {
-  const GridViewMeetTheTeam({super.key, required this.count});
-  final int count;
+  final List<Team> teams;
+  const GridViewMeetTheTeam(
+    this.teams, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,7 @@ class GridViewMeetTheTeam extends StatelessWidget {
           crossAxisSpacing: mediaquerywidth(0.05, context),
           crossAxisCount: 3),
       itemBuilder: (context, index) {
+        final teamMember = teams[index];
         return Material(
           elevation: 4,
           borderRadius: BorderRadius.circular(8),
@@ -31,34 +38,51 @@ class GridViewMeetTheTeam extends StatelessWidget {
             width: mediaquerywidth(0.24, context),
             child: Column(
               children: [
-                Container(
-                  width: mediaquerywidth(0.2, context),
-                  height: mediaqueryheight(0.1, context),
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              "https://personalexcellence.co/files/ceo.jpg"))),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(90),
+                  child: CachedNetworkImage(
+                    width: mediaqueryheight(0.08, context),
+                    height: mediaqueryheight(0.08, context),
+                    imageUrl: API.baseImageUrl + teamMember.image,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => Center(
+                      child: CircularProgressIndicator(
+                          value: downloadProgress.progress),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                 ),
                 const CustomSizedBoxHeight(0.008),
-                const CustomText(
-                    text: "Devon Lane",
-                    fontFamily: CustomFonts.roboto,
-                    size: 0.035,
-                    weight: FontWeight.w500,
-                    color: Color.fromRGBO(39, 39, 39, 1)),
-                const CustomText(
-                    text: "Founder",
-                    fontFamily: CustomFonts.roboto,
-                    size: 0.03,
-                    color: Color.fromRGBO(0, 0, 0, 0.63)),
+                SizedBox(
+                  height: mediaqueryheight(0.025, context),
+                  width: double.infinity,
+                  child: CustomText(
+                      textAlign: TextAlign.center,
+                      textOverflow: TextOverflow.ellipsis,
+                      text: teamMember.name,
+                      fontFamily: CustomFonts.roboto,
+                      size: 0.035,
+                      weight: FontWeight.w500,
+                      color: const Color.fromRGBO(39, 39, 39, 1)),
+                ),
+                SizedBox(
+                      height: mediaqueryheight(0.02, context),
+                  width: double.infinity,
+                  child: CustomText(
+                       textAlign: TextAlign.center,
+                      textOverflow: TextOverflow.ellipsis,
+                      text: teamMember.designation,
+                      fontFamily: CustomFonts.roboto,
+                      size: 0.03,
+                      color: const Color.fromRGBO(0, 0, 0, 0.63)),
+                ),
               ],
             ),
           ),
         );
       },
-      itemCount: count,
+      itemCount: teams.length,
     );
   }
 }

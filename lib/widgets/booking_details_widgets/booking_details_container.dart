@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:gofriendsgo/model/booking_card_model.dart';
+import 'package:gofriendsgo/model/bookings_model/bookings_model.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/gradient_icons.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:intl/intl.dart';
 
 class BookingDetailsContainer extends StatelessWidget {
-  const BookingDetailsContainer({
+  final List<BookingModel> value;
+  const BookingDetailsContainer(this.value,{
     super.key,
   });
 
@@ -19,9 +21,9 @@ class BookingDetailsContainer extends StatelessWidget {
       height: mediaqueryheight(0.7, context),
       width: mediaquerywidth(0.94, context),
       child: ListView.builder(
-        itemCount: bookingCardList.length,
+        itemCount: value.length,
         itemBuilder: (context, index) {
-          final bookingList = bookingCardList[index];
+          final bookingList = value[index];
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -44,13 +46,13 @@ class BookingDetailsContainer extends StatelessWidget {
                       children: [
                         CustomText(
                             weight: FontWeight.w800,
-                            text: bookingList.mainText,
+                            text: bookingList.sector,
                             fontFamily: CustomFonts.roboto,
                             size: 0.04,
                             color: AppColors.blackColor),
                         CustomText(
                             weight: FontWeight.w800,
-                            text: bookingList.bookingAmount,
+                            text: bookingList.amount,
                             fontFamily: CustomFonts.roboto,
                             size: 0.04,
                             color: AppColors.blackColor),
@@ -68,12 +70,12 @@ class BookingDetailsContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomText(
-                            text: bookingList.bookingName,
+                            text: bookingList.userName,
                             fontFamily: CustomFonts.roboto,
                             size: 0.037,
                             color: AppColors.blackColor),
                         CustomText(
-                            text: bookingList.bookingDate,
+                            text: _formatDateString(bookingList.createdAt.toString()),
                             fontFamily: CustomFonts.roboto,
                             size: 0.037,
                             color: AppColors.blackColor),
@@ -92,7 +94,7 @@ class BookingDetailsContainer extends StatelessWidget {
                       children: [
                         CustomText(
                             weight: FontWeight.w600,
-                            text: bookingList.bookingType,
+                            text: bookingList.services,
                             fontFamily: CustomFonts.roboto,
                             size: 0.04,
                             color: AppColors.blackColor),
@@ -112,4 +114,13 @@ class BookingDetailsContainer extends StatelessWidget {
       ),
     );
   }
+  String _formatDateString(String dateTimeString) {
+  // Parse the input string to a DateTime object
+  DateTime dateTime = DateTime.parse(dateTimeString);
+
+  // Format the DateTime object to the desired string format
+  String formattedDate = DateFormat('dd-MMM-yyyy').format(dateTime);
+
+  return formattedDate;
+}
 }

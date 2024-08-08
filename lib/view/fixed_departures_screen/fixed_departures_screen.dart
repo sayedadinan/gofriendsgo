@@ -14,6 +14,7 @@ import 'package:gofriendsgo/widgets/fixed_departures/package_amount.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/package_details.dart';
 import 'package:gofriendsgo/widgets/fixed_departures/scheduled_days.dart';
 import 'package:provider/provider.dart';
+
 //
 class FixedDeparturesScreen extends StatefulWidget {
   const FixedDeparturesScreen({super.key});
@@ -25,9 +26,10 @@ class FixedDeparturesScreen extends StatefulWidget {
 class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
   @override
   void initState() {
- context.read<FixedDeparturesViewModel>().fetchFixedDepartures();
+    context.read<FixedDeparturesViewModel>().fetchFixedDepartures();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +46,11 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
-                  itemCount: departureViewModel.fixedDeparturesResponse !.data.fixedDepartures.length,
+                  itemCount: departureViewModel
+                      .fixedDeparturesResponse!.data.fixedDepartures.length,
                   itemBuilder: (context, index) {
-                    final package = departureViewModel.fixedDeparturesResponse!.data.fixedDepartures[index];
+                    final package = departureViewModel
+                        .fixedDeparturesResponse!.data.fixedDepartures[index];
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: mediaqueryheight(0.015, context)),
@@ -67,22 +71,22 @@ class _FixedDeparturesScreenState extends State<FixedDeparturesScreen> {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // ignore: unnecessary_null_comparison
-                              package.tagStatus!=null
-                                  ? const FixedDepartureWithAirfareContainer()
-                                  : const SizedBox(),
+                              const FixedDepartureWithAirfareContainer(),
                               const CustomSizedBoxHeight(0.015),
-                              FixedDeparturesPackageHeading(title: package.title),
+                              FixedDeparturesPackageHeading(
+                                  title: package.title),
                               const CustomSizedBoxHeight(0.02),
                               HotelRatings(starCount: package.rating),
                               const CustomSizedBoxHeight(0.01),
-                              ScheduledDays(startDate: package.from,endDate: package.to,),
+                              ScheduledDays(
+                                startDate: package.from,
+                                endDate: package.to,
+                              ),
                               const CustomSizedBoxHeight(0.012),
                               FlightDeparture(travelTo: package.travelTo),
                               const CustomSizedBoxHeight(0.01),
                               const Divider(),
                               const CustomSizedBoxHeight(0.01),
-                              
                               ...packageDetails(package.description, context),
                               const CustomSizedBoxHeight(0.014),
                               Row(

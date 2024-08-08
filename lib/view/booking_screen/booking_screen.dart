@@ -35,17 +35,17 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Consumer<BookingViewModel>(builder: (context, value, child) {
         if (value.isLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
         return SingleChildScrollView(
           child: Column(
             children: [
-              CustomSizedBoxHeight(0.03),
-              BookingDetailsSearch(),
-              CustomSizedBoxHeight(0.02),
-              BookingDetailsContainer(),
+              const CustomSizedBoxHeight(0.03),
+              const BookingDetailsSearch(),
+              const CustomSizedBoxHeight(0.02),
+              BookingDetailsContainer(value.bookingResponse!.data.bookings),
             ],
           ),
         );
