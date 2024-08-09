@@ -75,7 +75,7 @@ context.read<PassportViewModel>().fetchPassports();
                   ),
                 ),
                 const CustomSizedBoxHeight(0.04),
-                const GetDetailsAndAmountInPassportCheclist(),
+               
                 const CustomSizedBoxHeight(0.04),
               ],
             ),
