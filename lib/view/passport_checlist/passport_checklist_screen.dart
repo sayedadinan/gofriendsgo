@@ -14,14 +14,14 @@ class PassportChecklistScreen extends StatefulWidget {
   const PassportChecklistScreen({super.key});
 
   @override
-  State<PassportChecklistScreen> createState() => _PassportChecklistScreenState();
+  State<PassportChecklistScreen> createState() =>
+      _PassportChecklistScreenState();
 }
 
 class _PassportChecklistScreenState extends State<PassportChecklistScreen> {
-
   @override
   void initState() {
-context.read<PassportViewModel>().fetchPassports();
+    context.read<PassportViewModel>().fetchPassports();
     super.initState();
   }
 
@@ -31,8 +31,10 @@ context.read<PassportViewModel>().fetchPassports();
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, mediaqueryheight(0.08, context)),
-        child:
-            const CommonGradientAppBar(heading: TextStrings.passportChecklist,fromBottomNav: false,),
+        child: const CommonGradientAppBar(
+          heading: TextStrings.passportChecklist,
+          fromBottomNav: false,
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.only(
@@ -42,46 +44,47 @@ context.read<PassportViewModel>().fetchPassports();
         child: Consumer<PassportViewModel>(
           builder: (context, value, child) {
             if (value.isLoading) {
-              return const Center(child: CircularProgressIndicator(),);
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
             return SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                          offset: Offset(0, 2),
-                          blurRadius: 4,
-                          color: AppColors.blackColor),
-                    ],
-                    color: AppColors.whiteColor,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(mediaqueryheight(0.02, context)),
-                    child:  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const CustomSizedBoxHeight(0.02),
-                        const PassportRequirementHeading(),
-                        const CustomSizedBoxHeight(0.015),
-                        const Divider(),
-                        const CustomSizedBoxHeight(0.025),
-                        DetailsOfPassportChecklist(value)
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                            offset: Offset(0, 2),
+                            blurRadius: 4,
+                            color: AppColors.blackColor),
                       ],
+                      color: AppColors.whiteColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(mediaqueryheight(0.02, context)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CustomSizedBoxHeight(0.02),
+                          const PassportRequirementHeading(),
+                          const CustomSizedBoxHeight(0.015),
+                          const Divider(),
+                          const CustomSizedBoxHeight(0.025),
+                          DetailsOfPassportChecklist(value)
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                const CustomSizedBoxHeight(0.04),
-                const GetDetailsAndAmountInPassportCheclist(),
-                const CustomSizedBoxHeight(0.04),
-              ],
-            ),
-          );
+                  const CustomSizedBoxHeight(0.04),
+                  GetDetailsAndAmountInPassportCheclist(),
+                  const CustomSizedBoxHeight(0.04),
+                ],
+              ),
+            );
           },
-       
         ),
       ),
     );

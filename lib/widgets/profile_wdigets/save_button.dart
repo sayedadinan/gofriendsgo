@@ -8,7 +8,6 @@ import 'package:gofriendsgo/utils/constants/text_controllers.dart';
 import 'package:gofriendsgo/view_model/profile_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-
 class SaveButtonProfile extends StatelessWidget {
   final ProfileViewModel value;
   const SaveButtonProfile(
@@ -36,6 +35,7 @@ class SaveButtonProfile extends StatelessWidget {
                     "phone": mobileController.text,
                     "frequent_flyer_no": frequentController.text,
                     "additional_details": additionalController.text,
+                    "image": 'dfd'
                   };
 
                   log('shahu ${value.profileResponse!.data.user.id}');

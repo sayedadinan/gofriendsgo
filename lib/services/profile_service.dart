@@ -35,20 +35,57 @@ class ProfileService {
     }
   }
 
+  // Future<bool> updateUserProfile(
+  //     int userId, Map<String, dynamic> updatedData, String token) async {
+  //   print('started working');
+  //   final Map<String, String> headers = {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': 'Bearer $token',
+  //   };
+
+  //   try {
+  //     final response = await http.patch(
+  //       Uri.parse('${API.baseUrl}/profile/$userId'),
+  //       headers: headers,
+  //       body: jsonEncode(updatedData),
+  //     );
+
+  //     if (response.statusCode == 200) {
+  //       print('Profile updated successfully');
+  //       return true; // Indicate success
+  //     } else {
+  //       print('Failed to update profile. Status code: ${response.statusCode}');
+  //       return false; // Indicate failure
+  //     }
+  //   } catch (e) {
+  //     print('Error updating profile: $e');
+  //     return false; // Indicate failure
+  //   }
+  // }
   Future<bool> updateUserProfile(
-      int userId, Map<String, dynamic> updatedData, String token) async {
+    int userId,
+    Map<String, dynamic> updatedData,
+    String token,
+  ) async {
     print('started working');
-    final Map<String, String> headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token',
-    };
+
+    final uri = Uri.parse('${API.baseUrl}/profile/$userId');
+
+    final request = http.MultipartRequest('POST', uri)
+      ..headers['Authorization'] = 'Bearer $token';
+
+    // Add form fields
+    updatedData.forEach((key, value) {
+      if (value is String) {
+        request.fields[key] = value;
+      } else if (value is List<int>) {
+        // Assuming 'image' key holds binary data (like an image)
+        request.files.add(http.MultipartFile.fromBytes(key, value));
+      }
+    });
 
     try {
-      final response = await http.patch(
-        Uri.parse('${API.baseUrl}/profile/$userId'),
-        headers: headers,
-        body: jsonEncode(updatedData),
-      );
+      final response = await request.send();
 
       if (response.statusCode == 200) {
         print('Profile updated successfully');

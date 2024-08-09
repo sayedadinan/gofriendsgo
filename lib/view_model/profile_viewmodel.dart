@@ -97,7 +97,7 @@ class ProfileViewModel extends ChangeNotifier {
         nameController.text = _profileResponse!.data.user.name ?? '';
         emailController.text = _profileResponse!.data.user.email ?? '';
         mobileController.text =
-            _profileResponse!.data.user.phone ?? "23423423423";
+            _profileResponse!.data.user.phone ?? "";
         profilePic = _profileResponse!.data.user.profilePic ?? '';
         companyNameController.text =
             _profileResponse!.data.user.companyName ?? '';
