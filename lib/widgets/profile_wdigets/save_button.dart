@@ -35,7 +35,8 @@ class SaveButtonProfile extends StatelessWidget {
                     "phone": mobileController.text,
                     "frequent_flyer_no": frequentController.text,
                     "additional_details": additionalController.text,
-                    "image": 'dfd'
+                    "image": null
+                    // "image": 'dfd'
                   };
 
                   log('shahu ${value.profileResponse!.data.user.id}');
