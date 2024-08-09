@@ -5,6 +5,8 @@ import 'package:gofriendsgo/utils/constants/app_strings.dart';
 import 'package:gofriendsgo/utils/constants/custom_text.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/utils/constants/sizedbox.dart';
+import 'package:gofriendsgo/view_model/passport_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class GetDetailsAndAmountInPassportCheclist extends StatelessWidget {
   const GetDetailsAndAmountInPassportCheclist({
@@ -25,15 +27,17 @@ class GetDetailsAndAmountInPassportCheclist extends StatelessWidget {
           fontFamily: CustomFonts.roboto,
         ),
         const CustomSizedBoxWidth(0.04),
-        const Column(
+        Column(
           children: [
-            CustomText(
-                text: "₹ 12,000",
-                fontFamily: CustomFonts.roboto,
-                size: 0.07,
-                weight: FontWeight.w800,
-                color: AppColors.fixedDeparturesAmberColor),
-            CustomText(
+            Consumer<PassportViewModel>(
+              builder: (context, value, child) => CustomText(
+                  text: "₹ ${value.passportResponse!.passports[0].price}",
+                  fontFamily: CustomFonts.roboto,
+                  size: 0.07,
+                  weight: FontWeight.w800,
+                  color: AppColors.fixedDeparturesAmberColor),
+            ),
+            const CustomText(
               text: TextStrings.perPerson,
               fontFamily: CustomFonts.roboto,
               size: 0.035,
