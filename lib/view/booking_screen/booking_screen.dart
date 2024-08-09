@@ -45,7 +45,7 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
               const CustomSizedBoxHeight(0.03),
               const BookingDetailsSearch(),
               const CustomSizedBoxHeight(0.02),
-              BookingDetailsContainer(value.bookingResponse!.data.bookings),
+              BookingDetailsContainer(value.filteredBookings),
             ],
           ),
         );
