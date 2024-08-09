@@ -29,8 +29,9 @@ class PackagesListView extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(bottom: mediaqueryheight(0.025, context)),
             child: GestureDetector(
-              onTap: () =>
-                  PageNavigations().push( VisaChecklistDetailsScreen(visa: country,)),
+              onTap: () => PageNavigations().push(VisaChecklistDetailsScreen(
+                visa: country,
+              )),
               child: Container(
                 width: double.infinity,
                 height: mediaqueryheight(0.17, context),
@@ -42,7 +43,10 @@ class PackagesListView extends StatelessWidget {
                           BlendMode.darken,
                         ),
                         fit: BoxFit.cover,
-                        image: NetworkImage(API.baseImageUrl+country.image))),
+                        image: country.image.isNotEmpty
+                            ? NetworkImage(API.baseImageUrl + country.image)
+                            : Image.asset(AppImages.goFriendsGoLogo)
+                                as ImageProvider)),
                 child: Center(
                   child: CustomText(
                     text: "Visa for ${country.visaFor}",
