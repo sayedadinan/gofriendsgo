@@ -42,7 +42,7 @@ class HomeCarosualWidget extends StatelessWidget {
                           value: downloadProgress.progress),
                     ),
                     errorWidget: (context, url, error) =>
-                        Image.asset(AppImages.tripImage),
+                        Image.asset(AppImages.goFriendsGoLogo),
                   ),
                 );
               },

@@ -50,7 +50,7 @@ class GridViewMeetTheTeam extends StatelessWidget {
                           value: downloadProgress.progress),
                     ),
                     errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                        Image.asset(AppImages.goFriendsGoLogo),
                   ),
                 ),
                 const CustomSizedBoxHeight(0.008),
@@ -67,10 +67,10 @@ class GridViewMeetTheTeam extends StatelessWidget {
                       color: const Color.fromRGBO(39, 39, 39, 1)),
                 ),
                 SizedBox(
-                      height: mediaqueryheight(0.02, context),
+                  height: mediaqueryheight(0.02, context),
                   width: double.infinity,
                   child: CustomText(
-                       textAlign: TextAlign.center,
+                      textAlign: TextAlign.center,
                       textOverflow: TextOverflow.ellipsis,
                       text: teamMember.designation,
                       fontFamily: CustomFonts.roboto,

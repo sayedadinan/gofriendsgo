@@ -244,7 +244,7 @@ class _GridForHomeScreenState extends State<GridForHomeScreen> {
                                         value: downloadProgress.progress),
                                   ),
                                   errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
+                                      Image.asset(AppImages.goFriendsGoLogo),
                                 ),
                               ),
                             ),
