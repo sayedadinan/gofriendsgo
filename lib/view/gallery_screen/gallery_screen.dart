@@ -64,7 +64,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                         value: downloadProgress.progress),
                   ),
                   errorWidget: (context, url, error) =>
-                      Image.asset(AppImages.tripImage),
+                      Image.asset(AppImages.goFriendsGoLogo),
                 ),
               );
             }),
