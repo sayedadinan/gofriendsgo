@@ -4,12 +4,25 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/utils/constants/app_bar.dart';
 import 'package:gofriendsgo/utils/constants/mediaquery.dart';
+import 'package:gofriendsgo/view_model/gallery_viewmodel.dart';
+import 'package:provider/provider.dart';
 import 'package:gofriendsgo/utils/constants/paths.dart';
 import 'package:gofriendsgo/view_model/gallery_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class GalleryScreen extends StatelessWidget {
+class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});
+
+  @override
+  State<GalleryScreen> createState() => _GalleryScreenState();
+}
+
+class _GalleryScreenState extends State<GalleryScreen> {
+  @override
+  void initState() {
+    context.read<GalleryViewModel>().fetchGallery();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +31,7 @@ class GalleryScreen extends StatelessWidget {
           preferredSize: Size(double.infinity, mediaqueryheight(0.09, context)),
           child: const CommonGradientAppBar(
               fromBottomNav: false, heading: 'Gallery')),
+      
       body: Consumer<GalleryViewModel>(
         builder: (context, value, child) {
           return GridView.custom(

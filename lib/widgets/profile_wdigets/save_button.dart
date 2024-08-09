@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gofriendsgo/utils/color_theme/colors.dart';
@@ -27,6 +28,7 @@ class SaveButtonProfile extends StatelessWidget {
             ? () {
                 if (profileFormKey.currentState!.validate() &&
                     value.dob != null) {
+                      final File? imageFile = value.newImagePath==null?null: File(value.newImagePath!); 
                   final updatedData = {
                     "name": nameController.text,
                     "company_name": companyNameController.text,
@@ -35,8 +37,8 @@ class SaveButtonProfile extends StatelessWidget {
                     "phone": mobileController.text,
                     "frequent_flyer_no": frequentController.text,
                     "additional_details": additionalController.text,
-                    "image": null
-                    // "image": 'dfd'
+                    "image": imageFile
+                   
                   };
 
                   log('shahu ${value.profileResponse!.data.user.id}');

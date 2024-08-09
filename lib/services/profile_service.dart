@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 import 'package:gofriendsgo/model/profile_model/profile_model.dart';
 import 'package:gofriendsgo/services/api/app_apis.dart';
 import 'package:gofriendsgo/services/shared_preferences.dart';
@@ -62,41 +63,43 @@ class ProfileService {
   //     return false; // Indicate failure
   //   }
   // }
-  Future<bool> updateUserProfile(
-    int userId,
-    Map<String, dynamic> updatedData,
-    String token,
-  ) async {
-    print('started working');
+ 
+Future<bool> updateUserProfile(
+  int userId,
+  Map<String, dynamic> updatedData,
+  String token,
+) async {
+  print('Started working');
 
-    final uri = Uri.parse('${API.baseUrl}/profile/$userId');
+  final uri = Uri.parse('${API.baseUrl}/profile/$userId');
+  final request = http.MultipartRequest('POST', uri)
+    ..headers['Authorization'] = 'Bearer $token';
 
-    final request = http.MultipartRequest('POST', uri)
-      ..headers['Authorization'] = 'Bearer $token';
+  // Add form fields and handle the image file
+  updatedData.forEach((key, value) async{
+    if (value is String) {
+      request.fields[key] = value;
+    } else if (value is File){
+      // Handle the image file
+      request.files.add(
+       await http.MultipartFile.fromPath(key, value.path),
+      );
+    }
+  });
 
-    // Add form fields
-    updatedData.forEach((key, value) {
-      if (value is String) {
-        request.fields[key] = value;
-      } else if (value is List<int>) {
-        // Assuming 'image' key holds binary data (like an image)
-        request.files.add(http.MultipartFile.fromBytes(key, value));
-      }
-    });
+  try {
+    final response = await request.send();
 
-    try {
-      final response = await request.send();
-
-      if (response.statusCode == 200) {
-        print('Profile updated successfully');
-        return true; // Indicate success
-      } else {
-        print('Failed to update profile. Status code: ${response.statusCode}');
-        return false; // Indicate failure
-      }
-    } catch (e) {
-      print('Error updating profile: $e');
+    if (response.statusCode == 200) {
+      print('Profile updated successfully');
+      return true; // Indicate success
+    } else {
+      print('Failed to update profile. Status code: ${response.statusCode}');
       return false; // Indicate failure
     }
+  } catch (e) {
+    print('Error updating profile: $e');
+    return false; // Indicate failure
   }
+}
 }
